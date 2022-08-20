@@ -1,0 +1,252 @@
+.default-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 100%;
+    z-index: 71;
+
+    transition: width .3s ease-out;
+
+    @include responsive(mobile) {
+        left: -48px;
+    }
+
+    &.active,
+    &:hover {
+        width: 250px;
+
+        @include responsive(mobile) {
+            left: 0px;
+        }
+
+        & .just-sidebar {
+            height: calc(100% - 36px);
+            width: 250px;
+            top: 16px;
+            left: 0;
+            margin-left: 16px;
+            border-radius: 8px;
+            box-shadow: 8px 8px 56px rgba(var(--shadow-color-rgb), 0.2),
+                        -8px -8px 56px rgba(var(--shadow-color-rgb), 0.2);
+        }
+
+        & .aloc-sid-profile {
+            .sid-profile-line {
+                height: calc(100% - 8px);
+                width: calc(100% - 16px);
+                top: 4px;
+                left: 8px;
+                border-radius: 4px;
+                box-shadow: 0px 0px 16px rgba(var(--shadow-color-rgb), 0.1);
+            }
+        }
+
+        & .aloc-sid-line {
+            padding: 8px;
+
+            .name {
+                opacity: 1;
+            }
+        }
+
+        & .aloc-sid-subline {
+            padding: 8px;
+            background-color: rgba(var(--primary-color-rgb), 0.1);
+            box-shadow: inset 0px 8px 16px -8px rgba(0, 0, 0, 0.1),
+                        inset 0px -8px 16px -8px rgba(0, 0, 0, 0.1);
+
+            .just-sid-subline {
+                width: 90%;
+                border-radius: 4px;
+                
+                .name {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.just-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    background: var(--base-color);
+    box-shadow: 2px 0px 6px rgba(var(--shadow-color-rgb), 0.3);
+    overflow-x: hidden;
+    transition: height .3s ease-out,
+                width .3s ease-out,
+                top .3s ease-out,
+                left .3s ease-out,
+                border-radius .3s ease-out,
+                box-shadow .3s ease-out;
+    @include flex-display(column, flex-start, flex-start, 0px);
+    
+    
+}
+
+.aloc-logo {
+    height: 56px;
+    width: 250px;
+    border-bottom: 1px solid var(--primary-color);
+
+    @include flex-display(row, flex-start, center, 0px);
+
+    .just-logo {
+        position: relative;
+        height: 100%;
+        width: 48px;
+        padding: 4px;
+        color: var(--primary-color);
+        filter: drop-shadow(0px 2px 2px rgba(var(--shadow-color-rgb), 0.4));
+        @include flex-center(row, 0px);
+
+        img {
+            width: 90%;
+            height: auto;
+        }
+    }
+
+    .name-logo {
+        padding: 2px 8px;
+        width: calc(100% - 48px);
+        color: var(--primary-color);
+        filter: drop-shadow(0px 2px 2px rgba(var(--shadow-color-rgb), 0.3));
+        @include text-config(20px, 900, $style:italic);
+        @include flex-display(row, flex-start, center, 0px);
+    }
+}
+
+.aloc-sid-contents {
+    position: relative;
+    height: calc(100% - 56px);
+    width: 250px;
+    @include flex-display(column, flex-start, flex-start, 0px);
+}
+
+.aloc-sid-profile {
+    position: relative;
+    padding: 0px 0px 4px;
+    height: 56px;
+    width: 100%;
+    
+    .sid-profile-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        transition: height .3s ease-out,
+                    width .3s ease-out,
+                    top .3s ease-out,
+                    left .3s ease-out,
+                    border-radius .3s ease-out,
+                    box-shadow .3s ease-out;
+        
+        @include flex-display(row, flex-start, center, 0px);
+
+        .sid-image-profile {
+            height: 100%;
+            width: 48px;
+            @include flex-center(row, 0px);
+        
+            img {
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                box-shadow: 2px 0px 4px rgba(var(--shadow-color-rgb), 0.3);
+            }
+        }
+        
+        .sid-name-profile {
+            padding-left: 8px;
+            width: calc(100% - 48px);
+            color: var(--primary-color);
+            @include flex-display(row, flex-start, center, 0px);
+            @include text-config(16px, bold);
+        }
+    }    
+}
+
+.aloc-sid-line {
+    position: relative;
+    height: 44px;
+    width: 100%;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: padding .3s ease-out, 
+                background-color .2s ease-out,
+                border-left .2s ease-out;
+
+    @include flex-display(row, flex-start, center, 4px);
+
+    &:hover {
+        background-color: rgba(var(--primary-color-rgb), 0.3);
+    }
+
+    .icon {
+        width: 48px;
+        font-size: 18px;
+        filter: drop-shadow(0px 2px 2px rgba(var(--shadow-color-rgb), 0.3));
+        @include flex-center(row, 0px);
+    }
+
+    .name {
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity .1s ease-out;
+        @include text-config(18px, 700);
+    }
+
+    &.active {
+        border-left: 2px solid var(--primary-color);
+    }
+}
+
+.aloc-sid-subline {
+    position: relative;
+    padding: 0px;
+    width: 100%;
+    background-color: transparent;
+    color: var(--primary-color);
+    transition: padding .3s ease-out,
+                background-color .3s ease-out,
+                box-shadow .3s ease-out;
+    box-shadow: 0px 0px 0px rgba(0,0,0,0);
+    
+    @include flex-display(column, flex-start, center, 8px, $wrap: wrap);
+
+    .just-sid-subline {
+        height: 44px;
+        width: 100%;
+        background-color: var(--base-color);
+        border-radius: 0px;
+        transition: background-color .3s ease-out,
+                    border-left .3s ease-out;
+        cursor: pointer;
+        @include flex-display(row, flex-start, center, 4px);
+
+        .icon {
+            width: 48px;
+            font-size: 18px;
+            filter: drop-shadow(0px 2px 2px rgba(var(--shadow-color-rgb), 0.3));
+            @include flex-center(row, 0px);
+        }
+
+        .name {
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity .1s ease-out;
+            @include text-config(14px, 600);
+        }
+
+        &:hover {
+            background-color: rgba(var(--primary-color-rgb), 0.2);
+        }
+    }
+}

@@ -1,0 +1,66 @@
+// Mixins de criação rápida
+
+@mixin grid-display($columns, $rows, $gap) {
+    display: grid;
+    grid-template-columns: $columns;
+    grid-template-rows: $rows;
+    gap: $gap;
+}
+
+@mixin flex-center($direction, $gap, $wrap:nowrap) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: $wrap;
+    gap: $gap;
+}
+
+@mixin flex-display($direction, $justify, $align, $gap, $wrap:nowrap) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+    flex-wrap: $wrap;
+    gap: $gap;
+}
+
+@mixin blur-shadow($color-top, $color-bottom, $distance, $blur, $width-shadow:0px) {
+    box-shadow: $color-top $distance $distance $blur,
+        $color-bottom (-$distance) (-$distance) $blur;
+}
+
+@mixin glass($color-bg, $color-border, $blur:16px, $opacity:0.6, $saturation:140%) {
+    backdrop-filter: blur($blur) saturate($saturation);
+    background-color: rgba($color-bg, $opacity);
+    border: 1px solid rgba($color-border, 0.125);
+}
+
+@mixin text-config($size, $weight, $style:normal, $align:left) {
+    font-size: $size;
+    font-weight: $weight;
+    font-style: $style;
+    text-align: $align;
+}
+
+// Mixin for responsive
+
+@mixin responsive($screen) {
+    @if($screen==mobile) {
+        @media screen and (min-width: 280px) and (max-width: 767px) {
+            @content;
+        }
+    }
+
+    @else if($screen==tablet) {
+        @media screen and (min-width: 768px) and (max-width: 1199px) {
+            @content;
+        }
+    }
+
+    @else if($screen==desktop) {
+        @media screen and (min-width: 1200px) {
+            @content;
+        }
+    }
+}

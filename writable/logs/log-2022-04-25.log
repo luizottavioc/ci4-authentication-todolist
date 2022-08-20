@@ -1,0 +1,104 @@
+CRITICAL - 2022-04-25 18:54:52 --> Undefined array key "id_user"
+#0 C:\xampp\htdocs\todolist\app\Views\user\index.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 13)
+#1 C:\xampp\htdocs\todolist\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\todolist\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\todolist\system\Common.php(1089): CodeIgniter\View\View->render('user/index', Array, true)
+#4 C:\xampp\htdocs\todolist\app\Controllers\User.php(25): view('user/index', Array)
+#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
+#6 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-25 18:55:04 --> Undefined array key "id_user"
+#0 C:\xampp\htdocs\todolist\app\Views\user\index.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 13)
+#1 C:\xampp\htdocs\todolist\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\todolist\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\todolist\system\Common.php(1089): CodeIgniter\View\View->render('user/index', Array, true)
+#4 C:\xampp\htdocs\todolist\app\Controllers\User.php(25): view('user/index', Array)
+#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
+#6 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-25 18:55:30 --> syntax error, unexpected single-quoted string "id_user", expecting identifier or variable or "{" or "$"
+#0 C:\xampp\htdocs\todolist\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#1 C:\xampp\htdocs\todolist\system\Common.php(1089): CodeIgniter\View\View->render('user/index', Array, true)
+#2 C:\xampp\htdocs\todolist\app\Controllers\User.php(25): view('user/index', Array)
+#3 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
+#4 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+CRITICAL - 2022-04-25 18:56:24 --> Call to a member function first() on array
+#0 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
+#1 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#2 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-25 18:56:26 --> Call to a member function first() on array
+#0 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
+#1 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#2 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-25 18:56:32 --> Undefined array key "id_user"
+#0 C:\xampp\htdocs\todolist\app\Views\user\index.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 13)
+#1 C:\xampp\htdocs\todolist\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\todolist\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\todolist\system\Common.php(1089): CodeIgniter\View\View->render('user/index', Array, true)
+#4 C:\xampp\htdocs\todolist\app\Controllers\User.php(25): view('user/index', Array)
+#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
+#6 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-25 18:56:34 --> Undefined array key "id_user"
+#0 C:\xampp\htdocs\todolist\app\Views\user\index.php(13): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 13)
+#1 C:\xampp\htdocs\todolist\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\todolist\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\todolist\system\Common.php(1089): CodeIgniter\View\View->render('user/index', Array, true)
+#4 C:\xampp\htdocs\todolist\app\Controllers\User.php(25): view('user/index', Array)
+#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
+#6 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-25 18:57:12 --> Call to a member function first() on array
+#0 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
+#1 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#2 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#3 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#4 {main}
+CRITICAL - 2022-04-25 19:04:14 --> Undefined array key "nome"
+#0 C:\xampp\htdocs\todolist\app\Views\user\index.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 15)
+#1 C:\xampp\htdocs\todolist\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\todolist\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\todolist\system\Common.php(1089): CodeIgniter\View\View->render('user/index', Array, true)
+#4 C:\xampp\htdocs\todolist\app\Controllers\User.php(25): view('user/index', Array)
+#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
+#6 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-25 19:04:16 --> Undefined array key "nome"
+#0 C:\xampp\htdocs\todolist\app\Views\user\index.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 15)
+#1 C:\xampp\htdocs\todolist\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\todolist\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\todolist\system\Common.php(1089): CodeIgniter\View\View->render('user/index', Array, true)
+#4 C:\xampp\htdocs\todolist\app\Controllers\User.php(25): view('user/index', Array)
+#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
+#6 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-04-25 19:04:31 --> Undefined array key "nome"
+#0 C:\xampp\htdocs\todolist\app\Views\user\index.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 15)
+#1 C:\xampp\htdocs\todolist\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\todolist\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\todolist\system\Common.php(1089): CodeIgniter\View\View->render('user/index', Array, true)
+#4 C:\xampp\htdocs\todolist\app\Controllers\User.php(25): view('user/index', Array)
+#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
+#6 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}

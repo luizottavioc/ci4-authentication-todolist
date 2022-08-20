@@ -1,0 +1,29 @@
+:root.light {
+    --primary-color: rgb(130,71,229);
+        --primary-color-rgb: 130,71,229;
+    --primary-color-contrast: rgb(155, 107, 238);
+        --primary-color-contrast-rgb: 155, 107, 238;
+    --secondary-color: rgb(24, 178, 155);
+        --secondary-color-rgb: 24, 178, 155;
+    --secondary-color-contrast: rgb(5, 126, 108);
+        --secondary-color-contrast-rgb: 5, 126, 108;
+
+    --base-color: rgb(236, 233, 242);
+        --base-color-rgb: 236, 233, 242;
+    --base-color-contrast: rgb(0,0,0);
+        --base-color-contrast-rgb: 0,0,0;
+    --card-color: rgb(243, 242, 246);
+        --card-color-rgb: 243, 242, 246;
+
+    --text-color: rgb(10, 10, 11);
+        --text-color-rgb: 10, 10, 11;
+    --text-color-inverse: rgb(221, 221, 231);
+        --text-color-inverse-rgb: 221, 221, 23;
+
+    --shadow-color: rgb(22, 22, 22);
+        --shadow-color-rgb: 22, 22, 22;
+}
+
+:root.dark {
+    
+}

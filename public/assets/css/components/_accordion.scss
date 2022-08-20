@@ -1,0 +1,31 @@
+.acc-title {
+    position: relative;
+
+    .acc-arrow {
+        position: absolute;
+        top: 50%;
+        right: 4px;
+        padding: 16px;
+        transform: translate(0, -50%);
+
+        i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 14px;
+            transition: .3s ease-out transform;
+
+            &.first {
+                transform: translate(-50%, calc(-50% + 2px));
+            }
+
+            &.second {
+                transform: translate(-50%, calc(-50% - 2px));
+            }
+        }
+    }
+}
+
+.acc-content {
+    animation: open-acc 0.2s ease-out 1;
+}

@@ -1,0 +1,31 @@
+.load-mutation-page {
+    position: absolute;
+    height: calc(100% - 24px);
+    width: 100%;
+    background: var(--base-color);
+    overflow: hidden;
+    z-index: 50;
+
+    @include flex-center(column, 0px);
+
+    .load-diagonal-line  {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: -50%;
+        background: linear-gradient(45deg, rgba(0, 0, 0, 0) 30%, var(--base-color) 48%, var(--base-color) 52%, rgba(0, 0, 0, 0) 70%);
+        z-index: 1;
+        animation: diagonal-load 2s linear infinite;
+    }
+    
+    .aloc-load-logo{
+        padding: 8px;
+        filter: drop-shadow(0px 2px 3px rgba(var(--primary-color-rgb), 0.7));
+
+        img {
+            height: 100px;
+            width: 100px;
+        }
+    }
+}
+

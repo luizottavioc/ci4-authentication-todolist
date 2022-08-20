@@ -1,0 +1,116 @@
+.aloc-header-page {
+    position: relative;
+    width: 100%;
+    padding: 24px 48px 0px;
+    @include flex-display(row, flex-start, center, 16px);
+
+    .aloc-title {
+        width: 100%;
+        @include flex-display(row, flex-start, center, 0px);
+        @include text-config(24px, bold, $style: italic);
+    }
+
+    .aloc-route {
+        width: 100%;
+        @include flex-display(row, flex-end, center, 8px);
+        @include text-config(14px, bold, $style: italic);
+
+        .text-nolink {
+            color: var(--text-color);
+        }
+
+        .link-page {
+            color: var(--primary-color);
+            transition: text-decoration .3s ease-out;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.aloc-content-page {
+    position: relative;
+    width: 100%;
+    padding: 24px;
+
+    .card-content-page {
+        padding: 32px;
+        position: relative;
+        height: max-content;
+        width: 100%;
+        border-radius: 16px;
+        background: var(--card-color);
+        overflow: hidden;
+        box-shadow: 0px 24px 16px -10px rgba(var(--shadow-color-rgb), 0.05);
+
+        @include responsive(mobile) {
+            padding: 16px 4px;
+        }
+
+        &.dash {
+            @include responsive(mobile) {
+                padding: 16px 32px;
+            }
+        }
+    }
+
+    @include responsive(mobile) {
+        padding: 24px 4px;
+    }
+}
+
+.aloc-top-buttons {
+    padding: 8px;
+    width: 100%;
+    @include flex-center(row, 0px);
+}
+
+// common classes
+
+.d-none {
+    display: none !important;
+}
+
+.disappear {
+    position: absolute !important;
+    height: 0 !important;
+    width: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.dsb {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.w100 {
+    width: 100%;
+}
+
+@for $i from 1 through 10 {
+    .gd-spaces-#{$i} {
+        @include grid-display(repeat(#{$i}, 1fr), 1fr, 0);
+    }
+}
+
+@for $i from 1 through 10 {
+    .gap-#{$i} {
+        gap: #{$i * 8}px;
+    }
+}
+
+@for $i from 1 through 10 {
+    .gd-span-#{$i} {
+        grid-column: span #{$i};
+    }
+}
+
+@for $i from 1 through 10 {
+    .pd-#{$i} {
+        padding: #{$i * 8}px;
+    }
+}

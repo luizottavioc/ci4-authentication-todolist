@@ -1,0 +1,34 @@
+CRITICAL - 2022-06-23 19:11:55 --> There is no data to insert.
+#0 C:\xampp\htdocs\todolist\system\BaseModel.php(1574): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('insert')
+#1 C:\xampp\htdocs\todolist\system\BaseModel.php(704): CodeIgniter\BaseModel->transformDataToArray(Array, 'insert')
+#2 C:\xampp\htdocs\todolist\system\Model.php(625): CodeIgniter\BaseModel->insert(Array, true)
+#3 C:\xampp\htdocs\todolist\app\Controllers\User.php(52): CodeIgniter\Model->insert(Array)
+#4 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->create()
+#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#6 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#7 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#8 {main}
+CRITICAL - 2022-06-23 19:12:13 --> There is no data to insert.
+#0 C:\xampp\htdocs\todolist\system\BaseModel.php(718): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('insert')
+#1 C:\xampp\htdocs\todolist\system\Model.php(625): CodeIgniter\BaseModel->insert(Array, true)
+#2 C:\xampp\htdocs\todolist\app\Controllers\User.php(52): CodeIgniter\Model->insert(Array)
+#3 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->create()
+#4 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#6 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#7 {main}
+ERROR - 2022-06-23 19:13:36 --> Duplicate entry 'arthur@arthur.com' for key 'email'
+CRITICAL - 2022-06-23 19:13:36 --> Duplicate entry 'arthur@arthur.com' for key 'email'
+#0 C:\xampp\htdocs\todolist\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\todolist\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\todolist\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\todolist\system\Database\BaseBuilder.php(1771): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\xampp\htdocs\todolist\system\Model.php(239): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\todolist\system\BaseModel.php(738): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\todolist\system\Model.php(625): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\todolist\app\Controllers\User.php(52): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->create()
+#9 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#10 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 {main}

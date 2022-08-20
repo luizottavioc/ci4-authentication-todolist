@@ -1,0 +1,121 @@
+.smooth-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(var(--shadow-color-rgb), 0.6);
+    z-index: 71;
+    animation: fadeInBgModal 0.1s ease-in-out  1;
+
+    display: none;
+
+    .aloc-content-modal {
+        position: absolute;
+        width: 75vw;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: var(--base-color);
+        border-radius: 8px;
+        box-shadow: 0px 16px 32px -16px rgba(var(--primary-color-rgb), 0.16);
+        overflow: hidden;
+        z-index: 72;
+        animation: pullUpModal 0.3s ease-in-out 1;
+        @include flex-display(column, flex-start, center, 0px);
+        
+        display: none;
+    }
+}
+
+.title-modal,
+.content-modal,
+.footer-modal {
+    width: 100%;
+}
+
+.title-modal {
+    position: relative;
+    padding: 16px 8px;
+    border-bottom: 1px solid rgba(var(--text-color-rgb), 0.1);
+    @include text-config(17px, bold, $style: italic);
+    @include flex-center(row, 0px);
+
+    .close-modal {
+        padding: 8px;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%);
+        color: rgba(var(--primary-color-rgb), 0.3);
+        transition: .3s ease-in-out color;
+        cursor: pointer;
+        @include flex-center(row, 0px);
+
+        &:hover {
+            color: var(--primary-color);
+        }
+    }
+}
+
+.content-modal {
+    height: 50vh;
+    overflow-y: auto;
+    @include flex-center(row, 0px);
+}
+
+.footer-modal {
+    padding: 16px;
+    border-top: 1px solid rgba(var(--text-color-rgb), 0.1);
+
+    .default-modal-footer {
+        width: 100%;
+        @include flex-display(row, flex-end, center, 0px);
+
+        @include responsive(mobile) {
+            @include flex-center(row, 0px);
+        }
+    }
+}
+
+.smooth-modal.active {
+    display: unset;
+
+    .aloc-content-modal {
+        display: flex;
+    }
+}
+
+// configs
+
+.smooth-modal.small .aloc-content-modal {
+    width: 50vw;
+
+    .content-modal {
+        height: 50vh;
+    }
+}
+
+.smooth-modal.medium .aloc-content-modal {
+    width: 75vw;
+
+    .content-modal {
+        height: 60vh;
+    }
+}
+
+.smooth-modal.large .aloc-content-modal {
+    width: 90vw;
+
+    .content-modal {
+        height: 80vh;
+    }
+}
+
+.smooth-modal.full-page .aloc-content-modal {
+    width: 100vw;
+
+    .content-modal {
+        height: 100vh;
+    }
+}

@@ -1,0 +1,54 @@
+@keyframes diagonal-load {
+    0% {
+        transform: translate(0%, 0%);
+    }
+
+    100% {
+        transform: translate(150%, 0%);
+    }
+}
+
+@keyframes open-acc {
+    0% {
+        transform: translateY(-3px);
+        opacity: 0;
+        pointer-events: none;
+    }
+    
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+        pointer-events: inherit;
+    }
+}
+
+@keyframes fadeInBgModal {
+    0% {
+        background-color: rgba(var(--shadow-color-rgb), 0.0);
+    }
+
+    100% {
+        background-color: rgba(var(--shadow-color-rgb), 0.6);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pullUpModal {
+    0% {
+        transform: translate(-50%, 150%);
+    }
+    
+    100% {
+        transform: translate(-50%, -50%);
+    }
+    
+}

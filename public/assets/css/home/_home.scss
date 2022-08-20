@@ -1,0 +1,91 @@
+.grid-home-cards {
+    padding: 32px;
+    width: 100%;
+    @include grid-display(repeat(5, 1fr), 1fr, 16px);
+
+    @include responsive(tablet){
+        @include grid-display(repeat(3, 1fr), 1fr, 8px);
+    }
+
+    @include responsive(mobile){
+        padding: 16px;
+        @include grid-display(repeat(1, 1fr), 1fr, 32px);
+    }
+}
+
+.aloc-home-card {
+    position: relative;
+    height: 312px;
+    width: 100%;
+    @include flex-center(row, 0px);
+
+    .home-card {
+        position: relative;
+        height: 100%;
+        width: 95%;
+        border-radius: 0 0 8px 8px;
+        border-top: 3px solid var(--primary-color);
+        overflow: hidden;
+        box-shadow: 0px 4px 12px rgba(var(--shadow-color-rgb), 0.15);
+        transition: transform .3s ease-out,
+                    box-shadow .3s ease-out;
+        @include flex-display(column, flex-start, flex-start, 0px, $wrap: wrap);
+
+        &:hover {
+            transform: scale(1.01);
+            box-shadow: 0px 4px 14px rgba(var(--shadow-color-rgb), 0.1);
+        }
+
+        .title-card {
+            padding: 0px 16px;
+            height: 20%;
+            width: 100%;
+            overflow: hidden;
+            color: var(--primary-color);
+            @include text-config(24px, bold, $style: italic);
+            @include flex-display(row, flex-start, center, 0px);
+        }
+    
+        .text-card {
+            padding: 8px 16px;
+            height: 60%;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            p {
+                width: 100%;
+                display: -webkit-box;
+                -webkit-line-clamp: 10;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-align: justify;
+                color: rgba(var(--text-color-rgb), 0.7);
+                @include text-config(14px, 400);
+            }
+        }
+    
+        .aloc-btn-card {
+            padding: 0px 16px 16px;
+            height: 20%;
+            width: 100%;
+            overflow: hidden;
+            @include flex-display(row, flex-start, flex-end, 0px);
+        }
+
+        // @include responsive (tablet) {
+        //     .title-card {
+        //         padding: 0px 8px;
+        //     }
+        
+        //     .text-card {
+        //         padding: 8px 8px;
+        //     }
+        
+        //     .aloc-btn-card {
+        //         padding: 0px 8px;
+        //     }
+        // }
+    }
+
+}

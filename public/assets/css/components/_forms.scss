@@ -1,0 +1,239 @@
+.aloc-input {
+    position: relative;
+    width: 100%;
+    margin-top: 24px;
+
+    .input {
+        padding: 4px 16px;
+        width: 100%;
+        min-height: 30px;
+        background-color: transparent;
+        color: var(--text-color);
+        border: none;
+        border-bottom: 2px solid rgba(var(--primary-color-rgb), 0.7);
+        overflow: hidden;
+        transition: border .3s,
+            background-color ease-out .3s;
+
+        &:focus {
+            background-color: rgba(var(--primary-color-rgb), 0.05);
+        }
+
+        // alterando a posição do "placeholder" no caso de estar em foco ou de haver algo escrito dentro do input
+        &:focus,
+        &:not([placeholder=" "]),
+        &:not(:placeholder-shown) {
+            outline: none;
+            border-bottom: 2px solid rgba(var(--primary-color-rgb), 1);
+
+            ~.plch {
+                color: rgba(var(--primary-color-rgb), 1);
+                transform: translate(0, calc(-100% - 8px));
+                @include text-config(12px, bold, $style: italic);
+            }
+        }
+
+        // autocomplete
+
+        &:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px var(--contrast-base-color) inset;
+        }
+    }
+
+    .select {
+        padding: 4px 24px 4px 16px;
+        width: 100%;
+        background-color: transparent;
+        color: var(--text-color);
+        border: none;
+        border-bottom: 2px solid rgba(var(--primary-color-rgb), 0.7);
+        outline: none;
+        appearance: none;
+        overflow: hidden;
+        cursor: pointer;
+        transition: border .3s,
+            background-color ease-out .3s;
+
+        &:focus {
+            background-color: rgba(var(--primary-color-rgb), 0.05);
+
+            +.arrow-down {
+                font-size: 13px;
+            }
+        }
+
+        &:valid {
+            outline: none;
+            border-bottom: 2px solid rgba(var(--primary-color-rgb), 1);
+
+            ~.tp-plch {
+                color: rgba(var(--primary-color-rgb), 1);
+                transform: translate(0, calc(-100% - 8px));
+                @include text-config(12px, bold, $style: italic);
+            }
+        }
+
+        option {
+            background: var(--card-color);
+            color: var(--text-color);
+
+            &:checked {
+                color: var(--primary-color);
+            }
+        }
+    }
+
+    .arrow-down {
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        transform: translate(0, -50%);
+        font-size: 11px;
+        color: var(--primary-color);
+        pointer-events: none;
+        transition: font-size .1s ease-in;
+    }
+
+    .plch {
+        margin: 0;
+        padding: 0;
+
+        position: absolute;
+        left: 8px;
+        top: 4px;
+        color: rgba(var(--primary-color-rgb), 0.7);
+        transition: transform .1s ease-out, color .1s ease-out,
+            font-size .1s ease-out,
+            font-weight .1s ease-out,
+            font-style .1s ease-out,
+            color .1s ease-out;
+        pointer-events: none;
+        cursor: text;
+        @include text-config(unset, unset, $style: normal);
+
+        &.has-open {
+            color: rgba(var(--primary-color-rgb), 1);
+            transform: translate(0, calc(-100% - 8px));
+            @include text-config(12px, bold, $style: italic);
+        }
+    }
+}
+
+.submit-form {
+    position: relative;
+    overflow: hidden;
+    padding: 4px 16px 4px 42px;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: var(--text-color-inverse);
+    box-shadow: 0px 0px 8px rgba(var(--color-shadow-rgb), 0.3);
+    cursor: pointer;
+    transition: box-shadow ease-in-out .2s,
+        background-color ease-in-out .2s;
+    @include flex-center(row, 8px);
+
+    @include responsive(mobile) {
+        padding: 4px 8px 4px 28px;
+    }
+
+    label {
+        pointer-events: none;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
+        transition: transform ease-in .2s;
+        @include text-config(16px, bold);
+
+        @include responsive(mobile) {
+            @include text-config(11px, bold);
+        }
+    }
+
+    i {
+        pointer-events: none;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translate(0, -50%) rotate(-30deg);
+        transition: transform ease-in .2s, left ease-in .2s;
+        @include text-config(16px, bold);
+
+        @include responsive(mobile) {
+            left: 8px;
+            @include text-config(11px, bold);
+        }
+    }
+
+    &.small {
+        width: 150px;
+    }
+
+    &.medium {
+        width: 250px;
+    }
+
+    &.large {
+        width: 400px;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 8px rgba(var(--color-shadow-rgb), 0.7);
+        background-color: var(--primary-color-contrast);
+
+        label {
+            transform: translate(300%, 0);
+        }
+
+        i {
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+
+// Fake-input 
+
+.aloc-fake-input {
+    position: relative;
+    width: 100%;
+    // Margin de alocação para o "placeholder"
+    margin-top: 24px;
+
+    .fake-input {
+        padding: 4px 16px;
+        width: 100%;
+        background-color: transparent;
+        color: var(--text-color);
+        border: none;
+        border-bottom: 2px solid rgba(var(--primary-color-rgb), 1);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: border .3s,
+            background-color ease-out .3s;
+
+        &.text-transparent {
+            color: rgba(var(--text-color-rgb), 0.7);
+        }
+
+        &:focus {
+            background-color: rgba(var(--primary-color-rgb), 0.05);
+        }
+    }
+
+    .plch {
+        position: absolute;
+        left: 8px;
+        top: 4px;
+        margin: 0;
+        padding: 0;
+        pointer-events: none;
+        cursor: text;
+        color: rgba(var(--primary-color-rgb), 1);
+        transform: translate(0, calc(-100% - 8px));
+        @include text-config(12px, bold, $style: italic);
+    }
+}

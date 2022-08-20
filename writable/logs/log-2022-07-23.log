@@ -1,0 +1,63 @@
+ERROR - 2022-07-23 14:45:50 --> Unknown column 'nome' in 'field list'
+CRITICAL - 2022-07-23 14:45:50 --> Unknown column 'nome' in 'field list'
+#0 C:\xampp\htdocs\todolist\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `id_user...', 0)
+#1 C:\xampp\htdocs\todolist\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id_user...')
+#2 C:\xampp\htdocs\todolist\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id_user...')
+#3 C:\xampp\htdocs\todolist\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT `id_user...', Array, false)
+#4 C:\xampp\htdocs\todolist\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\todolist\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\todolist\app\Models\User\UserModel.php(32): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\todolist\app\Controllers\User.php(18): App\Models\User\UserModel->get_all()
+#8 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
+#9 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#10 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 {main}
+ERROR - 2022-07-23 14:45:52 --> Unknown column 'nome' in 'field list'
+CRITICAL - 2022-07-23 14:45:52 --> Unknown column 'nome' in 'field list'
+#0 C:\xampp\htdocs\todolist\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT `id_user...', 0)
+#1 C:\xampp\htdocs\todolist\system\Database\BaseConnection.php(670): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `id_user...')
+#2 C:\xampp\htdocs\todolist\system\Database\BaseConnection.php(598): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `id_user...')
+#3 C:\xampp\htdocs\todolist\system\Database\BaseBuilder.php(1455): CodeIgniter\Database\BaseConnection->query('SELECT `id_user...', Array, false)
+#4 C:\xampp\htdocs\todolist\system\Model.php(183): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\todolist\system\BaseModel.php(584): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\todolist\app\Models\User\UserModel.php(32): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\todolist\app\Controllers\User.php(18): App\Models\User\UserModel->get_all()
+#8 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
+#9 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#10 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2022-07-23 17:27:56 --> Undefined variable $titulo
+#0 C:\xampp\htdocs\todolist\app\Views\user\create.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 4)
+#1 C:\xampp\htdocs\todolist\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\todolist\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\todolist\system\Common.php(1089): CodeIgniter\View\View->render('user/create', Array, true)
+#4 C:\xampp\htdocs\todolist\app\Controllers\User.php(35): view('user/create')
+#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->create()
+#6 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-07-23 17:28:49 --> Undefined variable $titulo
+#0 C:\xampp\htdocs\todolist\app\Views\user\create.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 4)
+#1 C:\xampp\htdocs\todolist\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\todolist\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\todolist\system\Common.php(1089): CodeIgniter\View\View->render('user/create', Array, true)
+#4 C:\xampp\htdocs\todolist\app\Controllers\User.php(35): view('user/create')
+#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->create()
+#6 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2022-07-23 17:31:20 --> Undefined variable $titulo
+#0 C:\xampp\htdocs\todolist\app\Views\user\create.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 4)
+#1 C:\xampp\htdocs\todolist\system\View\View.php(210): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\todolist\system\View\View.php(213): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#3 C:\xampp\htdocs\todolist\system\Common.php(1089): CodeIgniter\View\View->render('user/create', Array, true)
+#4 C:\xampp\htdocs\todolist\app\Controllers\User.php(35): view('user/create')
+#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->create()
+#6 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
+#7 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
+#9 {main}

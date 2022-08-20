@@ -1,0 +1,45 @@
+// .card-user {
+//     margin: auto;
+//     position: relative;
+//     width: 400px;
+//     border-radius: 8px;
+//     overflow: hidden;
+//     box-shadow: 0px 0px 8px rgba(var(--shadow-color-rgb), 0.2);
+//     @include flex-display(column, flex-start, center, 0px, $wrap: wrap);
+
+//     @include responsive (tablet) {
+//         width: 350px;
+//     }
+
+//     @include responsive (mobile) {
+//         width: 300px;
+//     }
+
+//     .header {
+//         height: 56px;
+//         width: 100%;
+//         background-color: var(--primary-color);
+//         color: var(--text-color-inverse);
+//         @include text-config(18px, bold, $style: italic);
+//         @include flex-center(row, 0px);
+//     }
+
+//     .content {
+//         padding: 8px 24px 32px;
+//         width: 100%;
+
+//         .grid-user {
+//             @include grid-display(1fr, 1fr, 16px);
+    
+//             // .pass {
+//             //     padding: 16px 0px 0px;
+//             // }
+
+//             .submit {
+//                 margin: 32px 0px 32px;
+//                 @include flex-center(row, 0px);
+//             }
+//         }
+//     }
+// }
+

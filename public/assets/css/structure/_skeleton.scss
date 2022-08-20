@@ -1,0 +1,40 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.wrapper {
+    position: relative;
+    min-height: calc(100vh - 56px);
+    background-color: var(--base-color);
+    color: var(--text-color);
+}
+
+.main-container {
+    position: relative;
+    width: calc(100% - 48px);
+    margin-top: 56px;
+    margin-left: 48px;
+    height: calc(100vh - 64px - 56px);
+
+    @include responsive(mobile) {
+        width: 100%;
+        margin-left: 0px;
+    }
+}
+
+.content-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden; 
+    scroll-behavior: smooth;
+}
