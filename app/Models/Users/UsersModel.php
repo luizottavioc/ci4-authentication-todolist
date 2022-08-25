@@ -34,6 +34,27 @@ class UsersModel extends Model
     protected $updatedField = 'updated_at';
     protected $deletedField = 'deleted_at';
 
+    public function auth_verify($dados, $user) {
+        $session = session();
+        if(!empty($user)) {
+            if (password_verify($dados['password'], $user['password_hash'])){
+                $treat_user = $user;
+                $treat_user['password_hash'] = null;
+                session()->set('active_user', $treat_user);
+                return true;
+            } else {
+                $session->setFlashdata('last_login', $dados['login']);
+                $session->setFlashdata('alert', 'Senha incorreta!');
+                $session->setFlashdata('type_alert', 'error');
+                return false; 
+            }
+        } else {
+            $session->setFlashdata('alert', 'Login não encontrado ou desativado!');
+            $session->setFlashdata('type_alert', 'error');
+            return false; 
+        }
+    }
+
     public function get_all() {
         $this->select($this->select_columns);
         $query = $this->orderBy('name', 'asc')->findAll();
@@ -50,6 +71,12 @@ class UsersModel extends Model
         $this->select($this->select_columns);
         $query = $this->where($this->primaryKey, $id)->first();
         return $query;
+    }
+
+    public function get_by_login($login) {
+        $this->select($this->select_columns);
+        $user = $this->where('login', $login)->first();
+        return $user;
     }
 
     // public function set_user($data) {

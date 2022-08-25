@@ -42,8 +42,7 @@ class AuthVerify extends UsersModel {
     }
 
     public function deslogar() {
-        // $this->session->destroy();
-        // return redirect()->to('/login');
+        $this->session->destroy();
 
         echo '
         <script>
@@ -74,7 +73,7 @@ class AuthVerify extends UsersModel {
     // }
 
     public function verify_login() {
-        $user_session = $this->session->get('user_active');
+        $user_session = $this->session->get('active_user');
         
         if (isset($user_session)) {
             // $user_login_db = $this->data_login_model->get_data_login($user_session['id_user']);
@@ -86,10 +85,7 @@ class AuthVerify extends UsersModel {
             // }
             // $user_db = $this->user_model->where('id_user', $user_session['id_user'])->first();
             // $this->user_model->set_session($user_db);
-        } 
-        
-        // Verificando se não existe um usuário na sessão para redirecionar ao Login com mensagem de erro
-        if (!isset($user_session)) {
+        }else{
             $this->deslogar();
         }
     }

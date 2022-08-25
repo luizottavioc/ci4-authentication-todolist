@@ -27,22 +27,10 @@ class Login extends BaseController
     {           
         $dados = $this->request->getVar();             
 
-        // $usuario = $this->user_model->where('login', $dados['login'])->first();
-      
-        // $login = $this->user_model->auth_verify($dados, $usuario);
+        $user = $this->user_model->get_by_login($dados['login']);
+        $login = $this->user_model->auth_verify($dados, $user);
 
-        // if ($login) {
-            // $verify_data_login = $this->data_login_model->exists_data_login($usuario['id_user']);
-            // if (empty($verify_data_login)) {
-            //     $this->data_login_model->set_data_login($usuario['id_user']);
-            // } else {
-            //     $this->data_login_model->update_data_login($verify_data_login->id_data_login);
-            // }
-            // return redirect()->to('/');
-        // } else {
-        //     return redirect()->to('/login');
-        // }
-
+        return $login ? redirect()->to('/') : redirect()->to('/login');
     }
 
     public function logout()

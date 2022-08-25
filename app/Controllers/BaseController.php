@@ -51,7 +51,7 @@ class BaseController extends Controller
         $this->database = \Config\Database::connect();
         $this->auth_verify = new AuthVerify;
 
-        if ($request->getPath() !== 'login' && $request->getPath() !== 'logout') {
+        if ($request->getPath() !== 'login' && $request->getPath() !== 'login/auth' && $request->getPath() !== 'logout') {
             $this->auth_verify->verify_login();
         }
 
