@@ -75,17 +75,7 @@ class AuthVerify extends UsersModel {
     public function verify_login() {
         $user_session = $this->session->get('active_user');
         
-        if (isset($user_session)) {
-            // $user_login_db = $this->data_login_model->get_data_login($user_session['id_user']);
-    
-            // foreach ($user_login_db as $user_login) {
-            //     if (text_dif_days_number_helper($user_login['updated_at']) > 5) {
-            //         $this->data_login_model->delete_data_login($user_login['id_data_login']);
-            //     }
-            // }
-            // $user_db = $this->user_model->where('id_user', $user_session['id_user'])->first();
-            // $this->user_model->set_session($user_db);
-        }else{
+        if (!isset($user_session)) {
             $this->deslogar();
         }
     }

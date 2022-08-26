@@ -10,9 +10,9 @@
             <div class="aloc-btn-navbar">
                 <i class="fa-regular fa-sun"></i>
             </div>
-            <div class="aloc-btn-navbar">
+            <a class="aloc-btn-navbar" href="/login/logout">
                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
-            </div>
+            </a>
         </div>
     </div>
 </nav>

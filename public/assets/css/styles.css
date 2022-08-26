@@ -518,9 +518,32 @@
   }
 }
 
+@-webkit-keyframes moveBackground {
+  0% {
+    background-size: 200% 100%;
+    background-position: left;
+  }
+  100% {
+    background-size: 200% 100%;
+    background-position: right;
+  }
+}
+
+@keyframes moveBackground {
+  0% {
+    background-size: 200% 100%;
+    background-position: left;
+  }
+  100% {
+    background-size: 200% 100%;
+    background-position: right;
+  }
+}
+
 .btn-default {
   padding: 4px 16px;
   border: 2px solid rgba(0, 0, 0, 0);
+  text-decoration: none;
   outline: none;
   border-radius: 6px;
   background: var(--primary-color);
@@ -541,49 +564,35 @@
 }
 
 .button-open {
+  position: relative;
   height: 32px;
   border-radius: 16px;
-  width: 32px;
+  aspect-ratio: 1/1;
   background: linear-gradient(45deg, var(--primary-color), var(--primary-color-contrast));
   color: var(--text-color-inverse);
+  text-decoration: none;
   overflow: hidden;
-  -webkit-transition: width .3s ease-out;
-  transition: width .3s ease-out;
+  -webkit-transition: aspect-ratio .3s ease-out;
+  transition: aspect-ratio .3s ease-out;
   cursor: pointer;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 32px 160px;
-      grid-template-columns: 32px 160px;
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
-  gap: 0px;
 }
 
 .button-open i {
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  aspect-ratio: 1/1;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   pointer-events: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  gap: 0px;
 }
 
 .button-open p {
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  -webkit-transform: translate(0%, -50%);
+          transform: translate(0%, -50%);
   pointer-events: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -608,50 +617,9 @@
 }
 
 .button-open:hover {
-  width: 200px;
-}
-
-@media screen and (min-width: 768px) and (max-width: 1199px) {
-  .button-open {
-    height: 28px;
-    border-radius: 28px;
-    width: 28px;
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 28px 152px;
-        grid-template-columns: 28px 152px;
-    -ms-grid-rows: 1fr;
-        grid-template-rows: 1fr;
-    gap: 0px;
-  }
-  .button-open p {
-    height: 100%;
-    width: 100%;
-    pointer-events: none;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
-    gap: 0px;
-    font-size: 15px;
-    font-weight: bold;
-    font-style: normal;
-    text-align: left;
-  }
-  .button-open:hover {
-    width: 180px;
-  }
+  aspect-ratio: 5/1;
+  -webkit-animation: moveBackground 10s ease-in-out infinite alternate;
+          animation: moveBackground 10s ease-in-out infinite alternate;
 }
 
 .btn-action {
@@ -660,9 +628,10 @@
   border: none;
   color: var(--text-color-inverse);
   background-size: 150%;
+  border-radius: 16px;
   background-position: left;
   background: linear-gradient(45deg, var(--primary-color), var(--primary-color-contrast));
-  border-radius: 16px;
+  text-decoration: none;
   overflow: hidden;
   -webkit-transition: background-position .3s ease-out;
   transition: background-position .3s ease-out;
@@ -1765,6 +1734,7 @@ html {
   height: 44px;
   width: 100%;
   color: var(--primary-color);
+  text-decoration: none;
   cursor: pointer;
   -webkit-transition: padding .3s ease-out,  background-color .2s ease-out, border-left .2s ease-out;
   transition: padding .3s ease-out,  background-color .2s ease-out, border-left .2s ease-out;
@@ -2017,13 +1987,14 @@ html {
   padding: 8px;
   height: 100%;
   color: var(--primary-color);
+  text-decoration: none;
+  cursor: pointer;
   -webkit-filter: drop-shadow(0px 2px 2px rgba(var(--shadow-color-rgb), 0.2));
           filter: drop-shadow(0px 2px 2px rgba(var(--shadow-color-rgb), 0.2));
   -webkit-transition: -webkit-filter .2s ease-out;
   transition: -webkit-filter .2s ease-out;
   transition: filter .2s ease-out;
   transition: filter .2s ease-out, -webkit-filter .2s ease-out;
-  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

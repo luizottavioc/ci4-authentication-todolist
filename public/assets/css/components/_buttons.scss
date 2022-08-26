@@ -1,6 +1,7 @@
 .btn-default {
     padding: 4px 16px;
     border: 2px solid rgba(0,0,0,0);
+    text-decoration: none;
     outline: none;
     border-radius: 6px;
     background: var(--primary-color);
@@ -19,52 +20,41 @@
 }
 
 .button-open {
+    position: relative;
     height: 32px;
     border-radius: 16px;
-    width: 32px;
+    aspect-ratio: 1/1;
+    background-size: 200% 100%;
+    background-position: left;
     background: linear-gradient(45deg, var(--primary-color), var(--primary-color-contrast));
     color: var(--text-color-inverse);
+    text-decoration: none;
     overflow: hidden;
-    transition: width .3s ease-out;
+    transition: aspect-ratio .3s ease-out;
     cursor: pointer;
-    @include grid-display(32px 160px, 1fr, 0px);
 
     i {
-        height: 100%;
-        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        aspect-ratio: 1/1;
+        transform: translate(-50%, -50%);
         pointer-events: none;
-        @include flex-center(row, 0px);
     }
 
     p {
-        height: 100%;
-        width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 32px;
+        transform: translate(0%, -50%);
         pointer-events: none;
         @include flex-display(row, flex-start, center, 0px);
         @include text-config(15px, bold);
     }
 
     &:hover {
-        width: 200px;
-    }
-
-    @include responsive (tablet) {
-        height: 28px;
-        border-radius: 28px;
-        width: 28px;
-        @include grid-display(28px 152px, 1fr, 0px);
-    
-        p {
-            height: 100%;
-            width: 100%;
-            pointer-events: none;
-            @include flex-display(row, flex-start, center, 0px);
-            @include text-config(15px, bold);
-        }
-    
-        &:hover {
-            width: 180px;
-        }
+        aspect-ratio: 5/1;
+        animation: moveBackground 10s ease-in-out infinite alternate;
     }
 }
 
@@ -74,9 +64,10 @@
     border: none;
     color: var(--text-color-inverse);
     background-size: 150%;
+    border-radius: 16px;
     background-position: left;
     background: linear-gradient(45deg, var(--primary-color), var(--primary-color-contrast));
-    border-radius: 16px;
+    text-decoration: none;
     overflow: hidden;
     transition: background-position .3s ease-out;
     cursor: pointer;

@@ -1,7 +1,0 @@
-CRITICAL - 2022-08-15 19:14:04 --> Call to a member function orderBy() on array
-#0 C:\xampp\htdocs\todolist\app\Controllers\User.php(18): App\Models\User\UserModel->get_all()
-#1 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\User->index()
-#2 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\User))
-#3 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#4 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
-#5 {main}

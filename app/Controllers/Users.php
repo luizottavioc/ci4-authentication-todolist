@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Users\UsersModel;
 
-class User extends BaseController {
+class Users extends BaseController {
     private $user_model;
 
     function __construct(){

@@ -1,9 +1,0 @@
-CRITICAL - 2022-03-30 17:21:21 --> Invalid file: templates/header.php
-#0 C:\xampp\htdocs\todolist\system\View\View.php(198): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('templates/heade...')
-#1 C:\xampp\htdocs\todolist\system\Common.php(1089): CodeIgniter\View\View->render('templates/heade...', Array, true)
-#2 C:\xampp\htdocs\todolist\app\Controllers\Home.php(11): view('templates/heade...')
-#3 C:\xampp\htdocs\todolist\system\CodeIgniter.php(832): App\Controllers\Home->index()
-#4 C:\xampp\htdocs\todolist\system\CodeIgniter.php(419): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
-#5 C:\xampp\htdocs\todolist\system\CodeIgniter.php(326): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
-#6 C:\xampp\htdocs\todolist\public\index.php(37): CodeIgniter\CodeIgniter->run()
-#7 {main}

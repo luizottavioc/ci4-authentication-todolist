@@ -37,13 +37,13 @@
                             <td><?=$user['lastname']?></td>
                             <td><?=$user['email']?></td>
                             <td class="td-action">
-                                <button class="btn-action td-modal" data-modal-url="/user/view/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Visualizar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">
+                                <button class="btn-action td-modal" data-modal-url="/users/view/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Visualizar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">
                                     <i class="fa-regular fa-eye"></i>
                                 </button>
-                                <button class="btn-action td-modal" data-modal-url="/user/edit/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Editar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">
+                                <button class="btn-action td-modal" data-modal-url="/users/edit/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Editar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">
                                     <i class="fa-regular fa-pen-to-square"></i>
                                 </button>
-                                <button class="btn-action td-ajax-confirm" data-confirm-url="/user/delete_user/<?=$user['id_user']?>" data-confirm-title="Excluir Usuário" data-confirm-text="Você realmente deseja excluir este usuário?" data-confirm-success-text="Usuário excluído com sucesso" data-url-refresh="/user">
+                                <button class="btn-action td-ajax-confirm" data-confirm-url="/users/delete_user/<?=$user['id_user']?>" data-confirm-title="Excluir Usuário" data-confirm-text="Você realmente deseja excluir este usuário?" data-confirm-success-text="Usuário excluído com sucesso" data-url-refresh="/user">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>
                             </td>

@@ -52,3 +52,14 @@
     }
     
 }
+
+@keyframes moveBackground {
+    0% {
+        background-size: 200% 100%;
+        background-position: left;
+    }
+    100%{
+        background-size: 200% 100%;
+        background-position: right;
+    }
+}

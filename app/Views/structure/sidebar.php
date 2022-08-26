@@ -19,15 +19,15 @@
                     </div>
                 </div>
             </div>
-            <div class="aloc-sid-line active ajax-redirect" data-url="/home" data-sidebar-module="/home">
+            <a href="/home" class="aloc-sid-line active ajax-redirect" data-url="/home" data-sidebar-module="/home">
                 <div class="icon">
                     <i class="fa-solid fa-house"></i>
                 </div>
                 <div class="name">
                     Home
                 </div>
-            </div>
-            <div  id="title-acc-afazeres" class="aloc-sid-line acc-title" data-id-content="content-acc-afazeres" data-sidebar-module="/afazeres">
+            </a>
+            <div id="title-acc-afazeres" class="aloc-sid-line acc-title" data-id-content="content-acc-afazeres" data-sidebar-module="/afazeres">
                 <div class="icon">
                     <i class="fa-regular fa-rectangle-list"></i>
                 </div>
@@ -65,52 +65,22 @@
                     </div>
                 </div>
             </div>
-            <div class="aloc-sid-line" data-sidebar-module="/anotacoes">
+            <a href="/anotacoes" class="aloc-sid-line" data-sidebar-module="/anotacoes">
                 <div class="icon">
                    <i class="fa-solid fa-pen-fancy"></i>
                 </div>
                 <div class="name">
                     Anotações
                 </div>
-            </div>
-            <div class="aloc-sid-line ajax-redirect" data-url="/user" data-sidebar-module="/user">
+            </a>
+            <a href="/users" class="aloc-sid-line ajax-redirect" data-url="/users" data-sidebar-module="/users">
                 <div class="icon">
                     <i class="fa-regular fa-user"></i>
                 </div>
                 <div class="name">
                     Usuários
                 </div>
-            </div>
-            <!-- <div id="title-acc-users" class="aloc-sid-line acc-title" data-id-content="content-acc-users" data-sidebar-module="/user">
-                <div class="icon">
-                    <i class="fa-regular fa-user"></i>
-                </div>
-                <div class="name">
-                    Usuários
-                </div>
-                <div class="acc-arrow">
-                    <i class="fa-solid fa-chevron-down first"></i>
-                    <i class="fa-solid fa-chevron-down second"></i>
-                </div>
-            </div>
-            <div id="content-acc-users" class="aloc-sid-subline acc-content d-none" >
-                <div class="just-sid-subline ajax-redirect" data-url="/user">
-                    <div class="icon">
-                        <i class="fa-solid fa-users-viewfinder"></i>
-                    </div>
-                    <div class="name">
-                        Visualizar Usuários
-                    </div>
-                </div>
-                <div class="just-sid-subline ajax-redirect" data-url="/user/page_create">
-                    <div class="icon">
-                        <i class="fa-solid fa-user-plus"></i>
-                    </div>
-                    <div class="name">
-                        Criar Usuário
-                    </div>
-                </div>
-            </div> -->
+            </a>
         </div>
     </div>
 </aside>
