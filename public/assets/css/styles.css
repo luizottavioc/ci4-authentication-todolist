@@ -568,6 +568,8 @@
   height: 32px;
   border-radius: 16px;
   aspect-ratio: 1/1;
+  background-size: 200% 100%;
+  background-position: left;
   background: linear-gradient(45deg, var(--primary-color), var(--primary-color-contrast));
   color: var(--text-color-inverse);
   text-decoration: none;

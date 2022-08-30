@@ -1,0 +1,171 @@
+@import '../general/variables';
+@import '../general/mixins';
+@import '../general/common';
+
+.content-login-page {
+    height: 100vh;
+    width: 100vw;
+    @include grid-display(1fr, 64px 1fr, 0px);
+}
+
+.header-login,
+.just-login-page {
+    height: 100%;
+    width: 100%;
+    background-color: var(--card-color);
+}
+
+.header-login {
+    @include grid-display(1fr 1fr, 1fr, 0px);
+    
+    .left-icons,
+    .right-icons {
+        height: 100%;
+        width: 100%;
+    }
+
+    .left-icons {
+        padding-left: 16px;
+        @include flex-display(row, flex-start, center, 8px);
+    }
+    
+    .right-icons {
+        padding-right: 16px;
+        @include flex-display(row, flex-end, center, 8px);
+    }
+}
+
+.login-icon {
+    padding: 4px;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    filter: drop-shadow(0px 1px 2px rgba(var(--shadow-color-rgb), 0.05));
+    @include flex-center(row, 0px);
+
+    svg {
+        fill: var(--primary-color);
+        transition: fill 0.3s ease-in-out,
+                    filter 0.3s ease-in-out;
+    }
+
+    &:hover {
+        svg {
+            fill: var(--primary-color-contrast);
+            filter: drop-shadow(0px 1px 4px rgba(var(--shadow-color-rgb), 0.1));
+        }
+    }
+}
+
+.just-login-page {
+    width: 100vw;
+    overflow: hidden;
+    @include flex-center(row, 0px);
+
+    .background-login {
+        height: 100%;
+        width: 100%;
+        @include flex-display(column, flex-end, center, 0px);
+
+        .bg-svg {
+            stop:nth-child(1) {
+                stop-color: var(--primary-color);
+            }
+    
+            stop:nth-child(2) {
+                stop-color: var(--primary-color-contrast);
+            }
+
+            @include responsive(mobile) {
+                height: 80%;
+            }
+        }
+
+        .login-wave {
+            animation: wave-animation 90s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+    }
+}
+
+.aloc-card-login {
+    position: absolute;
+    aspect-ratio: 1/1.5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 560px;
+    width: 360px;
+    border-radius: 8px;
+    background-color: var(--card-color);
+    box-shadow: 0px 16px 32px rgba(var(--shadow-color-rgb), 0.1);
+    @include grid-display(1fr, auto 1fr 64px, 0px);
+
+    .header-card  {
+        padding: 16px;
+        @include flex-center(row, 8px);
+
+        .aloc-logo-login {
+            width: 160px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            background-color: rgba(var(--primary-color-rgb), 0.2);
+            @include flex-center(row, 8px);
+
+            img {
+                height: 80%;
+                width: 80%;
+            }
+        }
+    }
+
+    .content-card  {
+
+    }
+
+    .footer-card {
+        height: 100%;
+        width: 100%;
+        color: var(--text-color);
+        @include flex-center(row, 4px);
+        @include text-config(16px, bold);
+
+        a {
+            text-decoration: none;
+            font-style: italic;
+            color: var(--primary-color);
+            transition: color 0.3s ease-in-out;
+
+            &:hover {
+                color: var(--primary-color-contrast);
+            }
+        }
+    }
+
+    @include responsive(mobile) {
+        height: 70vh;
+        width: 70vw;
+    }
+}
+
+@keyframes wave-animation {
+    0% {
+        d: path("M 0,600 C 0,600 0,300 0,300 C 208.40000000000003,286.26666666666665 416.80000000000007,272.53333333333336 559,284 C 701.1999999999999,295.46666666666664 777.2,332.1333333333333 913,339 C 1048.8,345.8666666666667 1244.4,322.93333333333334 1440,300 C 1440,300 1440,600 1440,600 Z");
+    }
+
+    25% {
+        d: path("M 0,600 C 0,600 0,300 0,300 C 164.93333333333334,320.5333333333333 329.8666666666667,341.06666666666666 492,325 C 654.1333333333333,308.93333333333334 813.4666666666667,256.26666666666665 971,246 C 1128.5333333333333,235.73333333333335 1284.2666666666667,267.8666666666667 1440,300 C 1440,300 1440,600 1440,600 Z");
+    }
+
+    50% {
+        d: path("M 0,600 C 0,600 0,300 0,300 C 191.86666666666667,266.66666666666663 383.73333333333335,233.33333333333331 536,253 C 688.2666666666667,272.6666666666667 800.9333333333334,345.33333333333337 945,362 C 1089.0666666666666,378.66666666666663 1264.5333333333333,339.3333333333333 1440,300 C 1440,300 1440,600 1440,600 Z");
+    }
+
+    75% {
+        d: path("M 0,600 C 0,600 0,300 0,300 C 112,254.79999999999998 224,209.59999999999997 411,206 C 598,202.40000000000003 860,240.40000000000003 1044,263 C 1228,285.59999999999997 1334,292.79999999999995 1440,300 C 1440,300 1440,600 1440,600 Z");
+    }
+
+    100% {
+        d: path("M 0,600 C 0,600 0,300 0,300 C 208.40000000000003,286.26666666666665 416.80000000000007,272.53333333333336 559,284 C 701.1999999999999,295.46666666666664 777.2,332.1333333333333 913,339 C 1048.8,345.8666666666667 1244.4,322.93333333333334 1440,300 C 1440,300 1440,600 1440,600 Z");
+    }
+}
