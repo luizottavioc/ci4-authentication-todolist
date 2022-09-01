@@ -27,8 +27,8 @@
             left: 0;
             margin-left: 16px;
             border-radius: 8px;
-            box-shadow: 8px 8px 56px rgba(var(--shadow-color-rgb), 0.2),
-                        -8px -8px 56px rgba(var(--shadow-color-rgb), 0.2);
+            box-shadow: 8px 8px 56px rgba(var(--shadow-color-rgb), 0.05),
+                        -8px -8px 56px rgba(var(--shadow-color-rgb), 0.05);
         }
 
         & .aloc-sid-profile {
@@ -76,7 +76,7 @@
     width: 100%;
 
     background: var(--base-color);
-    box-shadow: 2px 0px 6px rgba(var(--shadow-color-rgb), 0.3);
+    box-shadow: 2px 0px 6px rgba(var(--shadow-color-rgb), 0.05);
     overflow-x: hidden;
     transition: height .3s ease-out,
                 width .3s ease-out,

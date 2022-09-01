@@ -9,16 +9,47 @@
   --secondary-color-contrast-rgb: 5, 126, 108;
   --base-color: rgb(236, 233, 242);
   --base-color-rgb: 236, 233, 242;
-  --base-color-contrast: rgb(0,0,0);
-  --base-color-contrast-rgb: 0,0,0;
-  --card-color: rgb(243, 242, 246);
-  --card-color-rgb: 243, 242, 246;
+  --base-color-contrast: rgb(216, 206, 235);
+  --base-color-contrast-rgb: 216, 206, 235;
+  --base-color-inverse: rgb(9, 7, 14);
+  --base-color-inverse-rgb: 9, 7, 14;
+  --card-color: rgb(240, 238, 245);
+  --card-color-rgb: 240, 238, 245;
   --text-color: rgb(10, 10, 11);
   --text-color-rgb: 10, 10, 11;
   --text-color-inverse: rgb(221, 221, 231);
   --text-color-inverse-rgb: 221, 221, 23;
   --shadow-color: rgb(22, 22, 22);
   --shadow-color-rgb: 22, 22, 22;
+  --shadow-neon-color: rgb(22, 22, 22);
+  --shadow-neon-color-rgb: 22, 22, 22;
+}
+
+:root.dark {
+  --primary-color: rgb(152, 104, 233);
+  --primary-color-rgb: 152, 104, 233;
+  --primary-color-contrast: rgb(130, 79, 218);
+  --primary-color-contrast-rgb: 130, 79, 218;
+  --secondary-color: rgb(32, 203, 177);
+  --secondary-color-rgb: 32, 203, 177;
+  --secondary-color-contrast: rgb(16, 98, 86);
+  --secondary-color-contrast-rgb: 16, 98, 86;
+  --base-color: rgb(42 42 42);
+  --base-color-rgb: 42 42 42;
+  --base-color-contrast: rgb(37, 31, 50);
+  --base-color-contrast-rgb: 37, 31, 50;
+  --base-color-inverse: rgb(236, 233, 242);
+  --base-color-inverse-rgb: 236, 233, 242;
+  --card-color: rgb(49 49 49);
+  --card-color-rgb: 49 49 49;
+  --text-color: rgb(221, 221, 231);
+  --text-color-rgb: 221, 221, 231;
+  --text-color-inverse: rgb(10, 10, 11);
+  --text-color-inverse-rgb: 10, 10, 11;
+  --shadow-color: rgb(0, 0, 0);
+  --shadow-color-rgb: 0,0,0;
+  --shadow-neon-color: rgb(99, 55, 175);
+  --shadow-neon-color-rgb: 99, 55, 175;
 }
 
 .aloc-header-page {
@@ -122,7 +153,7 @@
   height: max-content;
   width: 100%;
   border-radius: 16px;
-  background: var(--card-color);
+  background: var(--base-color);
   overflow: hidden;
   -webkit-box-shadow: 0px 24px 16px -10px rgba(var(--shadow-color-rgb), 0.05);
           box-shadow: 0px 24px 16px -10px rgba(var(--shadow-color-rgb), 0.05);
@@ -521,6 +552,27 @@
           filter: drop-shadow(0px 1px 4px rgba(var(--shadow-color-rgb), 0.1));
 }
 
+.aloc-switch-theme {
+  padding: 4px;
+  aspect-ratio: 1/1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0px;
+}
+
 .just-login-page {
   width: 100vw;
   overflow: hidden;
@@ -652,8 +704,48 @@
 }
 
 .aloc-card-login .header-card .aloc-logo-login img {
-  height: 80%;
-  width: 80%;
+  height: 50%;
+  aspect-ratio: 1/1;
+}
+
+.aloc-card-login .content-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0px;
+}
+
+.aloc-card-login .content-card .aloc-data-login {
+  padding: 32px 40px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 24px;
 }
 
 .aloc-card-login .footer-card {
@@ -699,6 +791,45 @@
     height: 70vh;
     width: 70vw;
   }
+}
+
+.aloc-input.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0px;
+}
+
+.submit-form.login {
+  width: 80%;
+  border: none;
+}
+
+.submit-form.login .bg-btn {
+  -webkit-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.submit-form.login .text-btn {
+  color: var(--text-color-inverse);
+}
+
+.submit-form.login:hover .bg-btn {
+  background-color: var(--primary-color-contrast);
 }
 
 @-webkit-keyframes wave-animation {

@@ -63,6 +63,11 @@ class Users extends BaseController {
     public function delete_user($id_user) {
         $this->user_model->delete($id_user);
     }
+
+    public function set_theme(){
+        $dados = $this->request->getVar();
+        is_int($dados['theme']) ? session()->set('user_theme', $dados['theme']) : null;
+    }
 }
 
 ?>

@@ -30,7 +30,12 @@
                 </a>
             </div>
             <div class="right-icons">
-
+                <div class="aloc-switch-theme">
+                    <input type="checkbox" id="switch-theme" class="check-switch-theme">
+                    <label for="switch-theme" class="switch-theme">
+                        <span class="circle-theme"></span>
+                    </label>
+                </div>
             </div>
         </div>
         <div class="just-login-page">
@@ -50,23 +55,21 @@
                     </div>
                 </div>
                 <div class="content-card">
-                    <form id="auth-user"  name="auth_user" action="/login/auth" method="POST" autocomplete="off">
-                        <div class="gd-spaces-1 gap-2 w100 pd-3">
-                            <div class="aloc-input">
-                                <input type="text" name="login" class="input" placeholder=" " value="<?=session()->get('last_login') !== null ? session()->get('last_login') : ''?>">
-                                <label class="plch">Login:</label>
-                            </div>
-                            <div class="aloc-input">
-                                <input type="password" name="password" class="input" placeholder=" ">
-                                <label class="plch">Senha:</label>
-                            </div>
-                            <div class="aloc-input">
-                                <input id="submit-login" type="submit" class="d-none">
-                                <label for="submit-login" class="submit-form">
-                                    <label>Entrar</label>
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </label>
-                            </div>
+                    <form id="auth-user" name="auth_user" action="/login/auth" method="POST" autocomplete="off" class="aloc-data-login">
+                        <div class="aloc-input login">
+                            <input type="text" name="login" class="input" placeholder=" " value="<?=session()->get('last_login') !== null ? session()->get('last_login') : ''?>">
+                            <label class="plch">Login:</label>
+                        </div>
+                        <div class="aloc-input login">
+                            <input type="password" name="password" class="input" placeholder=" ">
+                            <label class="plch">Senha:</label>
+                        </div>
+                        <div class="aloc-input login">
+                            <input id="submit-login" type="submit" class="d-none">
+                            <label for="submit-login" class="submit-form login">
+                                <label class="text-btn">Entrar</label>
+                                <span class="bg-btn"></span>
+                            </label>
                         </div>
                     </form>
                 </div>
@@ -82,6 +85,7 @@
 
 <script src="<?= base_url("sweet-alert2/dist/sweetalert2.all.js") ?>"></script>
 <script src="<?= base_url("jquery/dist/jquery.min.js") ?>"></script>
+<script src="<?= base_url("assets/js/login/login.js") ?>"></script>
 <?php
     if (session()->get('alert') !== null) {
         echo 

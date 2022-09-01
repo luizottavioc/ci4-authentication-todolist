@@ -10,10 +10,12 @@
 
     --base-color: rgb(236, 233, 242);
         --base-color-rgb: 236, 233, 242;
-    --base-color-contrast: rgb(0,0,0);
-        --base-color-contrast-rgb: 0,0,0;
-    --card-color: rgb(243, 242, 246);
-        --card-color-rgb: 243, 242, 246;
+    --base-color-contrast: rgb(216, 206, 235);
+        --base-color-contrast-rgb: 216, 206, 235;
+    --base-color-inverse: rgb(9, 7, 14);
+        --base-color-inverse-rgb: 9, 7, 14;
+    --card-color: rgb(240, 238, 245);
+        --card-color-rgb: 240, 238, 245;
 
     --text-color: rgb(10, 10, 11);
         --text-color-rgb: 10, 10, 11;
@@ -22,8 +24,37 @@
 
     --shadow-color: rgb(22, 22, 22);
         --shadow-color-rgb: 22, 22, 22;
+    --shadow-neon-color: rgb(22, 22, 22);
+        --shadow-neon-color-rgb: 22, 22, 22;
 }
 
 :root.dark {
+    --primary-color: rgb(152, 104, 233);
+        --primary-color-rgb: 152, 104, 233;
+    --primary-color-contrast: rgb(130, 79, 218);
+        --primary-color-contrast-rgb: 130, 79, 218;
+    --secondary-color: rgb(32, 203, 177);
+        --secondary-color-rgb: 32, 203, 177;
+    --secondary-color-contrast: rgb(16, 98, 86);
+        --secondary-color-contrast-rgb: 16, 98, 86;
+
+    --base-color: rgb(42 42 42);
+        --base-color-rgb: 42 42 42;
+    --base-color-contrast: rgb(37, 31, 50);
+        --base-color-contrast-rgb: 37, 31, 50;
+    --base-color-inverse: rgb(236, 233, 242);
+        --base-color-inverse-rgb: 236, 233, 242;
+    --card-color: rgb(49 49 49);
+        --card-color-rgb: 49 49 49;
+
+    --text-color: rgb(221, 221, 231);
+        --text-color-rgb: 221, 221, 231;
+    --text-color-inverse: rgb(10, 10, 11);
+        --text-color-inverse-rgb: 10, 10, 11;
+
+    --shadow-color: rgb(0, 0, 0);
+        --shadow-color-rgb: 0,0,0;
+    --shadow-neon-color: rgb(99, 55, 175);
+        --shadow-neon-color-rgb: 99, 55, 175;
     
 }

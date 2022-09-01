@@ -56,6 +56,12 @@
     }
 }
 
+.aloc-switch-theme {
+    padding: 4px;
+    aspect-ratio: 1/1;
+    @include flex-center(row, 0px);
+}
+
 .just-login-page {
     width: 100vw;
     overflow: hidden;
@@ -113,14 +119,20 @@
             @include flex-center(row, 8px);
 
             img {
-                height: 80%;
-                width: 80%;
+                height: 50%;
+                aspect-ratio: 1/1;
             }
         }
     }
 
     .content-card  {
+        @include flex-display(column, flex-end, center, 0px);
 
+        .aloc-data-login {
+            padding: 32px 40px;
+            width: 100%;
+            @include flex-display(column, center, center, 24px);
+        }
     }
 
     .footer-card {
@@ -145,6 +157,30 @@
     @include responsive(mobile) {
         height: 70vh;
         width: 70vw;
+    }
+}
+
+.aloc-input.login {
+    @include flex-center(row, 0px);
+}
+
+.submit-form.login {
+    width: 80%;
+    border: none;
+
+    .bg-btn {
+        transition: background-color 0.3s ease-in-out;
+        transform: translate(-50%, -50%);
+    }
+
+    .text-btn {
+        color: var(--text-color-inverse);
+    }
+
+    &:hover {
+        .bg-btn {
+            background-color: var(--primary-color-contrast);
+        }
     }
 }
 
