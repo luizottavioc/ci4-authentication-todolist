@@ -1,0 +1,57 @@
+.aloc-error-content {
+    height: 100%;
+    width: 100%;
+    @include flex-center(row, 0px);
+
+    .error-card {
+        position: relative;
+        padding: 16px 32px;
+        width: 550px;
+        border-radius: 8px;
+        border-top: 2px solid var(--error-color);
+        background: var(--base-color);
+        box-shadow: 0 8px 32px rgba(var(--shadow-color-rgb), 0.15);
+        overflow: hidden;
+        @include grid-display(1fr, 0.2fr 0.8fr, 8px);
+
+        .title-error, 
+        .content-error {
+            height: 100%;
+            width: 100%;
+        }
+
+        .title-error {
+            color: var(--error-color);
+            @include text-config(21px, bold, $style: italic);
+            @include flex-center(row, 0px);
+        }
+
+        .content-error {
+            padding: 16px 0;
+            color: var(--text-color);
+            @include text-config(14px, bold, $style: unset, $align: center);
+            @include flex-display(row, center, flex-start, 0px);
+        }
+
+        .bg-hand {
+            position: absolute;
+            height: calc(100% - 32px);
+            width: calc(100% - 64px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(var(--error-color-rgb), 0.2);
+            pointer-events: none;
+            @include text-config(56px, unset);
+            @include flex-display(row, flex-end, flex-end, 0px);
+        }
+
+        @include responsive(tablet) {
+            width: 450px;
+        }
+
+        @include responsive(mobile) {
+            width: 300px;
+        }
+    }
+}

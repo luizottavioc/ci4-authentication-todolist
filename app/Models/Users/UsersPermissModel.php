@@ -40,6 +40,29 @@ class UsersPermissModel extends Model
         $query = $this->where('fk_user', $id)->findAll();
         return $query;
     }
+
+    public function get_by_user($id_user) {
+        $this->select($this->select_columns);
+        $query = $this->where('fk_user', $id_user)->findAll();
+        return $query;
+    }
+
+    public function get_permiss_by_user($id_user) {
+        $this->select(['fk_permiss']);
+        $query = $this->where('fk_user', $id_user)->findAll();
+        if(count($query) > 0) {
+            $query = array_map(function($item) {
+                return $item['fk_permiss'];
+            }, $query);
+        }
+
+        return $query;
+    }
+
+    public function insert_batch($data) {
+        $query = $this->insertBatch($data);
+        return $query;
+    }
 }
 
 

@@ -68,6 +68,34 @@
     @include flex-center(row, 0px);
 }
 
+// Scroll
+
+*::-webkit-scrollbar {
+    background-color: transparent;
+    width: 10px;
+}
+
+*::-webkit-scrollbar-button {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+*::-webkit-scrollbar-thumb {
+    border-radius: 16px;
+    background-color: rgba(var(--color-scroll-rgb), 0.4);
+    transition: background-color ease-out .3s;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(var(--color-scroll-rgb), 0.6);
+    }
+
+    &:active {
+        background-color: rgba(var(--primary-color-rgb), 0.9);
+    }
+}
+
 // common classes
 
 .d-none {
@@ -85,6 +113,10 @@
 .dsb {
     opacity: 0.5;
     pointer-events: none;
+}
+
+.h100 {
+    height: 100%;
 }
 
 .w100 {

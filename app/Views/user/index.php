@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+<div id="user-content" class="content-wrapper">
     <div class="aloc-header-page">
         <div class="aloc-title">
             <?= $titulo?>
@@ -12,8 +12,7 @@
     <div class="aloc-content-page">
         <div class="card-content-page">
             <div class="aloc-top-buttons">
-                <!-- <button class="ajax-redirect btn-default" data-url="/user/page_create">Criar usuário</button> -->
-                <button class="btn-default td-modal" data-modal-url="/user/create" data-modal-id="modal-user" data-modal-title="Criar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">Criar usuário</button>
+                <button class="btn-default td-modal" data-modal-url="/users/create" data-modal-id="modal-user" data-modal-title="Criar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">Criar usuário</button>
             </div>
             <table class="default-table">
                 <thead>
@@ -31,7 +30,7 @@
                     <?php foreach ($users as $key => $user): ?>
                         <tr>
                             <td><?=$user['id_user']?></td>
-                            <td><?=$user['fk_nivel']?></td>
+                            <td><?=ucfirst($user['tipo_nivel'])?></td>
                             <td>@<?=$user['login']?></td>
                             <td><?=$user['name']?></td>
                             <td><?=$user['lastname']?></td>
@@ -43,7 +42,7 @@
                                 <button class="btn-action td-modal" data-modal-url="/users/edit/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Editar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">
                                     <i class="fa-regular fa-pen-to-square"></i>
                                 </button>
-                                <button class="btn-action td-ajax-confirm" data-confirm-url="/users/delete_user/<?=$user['id_user']?>" data-confirm-title="Excluir Usuário" data-confirm-text="Você realmente deseja excluir este usuário?" data-confirm-success-text="Usuário excluído com sucesso" data-url-refresh="/user">
+                                <button class="btn-action td-ajax-confirm" data-confirm-url="/users/delete_user/<?=$user['id_user']?>" data-confirm-title="Excluir Usuário" data-confirm-text="Você realmente deseja excluir este usuário?" data-confirm-success-text="Usuário excluído com sucesso" data-url-refresh="/users">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>
                             </td>
@@ -65,7 +64,7 @@
         </div>
     </div>
     
-    <input type="hidden" class="src-script" value="<?= base_url('assets/js/user/user.js') ?>">
+    <input type="hidden" class="src-script" value="<?= base_url('assets/js/user/user.js'.version_js()) ?>">
 </div>
 
 

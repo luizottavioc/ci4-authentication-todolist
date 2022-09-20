@@ -8,7 +8,7 @@
 
         <div class="items-right">
             <div class="aloc-theme-navbar">
-                <input type="checkbox" id="switch-theme" class="check-switch-theme">
+                <input type="checkbox" id="switch-theme" class="check-switch-theme" <?=session()->get('user_theme') == 1 ? 'checked' : '' ?>>
                 <label for="switch-theme" class="switch-theme">
                     <span class="circle-theme"></span>
                 </label>

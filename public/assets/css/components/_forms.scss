@@ -13,13 +13,12 @@
         border-bottom: 2px solid rgba(var(--primary-color-rgb), 0.7);
         overflow: hidden;
         transition: border .3s,
-            background-color ease-out .3s;
+                    background-color ease-out .3s;
 
         &:focus {
             background-color: rgba(var(--primary-color-rgb), 0.05);
         }
 
-        // alterando a posição do "placeholder" no caso de estar em foco ou de haver algo escrito dentro do input
         &:focus,
         &:not([placeholder=" "]),
         &:not(:placeholder-shown) {
@@ -66,7 +65,7 @@
             outline: none;
             border-bottom: 2px solid rgba(var(--primary-color-rgb), 1);
 
-            ~.tp-plch {
+            ~.plch {
                 color: rgba(var(--primary-color-rgb), 1);
                 transform: translate(0, calc(-100% - 8px));
                 @include text-config(12px, bold, $style: italic);
@@ -79,6 +78,73 @@
 
             &:checked {
                 color: var(--primary-color);
+            }
+        }
+    }
+
+    .input, 
+    .select {
+        &.valid {
+            border-bottom: 2px solid rgba(var(--success-color-rgb), 0.7);
+
+            +.plch {
+                color: rgba(var(--success-color-rgb), 0.7);
+            }
+        }
+
+        &.invalid {
+            border-bottom: 2px solid rgba(var(--error-color-rgb), 0.7);
+
+            +.plch {
+                color: rgba(var(--error-color-rgb), 0.7);
+            }
+        }
+    }
+
+    .input {
+        &.valid {
+            &:focus,
+            &:not([placeholder=" "]),
+            &:not(:placeholder-shown) {
+                border-bottom: 2px solid rgba(var(--success-color-rgb), 1);
+        
+                ~.plch {
+                    color: rgba(var(--success-color-rgb), 1);
+                }
+            }
+        }
+
+        &.invalid {    
+            &:focus,
+            &:not([placeholder=" "]),
+            &:not(:placeholder-shown) {
+                border-bottom: 2px solid rgba(var(--error-color-rgb), 1);
+        
+                ~.plch {
+                    color: rgba(var(--error-color-rgb), 1);
+                }
+            }
+        }
+    }
+
+    .select {
+        &.valid {
+            &:valid {
+                border-bottom: 2px solid rgba(var(--success-color-rgb), 1);
+        
+                ~.plch {
+                    color: rgba(var(--success-color-rgb), 1);
+                }
+            }
+        }
+        
+        &.invalid {
+            &:valid {
+                border-bottom: 2px solid rgba(var(--error-color-rgb), 1);
+        
+                ~.plch {
+                    color: rgba(var(--error-color-rgb), 1);
+                }
             }
         }
     }
@@ -103,10 +169,10 @@
         top: 4px;
         color: rgba(var(--primary-color-rgb), 0.7);
         transition: transform .1s ease-out, color .1s ease-out,
-            font-size .1s ease-out,
-            font-weight .1s ease-out,
-            font-style .1s ease-out,
-            color .1s ease-out;
+                    font-size .1s ease-out,
+                    font-weight .1s ease-out,
+                    font-style .1s ease-out,
+                    color .1s ease-out;
         pointer-events: none;
         cursor: text;
         @include text-config(unset, unset, $style: normal);

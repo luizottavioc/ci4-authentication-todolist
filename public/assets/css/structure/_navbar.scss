@@ -9,7 +9,7 @@
     background: var(--base-color);
     border-bottom: 1px solid rgba(var(--primary-color-rgb), 0.1);
     box-shadow: 0px 2px 4px rgba(var(--shadow-color-rgb), 0.05);
-
+    transition: background-color 0.1s ease-in-out;
     z-index: 70;
 
     @include responsive(mobile) {

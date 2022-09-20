@@ -26,6 +26,16 @@
         --shadow-color-rgb: 22, 22, 22;
     --shadow-neon-color: rgb(22, 22, 22);
         --shadow-neon-color-rgb: 22, 22, 22;
+
+    --color-scroll: rgb(77, 77, 77);
+        --color-scroll-rgb: 77, 77, 77;
+
+    --success-color: rgb(22, 124, 9);
+        --success-color-rgb: 22, 124, 9;
+    --error-color: rgb(136, 14, 14);
+        --error-color-rgb: 136, 14, 14;
+    --alert-color: rgb(200, 209, 20);
+        --alert-color-rgb: 200, 209, 20;
 }
 
 :root.dark {
@@ -56,5 +66,15 @@
         --shadow-color-rgb: 0,0,0;
     --shadow-neon-color: rgb(99, 55, 175);
         --shadow-neon-color-rgb: 99, 55, 175;
+
+    --color-scroll: rgb(149, 149, 149);
+        --color-scroll-rgb: 149, 149, 149;
+
+    --success-color: rgb(45, 160, 29);
+        --success-color-rgb: 45, 160, 29;
+    --error-color: rgb(187, 23, 23);
+        --error-color-rgb: 187, 23, 23;
+    --alert-color: rgb(226, 235, 55);
+        --alert-color-rgb: 226, 235, 55;
     
 }

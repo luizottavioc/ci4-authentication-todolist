@@ -20,25 +20,28 @@ class AuthVerify extends UsersModel {
     } 
 
     public function permissoes($chamada) {
-        $user_session = $this->session->get('user_active');
-
+        $user_session = $this->session->get('active_user');
+        
         if (!empty($user_session)) {
             if ($user_session['fk_nivel'] == 1) {
                 return true;
-                exit;
             }
-            $permissoes = $this->permissoes->select('permissoes_lista.chamada')->join('permissoes_lista', 'permissoes_lista.id_lista = permissoes_users.fk_lista ')->where('fk_users', $user_session['id_user'])->find();
+
+            $permissoes = $this->permissoes->select('permiss.code_permiss')
+                            ->join('permiss', 'users_permiss.fk_permiss = permiss.id_permiss')
+                            ->where('fk_user', $user_session['id_user'])->findAll();
+
             if (!empty($permissoes)) {
                 foreach ($permissoes as $permissao) {
-                    if ($permissao['chamada'] == $chamada) {
+                    if($permissao['code_permiss'] == $chamada){
                         return true;
-                        exit;
                     }
                 }
-            } else {
-                return false;
             }
+            
+            return false;
         }
+        return false;
     }
 
     public function deslogar() {

@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="content-card">
-                    <form id="auth-user" name="auth_user" action="/login/auth" method="POST" autocomplete="off" class="aloc-data-login">
+                    <form id="auth-user" name="auth_user" action="/login/auth" method="POST" class="aloc-data-login">
                         <div class="aloc-input login">
                             <input type="text" name="login" class="input" placeholder=" " value="<?=session()->get('last_login') !== null ? session()->get('last_login') : ''?>">
                             <label class="plch">Login:</label>

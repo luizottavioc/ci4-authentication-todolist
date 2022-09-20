@@ -83,7 +83,9 @@
                 top .3s ease-out,
                 left .3s ease-out,
                 border-radius .3s ease-out,
-                box-shadow .3s ease-out;
+                box-shadow .3s ease-out,
+                background-color 0.1s ease-in-out,
+                color 0.1s ease-in-out;
     @include flex-display(column, flex-start, flex-start, 0px);
     
     

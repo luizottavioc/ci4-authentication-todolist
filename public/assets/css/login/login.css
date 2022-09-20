@@ -23,6 +23,14 @@
   --shadow-color-rgb: 22, 22, 22;
   --shadow-neon-color: rgb(22, 22, 22);
   --shadow-neon-color-rgb: 22, 22, 22;
+  --color-scroll: rgb(77, 77, 77);
+  --color-scroll-rgb: 77, 77, 77;
+  --success-color: rgb(22, 124, 9);
+  --success-color-rgb: 22, 124, 9;
+  --error-color: rgb(136, 14, 14);
+  --error-color-rgb: 136, 14, 14;
+  --alert-color: rgb(200, 209, 20);
+  --alert-color-rgb: 200, 209, 20;
 }
 
 :root.dark {
@@ -50,6 +58,14 @@
   --shadow-color-rgb: 0,0,0;
   --shadow-neon-color: rgb(99, 55, 175);
   --shadow-neon-color-rgb: 99, 55, 175;
+  --color-scroll: rgb(149, 149, 149);
+  --color-scroll-rgb: 149, 149, 149;
+  --success-color: rgb(45, 160, 29);
+  --success-color-rgb: 45, 160, 29;
+  --error-color: rgb(187, 23, 23);
+  --error-color-rgb: 187, 23, 23;
+  --alert-color: rgb(226, 235, 55);
+  --alert-color-rgb: 226, 235, 55;
 }
 
 .aloc-header-page {
@@ -198,6 +214,33 @@
   gap: 0px;
 }
 
+*::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+
+*::-webkit-scrollbar-button {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 16px;
+  background-color: rgba(var(--color-scroll-rgb), 0.4);
+  -webkit-transition: background-color ease-out .3s;
+  transition: background-color ease-out .3s;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  background-color: rgba(var(--color-scroll-rgb), 0.6);
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: rgba(var(--primary-color-rgb), 0.9);
+}
+
 .d-none {
   display: none !important;
 }
@@ -213,6 +256,10 @@
 .dsb {
   opacity: 0.5;
   pointer-events: none;
+}
+
+.h100 {
+  height: 100%;
 }
 
 .w100 {
@@ -456,6 +503,8 @@
   height: 100%;
   width: 100%;
   background-color: var(--card-color);
+  -webkit-transition: background-color 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out;
 }
 
 .header-login {
@@ -651,6 +700,8 @@
   background-color: var(--card-color);
   -webkit-box-shadow: 0px 16px 32px rgba(var(--shadow-color-rgb), 0.1);
           box-shadow: 0px 16px 32px rgba(var(--shadow-color-rgb), 0.1);
+  -webkit-transition: background-color 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr;

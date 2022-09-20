@@ -6,4 +6,5 @@
     border-top: 1px solid rgba(var(--primary-color-rgb), 0.1);
     border-bottom: 1px solid rgba(var(--primary-color-rgb), 0.1);
     @include flex-display(row, flex-start, center, 0px);
+    transition: background-color 0.1s ease-in-out;
 }

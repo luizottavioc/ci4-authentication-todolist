@@ -173,7 +173,7 @@ $(document).on('submit', '.td-default-form', function (e) {
     let urlRefresh = $(this).data('url-refresh');
     let closeModal = $(this).data('close-modal');
 
-    confirmAjax(this, ()=>{
+    confirmAjax(this, () => {
         if(typeof closeModal !== 'undefined' && closeModal){
             $(`.close-modal`).click();
         }

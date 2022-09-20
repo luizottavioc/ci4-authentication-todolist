@@ -23,7 +23,11 @@ class Permiss extends Seeder
     {
         return [ 
             ['Acessar Usuários', 'acessar_usuarios'],
-            ['Gerenciar Usuários', 'gerenciar_usuarios'],
+            ['Criar Usuários', 'create_usuario'],
+            ['Editar Usuários', 'edit_usuario'],
+            ['Excluir Usuários', 'delete_usuario'],
+            ['Visualizar Permissões', 'view_permiss'],
+            ['Alterar Permissões', 'edit_permiss'],
             ['Afazeres', 'afazeres'],
             ['Anotações', 'anotacoes'],
         ];

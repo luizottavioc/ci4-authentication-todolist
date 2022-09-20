@@ -28,6 +28,18 @@ class UsersModel extends Model
         'updated_at',
         'deleted_at',
     ];
+    protected $select_join_columns = [
+        'id_user',
+        'users_niveis.tipo_nivel',
+        'name',
+        'lastname',
+        'login',
+        'email',
+        'password_hash',
+        'users.created_at as created_at',
+        'users.updated_at as updated_at',
+        'users.deleted_at as deleted_at',
+    ];
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
     protected $createdField = 'created_at';
@@ -61,9 +73,24 @@ class UsersModel extends Model
         return $query;
     }
 
+    public function get_all_join() {
+        $this->select($this->select_join_columns);
+        $this->join('users_niveis', 'users_niveis.id_nivel = users.fk_nivel');
+        $query = $this->orderBy('name', 'asc')->findAll();
+        return $query;
+    }
+
     public function get_by_id($id) {
         $this->select($this->select_columns);
         $query = $this->where($this->primaryKey, $id)->first();
+        return $query;
+    }
+
+    public function get_join_by_id($id_user)
+    {
+        $this->select($this->select_join_columns);
+        $this->join('users_niveis', 'users_niveis.id_nivel = users.fk_nivel');
+        $query = $this->where($this->primaryKey, $id_user)->first();
         return $query;
     }
 
@@ -79,17 +106,17 @@ class UsersModel extends Model
         return $user;
     }
 
-    // public function set_user($data) {
-    //     $this->set($data)->where('id_user', $data['id_user'])->insert();
-    // }
+    public function set_user($data) {
+        $data['password_hash'] = password_hash($data['password_hash'], PASSWORD_DEFAULT);
+        $this->insert($data);
+        return $this->insertID();
+    }
 
-    // public function update_user($data) {
-    //     $this->insert($data);
-    // }
-
-    // public function delete_user($id) {
-    //     $this->where($this->primaryKey, $id)->delete();
-    // }
+    public function update_user($data) {
+        print_r($data);
+        isset($data['password_hash']) ? $data['password_hash'] = password_hash($data['password_hash'], PASSWORD_DEFAULT) : null;
+        $this->update($data['id_user'], $data);
+    }
 }
 
 

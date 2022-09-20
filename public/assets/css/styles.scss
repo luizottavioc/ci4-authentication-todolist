@@ -2,14 +2,17 @@
 @import './general/mixins';
 @import './general/common';
 
-@import './components/keyframes';
+@import './error/error';
+
 @import './components/switch_theme';
-@import './components/buttons';
+@import './components/keyframes';
 @import './components/loading';
+@import './components/buttons';
+@import './components/toggle';
 @import './components/accordion';
 @import './components/tables';
-@import './components/forms';
 @import './components/modal';
+@import './components/forms';
 
 @import './structure/skeleton';
 @import './structure/sidebar';

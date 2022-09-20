@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="pt-br" id="html-id" class="light">
+<html lang="pt-br" id="html-id" class="<?=session()->get('user_theme') == 1 ? 'dark' : 'light' ?>">
 
 <head>
   <meta charset="utf-8">

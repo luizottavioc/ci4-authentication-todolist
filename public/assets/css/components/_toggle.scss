@@ -1,0 +1,136 @@
+// Toogle
+
+.toggle-input {
+    display: none;
+
+    &:checked {
+        +.toggle .toggle-checked {
+            display: block;
+        }
+
+        +.toggle .toggle-unchecked {
+            display: none;
+        }
+
+        +.toggle {
+            box-shadow: inset 0px 0px 18px 2px rgba(var(--primary-color-rgb), 0.5);
+
+            .toggle-circle {
+                opacity: 1;
+                background: linear-gradient(35deg, var(--primary-color), var(--primary-color-contrast));
+            }
+        }
+
+        +.toggle.large {
+            .toggle-circle {
+                transform: translate(178px, -50%);
+            }
+        }
+
+        +.toggle.medium {
+            .toggle-circle {
+                transform: translate(98px, -50%);
+            }
+        }
+
+        +.toggle.small {
+            .toggle-circle {
+                transform: translate(28px, -50%);
+            }
+        }
+    }
+}
+
+.toggle,
+.fake-toggle {
+    position: relative;
+    margin: 0;
+    padding: 2px;
+    height: 22px;
+    border-radius: 11px;
+    border: none;
+    background-color: transparent;
+    box-shadow: inset 0px 0px 8px 0px rgba(var(--shadow-color-rgb), 0.2);
+    overflow: hidden;
+    cursor: pointer;
+
+    transition: box-shadow .2s ease-out;
+
+    @include flex-center(row, 0px);
+
+    .toggle-checked,
+    .toggle-unchecked {
+        margin: 0;
+        font-size: 10px;
+        color: var(--text-color);
+        pointer-events: none;
+    }
+
+    .toggle-checked {
+        display: none;
+    }
+
+    .toggle-unchecked {
+        display: block;
+    }
+
+    .toggle-circle {
+        margin: 0;
+        position: absolute;
+        height: 18px;
+        width: 18px;
+        top: 50%;
+        left: 2px;
+        right: unset;
+        transform: translate(0, -50%);
+        border-radius: 50%;
+        background: linear-gradient(35deg, #6e6c6c, #2e2d2d);
+        pointer-events: none;
+        opacity: 0.6;
+        transition: transform .2s ease-out;
+    }
+
+    &.large {
+        width: 200px;
+    }
+
+    &.medium {
+        width: 120px;
+    }
+
+    &.small {
+        width: 50px;
+    }
+}
+
+.fake-toggle {
+    pointer-events: none;
+    opacity: 0.5;
+
+    &.checked {
+        box-shadow: inset 0px 0px 18px 2px rgba(var(--primary-color-rgb), 0.5);
+
+        .toggle-circle {
+            opacity: 1;
+            background: linear-gradient(35deg, var(--primary-color), var(--primary-color-contrast));
+        }
+
+        &.large {
+            .toggle-circle {
+                transform: translate(178px, -50%);
+            }
+        }
+
+        &.medium {
+            .toggle-circle {
+                transform: translate(98px, -50%);
+            }
+        }
+
+        &.small {
+            .toggle-circle {
+                transform: translate(28px, -50%);
+            }
+        }
+    }
+}
