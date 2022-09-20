@@ -63,6 +63,11 @@ class UsersPermissModel extends Model
         $query = $this->insertBatch($data);
         return $query;
     }
+
+    public function delete_by_user($id_user) {
+        $query = $this->where('fk_user', $id_user)->delete();
+        return $query;
+    }
 }
 
 

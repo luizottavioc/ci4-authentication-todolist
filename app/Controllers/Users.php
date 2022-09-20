@@ -63,6 +63,8 @@ class Users extends BaseController {
             $data['user'] = $this->user_model->get_by_id($id_user);
             $data['user']['password_hash'] = null;
             $data['niveis'] = $this->user_niveis_model->get_all();
+            $data['permissoes'] = $this->permiss_model->get_all();
+            $data['permissoes_user'] = $this->users_permiss_model->get_permiss_by_user($id_user);
             
             echo View('user/edit', $data);
 
@@ -84,7 +86,6 @@ class Users extends BaseController {
         }else{
             $this->not_permisson();
         }
-
     }
 
     public function insert_user(){
@@ -107,7 +108,22 @@ class Users extends BaseController {
             }
           
             $this->user_model->update_user($dados);
-            
+
+            if(isset($dados['permiss_user'])){
+                $permissoes = array_map(function($permiss) use ($dados){
+                    return [
+                        'fk_user' => $dados['id_user'],
+                        'fk_permiss' => $permiss,
+                    ];
+                }, $dados['permiss_user']);
+    
+                $this->users_permiss_model->delete_by_user($dados['id_user']);
+                $this->users_permiss_model->insert_batch($permissoes);
+
+                exit;
+            }
+
+            $this->users_permiss_model->delete_by_user($dados['id_user']);
         }else{
             $this->not_permisson();
         }
