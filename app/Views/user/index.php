@@ -12,7 +12,9 @@
     <div class="aloc-content-page">
         <div class="card-content-page">
             <div class="aloc-top-buttons">
-                <button class="btn-default td-modal" data-modal-url="/users/create" data-modal-id="modal-user" data-modal-title="Criar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">Criar usuário</button>
+                <?php if(permissoes_helper('create_usuario')): ?>
+                    <button class="btn-default td-modal" data-modal-url="/users/create" data-modal-id="modal-user" data-modal-title="Criar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">Criar usuário</button>
+                <?php endif; ?>
             </div>
             <table class="default-table">
                 <thead>
@@ -23,6 +25,7 @@
                         <th>Nome</th>
                         <th>Sobrenome</th>
                         <th>E-mail</th>
+                        <th>Situação</th>
                         <th class="th-action">Ações</th>
                     </tr>
                 </thead>
@@ -35,16 +38,29 @@
                             <td><?=$user['name']?></td>
                             <td><?=$user['lastname']?></td>
                             <td><?=$user['email']?></td>
+                            <td><?=isset($user['deleted_at']) ? 'Desligado' : 'Ativo' ?></td>
                             <td class="td-action">
-                                <button class="btn-action td-modal" data-modal-url="/users/view/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Visualizar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">
-                                    <i class="fa-regular fa-eye"></i>
-                                </button>
-                                <button class="btn-action td-modal" data-modal-url="/users/edit/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Editar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">
-                                    <i class="fa-regular fa-pen-to-square"></i>
-                                </button>
-                                <button class="btn-action td-ajax-confirm" data-confirm-url="/users/delete_user/<?=$user['id_user']?>" data-confirm-title="Excluir Usuário" data-confirm-text="Você realmente deseja excluir este usuário?" data-confirm-success-text="Usuário excluído com sucesso" data-url-refresh="/users">
-                                    <i class="fa-regular fa-trash-can"></i>
-                                </button>
+                                <?php if(empty($user['deleted_at'])): ?>
+                                    <?php if(permissoes_helper('acessar_usuario')): ?>
+                                        <button class="btn-action td-modal" data-modal-url="/users/view/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Visualizar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">
+                                            <i class="fa-regular fa-eye"></i>
+                                        </button>
+                                    <?php endif; ?>
+                                    <?php if(permissoes_helper('edit_usuario')): ?>
+                                        <button class="btn-action td-modal" data-modal-url="/users/edit/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Editar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">
+                                            <i class="fa-regular fa-pen-to-square"></i>
+                                        </button>
+                                    <?php endif; ?>
+                                    <?php if(permissoes_helper('delete_usuario')): ?>
+                                        <button class="btn-action td-ajax-confirm" data-confirm-url="/users/delete_user/<?=$user['id_user']?>" data-confirm-title="Excluir Usuário" data-confirm-text="Você realmente deseja excluir este usuário?" data-confirm-success-text="Usuário excluído com sucesso" data-url-refresh="/users">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </button>
+                                    <?php endif; ?>
+                                <?php elseif(permissoes_helper('delete_usuario')): ?>
+                                    <button class="btn-action td-ajax-confirm" data-confirm-url="/users/roolback_user/<?=$user['id_user']?>" data-confirm-title="Reativar Usuário" data-confirm-text="Você realmente deseja reativar este usuário?" data-confirm-success-text="Usuário reativado com sucesso" data-url-refresh="/users">
+                                        <i class="fa-solid fa-rotate-left"></i>
+                                    </button>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

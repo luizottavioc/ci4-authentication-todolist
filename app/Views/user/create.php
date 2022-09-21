@@ -33,17 +33,20 @@
             <input class="input password-confirm-check" type="password" placeholder=" " required>
             <label class="plch">Confirmar senha:</label>
         </div>
-        <?php foreach($permissoes as $permissao): ?>
-            <div class="column-toggle-user">
-                <label for="toggle-permiss-<?=$permissao['id_permiss']?>"><?=$permissao['name_permiss']?></label>
-                <div class="aloc-user-toggle">
-                    <input id="toggle-permiss-<?=$permissao['id_permiss']?>" type="checkbox" class="toggle-input" name="permiss_user[]" value="<?=$permissao['id_permiss']?>">
-                    <label for="toggle-permiss-<?=$permissao['id_permiss']?>" class="toggle small">
-                        <span class="toggle-circle"></span>
-                    </label>
+        <?php if(permissoes_helper('edit_permiss')): ?>
+            <input type="hidden" name="change_permiss" value="1">
+            <?php foreach($permissoes as $permissao): ?>
+                <div class="column-toggle-user">
+                    <label for="toggle-permiss-<?=$permissao['id_permiss']?>"><?=$permissao['name_permiss']?></label>
+                    <div class="aloc-user-toggle">
+                        <input id="toggle-permiss-<?=$permissao['id_permiss']?>" type="checkbox" class="toggle-input" name="permiss_user[]" value="<?=$permissao['id_permiss']?>">
+                        <label for="toggle-permiss-<?=$permissao['id_permiss']?>" class="toggle small">
+                            <span class="toggle-circle"></span>
+                        </label>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
         <button id="sbm-edit-user" type="submit" class="d-none"></button>
     </form>
   

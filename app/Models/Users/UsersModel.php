@@ -76,7 +76,7 @@ class UsersModel extends Model
     public function get_all_join() {
         $this->select($this->select_join_columns);
         $this->join('users_niveis', 'users_niveis.id_nivel = users.fk_nivel');
-        $query = $this->orderBy('name', 'asc')->findAll();
+        $query = $this->orderBy('name', 'asc')->withDeleted()->findAll();
         return $query;
     }
 
@@ -113,9 +113,18 @@ class UsersModel extends Model
     }
 
     public function update_user($data) {
-        print_r($data);
         isset($data['password_hash']) ? $data['password_hash'] = password_hash($data['password_hash'], PASSWORD_DEFAULT) : null;
         $this->update($data['id_user'], $data);
+    }
+
+    public function roolback($id_user) {
+        // print_r($this->where($this->primaryKey, $id_user)->withDeleted()->first());
+        // exit;
+        $this->where('id_user', $id_user)->set('deleted_at', null)->withDeleted()->update();
+    }
+
+    public function delete_user($id_user) {
+        $this->where($this->primaryKey, $id_user)->delete();
     }
 }
 

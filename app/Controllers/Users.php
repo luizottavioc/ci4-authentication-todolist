@@ -10,12 +10,16 @@ use App\Models\Users\UsersPermissModel;
 class Users extends BaseController {
     private $user_model;
     private $user_niveis_model;
+    private $permiss_model;
+    private $users_permiss_model;
+    private $fk_default_permiss;
 
     function __construct(){
         $this->user_model = new UsersModel();
         $this->user_niveis_model = new UsersNiveisModel();
         $this->permiss_model = new PermissModel();
         $this->users_permiss_model = new UsersPermissModel();
+        $this->fk_default_permiss = [7, 8];
     }
 
     function not_permisson() {
@@ -55,7 +59,6 @@ class Users extends BaseController {
         }else{
             $this->not_permisson();
         }
-       
     }
 
     public function edit($id_user) {
@@ -71,7 +74,6 @@ class Users extends BaseController {
         }else{
             $this->not_permisson();
         }
-
     }
 
     public function view($id_user) {
@@ -88,26 +90,37 @@ class Users extends BaseController {
         }
     }
 
-    public function insert_user(){
+    public function insert_new_user(){
         if(permissoes_helper('create_usuario')){
             $dados = $this->request->getVar();
 
-            if(empty($dados['id_user'])){
-                $id_user = $this->user_model->set_user($dados);
-                if(isset($dados['permiss_user'])){
-                    $permissoes = array_map(function($permiss) use ($id_user){
-                        return [
-                            'fk_user' => $id_user,
-                            'fk_permiss' => $permiss,
-                        ];
-                    }, $dados['permiss_user']);
+            $id_user = $this->user_model->set_user($dados);
+            if(isset($dados['permiss_user'])){
+                $permissoes = array_map(function($permiss) use ($id_user){
+                    return [
+                        'fk_user' => $id_user,
+                        'fk_permiss' => $permiss,
+                    ];
+                }, $dados['permiss_user']);
 
-                    $this->users_permiss_model->insert_batch($permissoes);
-                }
+                $this->users_permiss_model->insert_batch($permissoes);
+            }
+            exit;
+
+        }else{
+            $this->not_permisson();
+        }
+    }
+
+    public function update_data_user(){
+        if(permissoes_helper('edit_usuario')){
+            $dados = $this->request->getVar();
+
+            $this->user_model->update_user($dados);
+
+            if(empty($dados['change_permiss']) || !permissoes_helper('edit_permiss')){
                 exit;
             }
-          
-            $this->user_model->update_user($dados);
 
             if(isset($dados['permiss_user'])){
                 $permissoes = array_map(function($permiss) use ($dados){
@@ -143,12 +156,19 @@ class Users extends BaseController {
 
     public function delete_user($id_user) {
         if(permissoes_helper('delete_usuario')){
-            $this->user_model->delete($id_user);
+            $this->user_model->delete_user($id_user);
             
         }else{
             $this->not_permisson();
         }
+    }
 
+    public function roolback_user($id_user) {
+        if(permissoes_helper('delete_usuario')){
+            $this->user_model->roolback($id_user);
+        }else{
+            $this->not_permisson();
+        }
     }
 
     public function set_theme(){

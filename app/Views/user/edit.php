@@ -1,5 +1,5 @@
 <div class="content-modal">
-    <form action="/users/insert_user" method="post" class="td-default-form h100" data-confirm-title="Atualizar Usuário" data-confirm-text="Você realmente deseja atualizar os dados deste usuário?" data-confirm-success-text="Usuário atualizado com sucesso!" data-url-refresh="/users" data-close-modal="true">
+    <form action="/users/update_data_user" method="post" class="td-default-form h100" data-confirm-title="Atualizar Usuário" data-confirm-text="Você realmente deseja atualizar os dados deste usuário?" data-confirm-success-text="Usuário atualizado com sucesso!" data-url-refresh="/users" data-close-modal="true">
         <input type="hidden" name="id_user" value="<?=$user['id_user']?>">
         <div class="aloc-input">
             <input class="input" name="name" type="text" placeholder=" " value="<?=$user['name']?>" required>
@@ -26,17 +26,20 @@
             <input class="input" name="email" type="email" placeholder=" " value="<?=$user['email']?>" required>
             <label class="plch">E-mail:</label>
         </div>
-        <?php foreach($permissoes as $permissao): ?>
-            <div class="column-toggle-user">
-                <label for="toggle-permiss-<?=$permissao['id_permiss']?>"><?=$permissao['name_permiss']?></label>
-                <div class="aloc-user-toggle">
-                    <input id="toggle-permiss-<?=$permissao['id_permiss']?>" type="checkbox" class="toggle-input" name="permiss_user[]" value="<?=$permissao['id_permiss']?>" <?= in_array($permissao['id_permiss'], $permissoes_user) ? 'checked' : ''?>>
-                    <label for="toggle-permiss-<?=$permissao['id_permiss']?>" class="toggle small">
-                        <span class="toggle-circle"></span>
-                    </label>
+        <?php if(permissoes_helper('edit_permiss')): ?>
+            <input type="hidden" name="change_permiss" value="1">
+            <?php foreach($permissoes as $permissao): ?>
+                <div class="column-toggle-user">
+                    <label for="toggle-permiss-<?=$permissao['id_permiss']?>"><?=$permissao['name_permiss']?></label>
+                    <div class="aloc-user-toggle">
+                        <input id="toggle-permiss-<?=$permissao['id_permiss']?>" type="checkbox" class="toggle-input" name="permiss_user[]" value="<?=$permissao['id_permiss']?>" <?= in_array($permissao['id_permiss'], $permissoes_user) ? 'checked' : ''?>>
+                        <label for="toggle-permiss-<?=$permissao['id_permiss']?>" class="toggle small">
+                            <span class="toggle-circle"></span>
+                        </label>
+                    </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        <?php endif; ?>
         <button id="sbm-edit-user" type="submit" class="d-none"></button>
     </form>
     
