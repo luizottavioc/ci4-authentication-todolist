@@ -53,6 +53,11 @@ class Users extends BaseController {
     public function create() {
         if(permissoes_helper('create_usuario')){
             $data['niveis'] = $this->user_niveis_model->get_all();
+            if(!permissoes_helper('edit_permiss')) {
+                $data['niveis'] = array_filter($data['niveis'], function($nivel) {
+                    return $nivel['id_nivel'] != 1;
+                });
+            }
             $data['permissoes'] = $this->permiss_model->get_all();
  
             echo View('user/create', $data);
@@ -66,6 +71,11 @@ class Users extends BaseController {
             $data['user'] = $this->user_model->get_by_id($id_user);
             $data['user']['password_hash'] = null;
             $data['niveis'] = $this->user_niveis_model->get_all();
+            if(!permissoes_helper('edit_permiss')) {
+                $data['niveis'] = array_filter($data['niveis'], function($nivel) {
+                    return $nivel['id_nivel'] != 1;
+                });
+            }
             $data['permissoes'] = $this->permiss_model->get_all();
             $data['permissoes_user'] = $this->users_permiss_model->get_permiss_by_user($id_user);
             
@@ -95,6 +105,18 @@ class Users extends BaseController {
             $dados = $this->request->getVar();
 
             $id_user = $this->user_model->set_user($dados);
+            if(!permissoes_helper('edit_permiss')) {
+                $default_permiss = $this->fk_default_permiss;
+                $permissoes = array_map(function($permiss) use ($id_user, $default_permiss) {
+                    return [
+                        'fk_user' => $id_user,
+                        'fk_permiss' => $permiss
+                    ];
+                }, $default_permiss);
+                $this->users_permiss_model->insert_batch($permissoes);
+                exit;
+            }
+
             if(isset($dados['permiss_user'])){
                 $permissoes = array_map(function($permiss) use ($id_user){
                     return [

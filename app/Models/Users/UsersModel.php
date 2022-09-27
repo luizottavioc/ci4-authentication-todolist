@@ -15,6 +15,7 @@ class UsersModel extends Model
         'login',
         'email',
         'password_hash',
+        'deleted_at',
     ];
     protected $select_columns = [
         'id_user',
@@ -117,14 +118,12 @@ class UsersModel extends Model
         $this->update($data['id_user'], $data);
     }
 
-    public function roolback($id_user) {
-        // print_r($this->where($this->primaryKey, $id_user)->withDeleted()->first());
-        // exit;
-        $this->where('id_user', $id_user)->set('deleted_at', null)->withDeleted()->update();
-    }
-
     public function delete_user($id_user) {
         $this->where($this->primaryKey, $id_user)->delete();
+    }
+    
+    public function roolback($id_user) {
+        $this->where($this->primaryKey, $id_user)->withDeleted()->set(['deleted_at' => null])->update();
     }
 }
 

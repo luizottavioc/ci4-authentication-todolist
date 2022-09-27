@@ -1,5 +1,5 @@
 <div class="content-modal">
-    <form action="/users/insert_user" method="post" autocomplete="off" class="create-user-form h100" data-confirm-title="Criar Usuário" data-confirm-text="Você realmente deseja criar este usuário?" data-confirm-success-text="Usuário criado com sucesso!" data-url-refresh="/users" data-close-modal="true">
+    <form action="/users/insert_new_user" method="post" autocomplete="off" class="create-user-form h100" data-confirm-title="Criar Usuário" data-confirm-text="Você realmente deseja criar este usuário?" data-confirm-success-text="Usuário criado com sucesso!" data-url-refresh="/users" data-close-modal="true">
         <div class="aloc-input">
             <input class="input" name="name" type="text" placeholder=" " value="" required>
             <label class="plch">Nome:</label>

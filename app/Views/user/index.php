@@ -41,7 +41,7 @@
                             <td><?=isset($user['deleted_at']) ? 'Desligado' : 'Ativo' ?></td>
                             <td class="td-action">
                                 <?php if(empty($user['deleted_at'])): ?>
-                                    <?php if(permissoes_helper('acessar_usuario')): ?>
+                                    <?php if(permissoes_helper('acessar_usuarios')): ?>
                                         <button class="btn-action td-modal" data-modal-url="/users/view/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Visualizar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">
                                             <i class="fa-regular fa-eye"></i>
                                         </button>
@@ -56,8 +56,8 @@
                                             <i class="fa-regular fa-trash-can"></i>
                                         </button>
                                     <?php endif; ?>
-                                <?php elseif(permissoes_helper('delete_usuario')): ?>
-                                    <button class="btn-action td-ajax-confirm" data-confirm-url="/users/roolback_user/<?=$user['id_user']?>" data-confirm-title="Reativar Usuário" data-confirm-text="Você realmente deseja reativar este usuário?" data-confirm-success-text="Usuário reativado com sucesso" data-url-refresh="/users">
+                                <?php else: ?>
+                                    <button class="btn-action <?= permissoes_helper('delete_usuario') ? 'td-ajax-confirm' : 'dsb' ?>" <?= permissoes_helper('delete_usuario') ? 'data-confirm-url="/users/roolback_user/'.$user['id_user'].'" data-confirm-title="Reativar Usuário" data-confirm-text="Você realmente deseja reativar este usuário?" data-confirm-success-text="Usuário reativado com sucesso" data-url-refresh="/users"' : '' ?>>
                                         <i class="fa-solid fa-rotate-left"></i>
                                     </button>
                                 <?php endif; ?>
