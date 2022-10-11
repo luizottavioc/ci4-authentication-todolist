@@ -40,4 +40,8 @@ class Login extends BaseController
     public function refresh_session() {
         $this->auth_verify->verify_login();
     }
+
+    public function cadastro() {
+        echo view('login/cadastro');
+    }
 }

@@ -18,3 +18,4 @@ $('#switch-theme').on('change', function() {
         }
     });
 });
+

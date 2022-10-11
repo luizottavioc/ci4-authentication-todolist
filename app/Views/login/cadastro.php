@@ -48,35 +48,46 @@
                     <path d="M 0,600 C 0,600 0,300 0,300 C 208.40000000000003,286.26666666666665 416.80000000000007,272.53333333333336 559,284 C 701.1999999999999,295.46666666666664 777.2,332.1333333333333 913,339 C 1048.8,345.8666666666667 1244.4,322.93333333333334 1440,300 C 1440,300 1440,600 1440,600 Z" stroke="none" stroke-width="0" fill="url(#login-bg-gradient)" fill-opacity="1" class="login-wave"></path>
                 </svg>
             </div>
-            <div class="aloc-card-login">
-                <div class="header-card">
-                    <div class="aloc-logo-login">
-                        <img src="<?=base_url('/image-icons/fantasy-logo.png')?>" alt="">
+            <div class="card-register">
+                <div class="aloc-register-logo">
+                    <div class="aloc-just-logo">
+                        <label class="just-logo">
+                            <img src="<?=base_url('/image-icons/fantasy-logo.png')?>" alt="">
+                        </label>
                     </div>
+                    <label class="title-system">To-do List</label>
                 </div>
-                <div class="content-card">
-                    <form id="auth-user" name="auth_user" action="/login/auth" method="POST" class="aloc-data-login">
+                <div class="aloc-form-register">
+                    <form action="" class="w100">
                         <div class="aloc-input login">
-                            <input type="text" name="login" class="input" placeholder=" " value="<?=session()->get('last_login') !== null ? session()->get('last_login') : ''?>">
+                            <input type="text" name="name" class="input" placeholder=" " value="">
+                            <label class="plch">Nome:</label>
+                        </div>
+                        <div class="aloc-input login">
+                            <input type="text" name="lastname" class="input" placeholder=" " value="">
+                            <label class="plch">Sobrenome:</label>
+                        </div>
+                        <div class="aloc-input login">
+                            <input type="text" name="login" class="input" placeholder=" " value="">
                             <label class="plch">Login:</label>
                         </div>
                         <div class="aloc-input login">
-                            <input type="password" name="password" class="input" placeholder=" ">
+                            <input type="text" name="password" class="input" placeholder=" " value="">
                             <label class="plch">Senha:</label>
                         </div>
                         <div class="aloc-input login">
-                            <input id="submit-login" type="submit" class="d-none">
+                            <input type="text" class="input" placeholder=" " value="">
+                            <label class="plch">Confirmar senha:</label>
+                        </div>
+                        <div class="aloc-input login">
                             <label for="submit-login" class="submit-form login">
-                                <label class="text-btn">Entrar</label>
+                                <label class="text-btn">Cadastrar</label>
                                 <span class="bg-btn"></span>
                             </label>
                         </div>
+                        <input id="submit-register" type="submit" class="d-none">
                     </form>
                 </div>
-                <div class="footer-card">
-                    Ainda não possui conta? <a href="/login/cadastro">Cadastre-se</a>
-                </div>
-                
             </div>
         </div>
     </div>
@@ -86,21 +97,4 @@
 <script src="<?= base_url("sweet-alert2/dist/sweetalert2.all.js") ?>"></script>
 <script src="<?= base_url("jquery/dist/jquery.min.js") ?>"></script>
 <script src="<?= base_url("assets/js/login/login.js") ?>"></script>
-<?php
-    if (session()->get('alert') !== null) {
-        echo 
-        '<script>
-            Swal.fire({
-                toast: true,
-                icon: "' . session()->get('type_alert') . '",
-                position: "top-end",
-                title: "' . session()->get('alert') . '",
-                background: "f3f2f6",
-                color: "#0a0a0b",
-                showConfirmButton: false,
-                timer: 2300
-            });
-        </script>';
-    }
-?>
 </html>

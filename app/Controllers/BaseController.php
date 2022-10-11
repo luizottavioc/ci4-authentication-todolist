@@ -51,9 +51,17 @@ class BaseController extends Controller
         $this->database = \Config\Database::connect();
         $this->auth_verify = new AuthVerify;
 
+        $allowed_paths = [
+            'logout',
+            'login',
+            'login/auth',
+            'login/cadastro',
+            'users/set_theme',
+        ];
+        
         $path = $request->getPath();
-
-        if ($path !== 'login' &&  $path !== 'login/auth' &&  $path !== 'logout' && $path !== 'users/set_theme') {
+        
+        if (!in_array($path, $allowed_paths)) {
             $this->auth_verify->verify_login();
         }
 

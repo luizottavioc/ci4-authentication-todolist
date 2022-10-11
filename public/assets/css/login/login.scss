@@ -207,3 +207,66 @@
         d: path("M 0,600 C 0,600 0,300 0,300 C 208.40000000000003,286.26666666666665 416.80000000000007,272.53333333333336 559,284 C 701.1999999999999,295.46666666666664 777.2,332.1333333333333 913,339 C 1048.8,345.8666666666667 1244.4,322.93333333333334 1440,300 C 1440,300 1440,600 1440,600 Z");
     }
 }
+
+// create new user
+
+.card-register {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: calc(100% - 192px);
+    width: 85vw;
+    border-radius: 8px;
+    background-color: var(--card-color);
+    box-shadow: 0px 16px 32px rgba(var(--shadow-color-rgb), 0.1);
+    transition: background-color 0.1s ease-in-out;
+    @include grid-display(0.3fr 0.7fr, 1fr, 0px);
+
+    @include responsive(mobile) {
+        @include grid-display(1fr, 1fr, 0px);
+    }
+}
+
+.aloc-register-logo {
+    height: 100%;
+    width: 100%;
+    filter: drop-shadow(0px 2px 4px rgba(var(--shadow-color-rgb), 0.2));
+    @include flex-center(column, 0px);
+
+    @include responsive(mobile) {
+        display: none;
+    }
+
+    .aloc-just-logo {
+        padding: 16px;
+
+        .just-logo {
+            width: 160px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            background-color: rgba(var(--primary-color-rgb), 0.2);
+            @include flex-center(row, 8px);
+
+            img {
+                height: 50%;
+                aspect-ratio: 1/1;
+            }
+        } 
+    } 
+
+    .title-system {
+        padding: 8px;
+        width: 100%;
+        color: var(--primary-color);
+        @include flex-center(row, 0px);
+        @include text-config(32px, bold, $style: italic);
+    }
+} 
+
+.aloc-form-register {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 16px;
+}
