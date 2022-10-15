@@ -56,37 +56,53 @@
                         </label>
                     </div>
                     <label class="title-system">To-do List</label>
+                    <a class="btn-back-to-login" href="/login">
+                        <i class="fa-solid fa-angle-left"></i>
+                        Voltar a tela de login
+                        </a>
                 </div>
                 <div class="aloc-form-register">
-                    <form action="" class="w100">
-                        <div class="aloc-input login">
-                            <input type="text" name="name" class="input" placeholder=" " value="">
-                            <label class="plch">Nome:</label>
-                        </div>
-                        <div class="aloc-input login">
-                            <input type="text" name="lastname" class="input" placeholder=" " value="">
-                            <label class="plch">Sobrenome:</label>
-                        </div>
-                        <div class="aloc-input login">
-                            <input type="text" name="login" class="input" placeholder=" " value="">
-                            <label class="plch">Login:</label>
-                        </div>
-                        <div class="aloc-input login">
-                            <input type="text" name="password" class="input" placeholder=" " value="">
-                            <label class="plch">Senha:</label>
-                        </div>
-                        <div class="aloc-input login">
-                            <input type="text" class="input" placeholder=" " value="">
-                            <label class="plch">Confirmar senha:</label>
-                        </div>
-                        <div class="aloc-input login">
-                            <label for="submit-login" class="submit-form login">
-                                <label class="text-btn">Cadastrar</label>
-                                <span class="bg-btn"></span>
-                            </label>
-                        </div>
-                        <input id="submit-register" type="submit" class="d-none">
-                    </form>
+                    <div class="header-form-register">
+                        <a class="btn-back-to-login" href="/login">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </a>
+                        Tela de Cadastro
+                    </div>
+                    <div class="just-form-register">
+                        <form id="form-register" action="/login/create_user" class="">
+                            <div class="aloc-input login">
+                                <input type="text" name="name" class="input" placeholder=" ">
+                                <label class="plch">Nome:</label>
+                            </div>
+                            <div class="aloc-input login">
+                                <input type="text" name="lastname" class="input" placeholder=" ">
+                                <label class="plch">Sobrenome:</label>
+                            </div>
+                            <div class="aloc-input login">
+                                <input type="email" name="email" class="input" placeholder=" ">
+                                <label class="plch">E-mail:</label>
+                            </div>
+                            <div class="aloc-input login">
+                                <input type="text" name="login" class="input" placeholder=" ">
+                                <label class="plch">Login:</label>
+                            </div>
+                            <div class="aloc-input login">
+                                <input type="password" name="password_hash" class="input password" placeholder=" ">
+                                <label class="plch">Senha:</label>
+                            </div>
+                            <div class="aloc-input login">
+                                <input type="password" class="input password-check" placeholder=" ">
+                                <label class="plch">Confirmar senha:</label>
+                            </div>
+                            <input id="submit-register" type="submit" class="d-none">
+                        </form>
+                    </div>
+                    <div class="footer-form-register">
+                        <label for="submit-register" class="submit-form">
+                            <label class="text-btn">Criar conta</label>
+                            <span class="bg-btn"></span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>

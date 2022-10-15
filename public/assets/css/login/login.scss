@@ -221,14 +221,15 @@
     background-color: var(--card-color);
     box-shadow: 0px 16px 32px rgba(var(--shadow-color-rgb), 0.1);
     transition: background-color 0.1s ease-in-out;
-    @include grid-display(0.3fr 0.7fr, 1fr, 0px);
-
+    @include grid-display(0.4fr 0.6fr, 1fr, 0px);
+    
     @include responsive(mobile) {
         @include grid-display(1fr, 1fr, 0px);
     }
 }
 
 .aloc-register-logo {
+    position: relative;
     height: 100%;
     width: 100%;
     filter: drop-shadow(0px 2px 4px rgba(var(--shadow-color-rgb), 0.2));
@@ -262,6 +263,30 @@
         @include flex-center(row, 0px);
         @include text-config(32px, bold, $style: italic);
     }
+
+    .btn-back-to-login {
+        padding: 8px 16px;
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+        color: var(--primary-color-contrast);
+        white-space: nowrap;
+        text-decoration: none;
+        cursor: pointer;
+        transition: color 0.3s ease-in-out;
+
+        @include text-config(16px, bold, $style: italic);
+        @include flex-display(row, center, center, 8px);
+
+        &:hover {
+            color: var(--primary-color);
+        }
+        
+        @include responsive(tablet) {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
 } 
 
 .aloc-form-register {
@@ -269,4 +294,63 @@
     height: 100%;
     width: 100%;
     padding: 16px;
+    @include grid-display(1fr, 0.2fr 0.6fr 0.2fr, 8px);
+
+    .header-form-register,
+    .just-form-register,
+    .footer-form-register {
+        width: 100%;
+    }
+
+    .header-form-register {
+        color: var(--primary-color);
+        filter: drop-shadow(0px 2px 4px rgba(var(--shadow-color-rgb), 0.2));    
+        @include flex-center(row, 0px);
+        @include text-config(32px, bold, $style: italic);
+
+        .btn-back-to-login {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            width: 32px;
+            aspect-ratio: 1/1;
+            text-decoration: none;
+            color: var(--primary-color-contrast);
+            cursor: pointer;
+            transition: color 0.3s ease-in-out;
+
+            @include flex-center(row, 0px);
+            @include text-config(21px, unset);
+
+            display: none;
+
+            &:hover {
+                color: var(--primary-color);
+            }
+
+            @include responsive(mobile) {
+                display: flex;
+            }
+        }
+    }
+
+    .just-form-register {
+        padding: 0px 64px;
+        @include flex-center(column, 0px);
+
+        form {
+            width: 100%;
+            @include flex-center(column, 16px);
+        }
+    } 
+
+    .footer-form-register {
+        position: relative;
+        filter: drop-shadow(0px 2px 4px rgba(var(--shadow-color-rgb), 0.2));
+        @include flex-center(row, 0px);
+
+        .submit-form {
+            width: 75%;
+        }
+    }
 }

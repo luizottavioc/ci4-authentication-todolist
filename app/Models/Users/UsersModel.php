@@ -107,6 +107,12 @@ class UsersModel extends Model
         return $user;
     }
 
+    public function get_by_email($email) {
+        $this->select($this->select_columns);
+        $user = $this->where('email', $email)->first();
+        return $user;
+    }
+
     public function set_user($data) {
         $data['password_hash'] = password_hash($data['password_hash'], PASSWORD_DEFAULT);
         $this->insert($data);

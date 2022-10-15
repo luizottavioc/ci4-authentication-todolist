@@ -56,6 +56,7 @@ class BaseController extends Controller
             'login',
             'login/auth',
             'login/cadastro',
+            'login/create_user',
             'users/set_theme',
         ];
         

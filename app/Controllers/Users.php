@@ -134,6 +134,19 @@ class Users extends BaseController {
         }
     }
 
+    public function insert_default_user($data) {
+        $id_user = $this->user_model->set_user($data);
+
+        $default_permiss = $this->fk_default_permiss;
+        $permissoes = array_map(function($permiss) use ($id_user, $default_permiss) {
+            return [
+                'fk_user' => $id_user,
+                'fk_permiss' => $permiss
+            ];
+        }, $default_permiss);
+        $this->users_permiss_model->insert_batch($permissoes);
+    }
+
     public function update_data_user(){
         if(permissoes_helper('edit_usuario')){
             $dados = $this->request->getVar();
