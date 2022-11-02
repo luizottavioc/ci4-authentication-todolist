@@ -28,7 +28,7 @@ const ajaxRedirect = (urlPath, callback = undefined) => {
         $.ajax({
             type: "POST",
             url: urlPath,
-            data: { 'only_content': 1 },
+            data: { only_content: 1 },
             dataType: "html",
             success: async function (response) {
                 await resultRedirects(response, urlPath);
@@ -53,7 +53,13 @@ const ajaxRedirect = (urlPath, callback = undefined) => {
 
 const resultRedirects = async (response, targetUrl) => {
     $('.aloc-sid-line').removeClass('active');
-    $(`[data-sidebar-module="/${targetUrl.split('/')[1]}"]`).addClass('active');
+
+    if (targetUrl == '/users/profile') {
+        $('.sid-profile-line').addClass('active');
+    }else{
+        $('.sid-profile-line').removeClass('active');
+        $(`[data-sidebar-module="/${targetUrl.split('/')[1]}"]`).addClass('active');
+    }
 
     await $('#main-container').hide().html(response).fadeIn('fast');
 
@@ -85,28 +91,59 @@ function getCookie(name) {
 
 // Modal
 
-$(document).on('click', '.td-modal', async function (e) {
-    let url = $(this).data('modal-url');
-    let modal = $(`#${$(this).data('modal-id')}`);
-    let title = $(this).data('modal-title');
-    let footer = $(this).data('modal-footer');
-    let size = $(this).data('modal-size');
+$(document).on('click', '.td-modal', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-    if($(modal).length > 0 && (typeof url !== 'undefined' && url != '')){
-        let contentModal = $(modal).children('.aloc-content-modal');
-        typeof size !== 'undefined' ? await $(modal).addClass(size) : false;
+    let element = $(this);
+    let url = element.data('modal-url');
+    let modal = element.data('modal-id');
+    let title = element.data('modal-title');
+    let footer = element.data('modal-footer');
+    let size = element.data('modal-size');
+
+    ajaxModal({
+        url: url,   
+        id_modal: modal,
+        title: title,
+        id_footer: footer,
+        size: size
+    });
+});
+
+$(document).on('click', '.close-modal', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    let modal = this.parentNode.parentNode.parentNode;
+    closeModal(modal);
+});
+
+async function ajaxModal(opt, callback = undefined) {
+    let url = opt.url;
+    let modal = $(`#${opt.id_modal}`);
+    let title = opt.title;
+    let footer = opt.id_footer;
+    let size = opt.size;
+    let typeAjax = opt.typeAjax ?? 'post';
+
+    if (modal.length > 0 && (typeof url !== 'undefined' && url != '')) {
+        let contentModal = modal.children('.aloc-content-modal');
+        typeof size !== 'undefined' ? modal.addClass(size) : false;
 
         $.ajax({
-            type: "post",
+            type: typeAjax,
             url: url,
             dataType: "html",
             success: async (response) => {
                 $(modal).find('.just-title').html(title);
                 await $(contentModal).children('.content-modal').html(response);
-                typeof footer !== 'undefined' ? $(contentModal).children('.footer-modal').append($(`#${footer}`)) : false;
+                footer ? $(contentModal).children('.footer-modal').append($(`#${footer}`)) : false;
                 $(modal).addClass('active');
 
-            },error: function (error) {
+                typeof callback === 'function' ? callback() : false;
+
+            }, error: function (error) {
                 console.log('erro ajax modal: ', error);
                 Swal.fire({
                     toast: true,
@@ -120,7 +157,8 @@ $(document).on('click', '.td-modal', async function (e) {
                 });
             },
         });
-    }else{
+
+    } else {
         Swal.fire({
             toast: true,
             icon: 'error',
@@ -132,19 +170,19 @@ $(document).on('click', '.td-modal', async function (e) {
             timer: 1500
         });
     }
-});
+}
 
-$(document).on('click', '.close-modal', function (e) {
-    let modal = this.parentNode.parentNode.parentNode;
-    let title = $(modal).find('.just-title');
-    let content = $(modal).find('.content-modal');
-    let footer = $(modal).find('.footer-modal');
+function closeModal(elModal) {
+    let modal = $(elModal);
+    let title = modal.find('.just-title');
+    let content = modal.find('.content-modal');
+    let footer = modal.find('.footer-modal');
 
-    $(title).html('');
-    $(content).html('');
-    $(footer).html('');
-    $(modal).removeClass('active');
-});
+    title.html('');
+    content.html('');
+    footer.html('');
+    modal.removeClass('active');
+}
 
 // Ajax confirm e submit form
  
@@ -212,22 +250,53 @@ function confirmAjax(thisEl, callback = undefined) {
                 data: data,
                 url: url,
                 success: function (response) {
-                    if (typeof successText !== 'undefined' && successText != '') {
-                        Swal.fire({
-                            toast: true,
-                            icon: 'success',
-                            position: 'top-end',
-                            title: successText,
-                            background: getSystemBackground(),
-                            color: getSystemColor(),
-                            showConfirmButton: false,
-                            timer: 1500,
-                        });
+                    typeof response === 'string' && response != '' ? response = JSON.parse(response) : false;
+
+                    if(typeof response === 'string' || response.status == true){
+                        if (typeof successText !== 'undefined' && successText != '') {
+                            Swal.fire({
+                                toast: true,
+                                icon: 'success',
+                                position: 'top-end',
+                                title: successText,
+                                background: getSystemBackground(),
+                                color: getSystemColor(),
+                                showConfirmButton: false,
+                                timer: 1500,
+                            });
+                        }
+
+                        if(typeof callback !== 'undefined'){
+                            callback();
+                        }
+
+                        return true;
                     }
 
-                    if(typeof callback !== 'undefined'){
-                        callback();
-                    }
+                    Swal.fire({
+                        toast: true,
+                        icon: 'error',
+                        position: 'top-end',
+                        title: response.message,
+                        background: getSystemBackground(),
+                        color: getSystemColor(),
+                        showConfirmButton: false,
+                        timer: 3500
+                    });
+
+                    return false;
+
+                }, error: function (error) {
+                    Swal.fire({
+                        toast: true,
+                        icon: 'error',
+                        position: 'top-end',
+                        title: 'Erro ao executar ação!',
+                        background: getSystemBackground(),
+                        color: getSystemColor(),
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
             });
         }
@@ -306,7 +375,7 @@ $('#switch-theme').on('change', function () {
 
     $.ajax({
         type: "post",
-        url: "users/set_theme",
+        url: "/users/set_theme",
         data: { theme: switchTheme },
         success: function () {
             if (switchTheme) {
@@ -356,3 +425,7 @@ function changeTitlePage(urlTitle) {
     $('.title-page').html(`Afazeres - ${secondPartTitle}`);
 }
 
+function generateString() {
+    result = Math.random().toString(36).substring(2, 7);
+    return result;
+}

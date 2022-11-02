@@ -1,3 +1,9 @@
+<?php 
+    $path_user = 'files/user_images/'.$user['id_user'].'/profile.png';
+    $path_default = '/files/user_images/default_image_profile.png';
+    $img_user = !file_exists($path_user) ? $path_default : '/'.$path_user;
+?>
+
 <div class="content-modal">
     <form action="/users/update_data_user" method="post" class="td-default-form h100" data-confirm-title="Atualizar Usuário" data-confirm-text="Você realmente deseja atualizar os dados deste usuário?" data-confirm-success-text="Usuário atualizado com sucesso!" data-url-refresh="/users" data-close-modal="true">
         <input type="hidden" name="id_user" value="<?=$user['id_user']?>">
@@ -43,7 +49,7 @@
         <button id="sbm-edit-user" type="submit" class="d-none"></button>
     </form>
     
-    <form action="/users/insert_user" method="post" class="edit-password-user-form" data-confirm-title="Atualizar Senha do Usuário" data-confirm-text="Você realmente deseja atualizar a senha deste usuário?" data-confirm-success-text="Senha atualizada com sucesso!" data-url-refresh="/users" data-close-modal="true">
+    <form action="/users/update_data_user" method="post" class="edit-password-user-form" data-confirm-title="Atualizar Senha do Usuário" data-confirm-text="Você realmente deseja atualizar a senha deste usuário?" data-confirm-success-text="Senha atualizada com sucesso!" data-url-refresh="/users" data-close-modal="true">
         <input type="hidden" name="id_user" value="<?=$user['id_user']?>">
         <div class="aloc-input pass">
             <input class="input password-check" name="password_hash" type="password" placeholder=" ">

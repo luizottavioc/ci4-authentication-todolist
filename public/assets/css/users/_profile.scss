@@ -1,0 +1,23 @@
+.footer-ajust-image {
+    position: relative;
+    @include flex-center(row, 0px);
+
+    input[type="range"] {
+        width: 240px;
+
+        &::-webkit-slider-runnable-track {
+            background: rgba(var(--primary-color-rgb), 0.3);
+        }
+
+        &::-webkit-slider-thumb {
+            background-color: var(--primary-color);
+        }
+    }
+
+    .btn-complete-edit {
+        position: absolute;
+        top: 50%;
+        right: 0px;
+        transform: translate(0%, -50%);
+    }
+}

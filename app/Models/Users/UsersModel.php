@@ -87,6 +87,12 @@ class UsersModel extends Model
         return $query;
     }
 
+    public function get_by_id_columns ($id, $columns = ['*']) {
+        $this->select($columns);
+        $query = $this->where($this->primaryKey, $id)->first();
+        return $query;
+    }
+
     public function get_join_by_id($id_user)
     {
         $this->select($this->select_join_columns);
@@ -122,6 +128,15 @@ class UsersModel extends Model
     public function update_user($data) {
         isset($data['password_hash']) ? $data['password_hash'] = password_hash($data['password_hash'], PASSWORD_DEFAULT) : null;
         $this->update($data['id_user'], $data);
+    }
+
+    public function confer_password($id_user, $password) {
+        $user = $this->get_by_id_columns($id_user, ['password_hash']);
+        if (password_verify($password, $user['password_hash'])){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function delete_user($id_user) {

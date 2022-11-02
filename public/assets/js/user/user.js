@@ -37,7 +37,5 @@ function initUserListeners() {
             ajaxRedirect(urlRefresh);
         });
     });
-
-
 }
 

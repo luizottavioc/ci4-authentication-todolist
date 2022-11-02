@@ -13,6 +13,7 @@ class Users extends BaseController {
     private $permiss_model;
     private $users_permiss_model;
     private $fk_default_permiss;
+    private $path_imgs_user;
 
     function __construct(){
         $this->user_model = new UsersModel();
@@ -20,6 +21,7 @@ class Users extends BaseController {
         $this->permiss_model = new PermissModel();
         $this->users_permiss_model = new UsersPermissModel();
         $this->fk_default_permiss = [7, 8];
+        $this->path_imgs_user = 'files/user_images';
     }
 
     function not_permisson() {
@@ -175,7 +177,6 @@ class Users extends BaseController {
         }else{
             $this->not_permisson();
         }
-
     }
 
     public function edit_user(){
@@ -209,6 +210,75 @@ class Users extends BaseController {
     public function set_theme(){
         $dados = $this->request->getVar();
         session()->set('user_theme',  intval($dados['theme']));
+    }
+
+    // profile
+
+    public function profile() {
+        $dados = $this->request->getVar();
+
+        if (!isset($dados['only_content'])) {
+            echo View('structure/header');
+        }
+
+        $data['title'] = 'Perfil';
+        $data['user'] = $this->user_model->get_by_id(session()->get()['active_user']['id_user']);
+
+        echo View('user/profile/index', $data);
+        
+        if (!isset($dados['only_content'])) {
+            echo View('structure/footer');
+        }
+    }
+
+    public function ajust_user_image() {
+        echo View('user/profile/ajust_image');
+    }
+
+    public function insert_user_img(){
+        $dados = $this->request->getVar();
+        $id_user = session()->get()['active_user']['id_user'];
+
+        $path_user = $this->path_imgs_user.'/'.$id_user;
+        $name_file = 'profile.png';
+        (!is_dir($path_user)) ? mkdir($path_user, 0777, true) : null;
+        
+        file_put_contents($path_user.'/'.$name_file, file_get_contents($dados['img']));
+
+        echo json_encode([
+            'status' => true,
+            'msg' => 'Imagem atualizada com sucesso',
+            'src_img' => '/'.$path_user.'/'.$name_file
+        ]);
+    }
+
+    public function update_own_user () {
+        $data = $this->request->getVar();
+        $data['id_user'] = session()->get()['active_user']['id_user'];
+
+        $this->user_model->update_user($data);
+    }
+
+    public function update_own_password () {
+        $data = $this->request->getVar();
+        $data['id_user'] = session()->get()['active_user']['id_user'];
+
+        $confer = $this->user_model->confer_password($data['id_user'], $data['actual_password']);
+        if(!$confer){
+            echo json_encode([
+                'status' => false,
+                'message' => 'Senha atual incorreta',
+            ]);
+            exit;
+        }
+
+        $data['password_hash'] = $data['new_password'];
+        $this->user_model->update_user($data);
+
+        echo json_encode([
+            'status' => true,
+            'message' => 'Senha atualizada com sucesso',
+        ]);
     }
 }
 

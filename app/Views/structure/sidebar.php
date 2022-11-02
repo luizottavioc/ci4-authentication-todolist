@@ -1,3 +1,9 @@
+<?php 
+    $data_user = session()->get()['active_user'];
+    $path_user = 'files/user_images/'.$data_user['id_user'].'/profile.png';
+    $path_default = '/files/user_images/default_image_profile.png';
+    $img_user = !file_exists($path_user) ? $path_default : '/'.$path_user;
+?>
 <aside class="default-sidebar">
     <div class="just-sidebar">
         <div class="aloc-logo">
@@ -10,14 +16,14 @@
         </div>
         <div class="aloc-sid-contents">
             <div class="aloc-sid-profile">
-                <div class="sid-profile-line">
+                <a href="/users/profile" class="sid-profile-line ajax-redirect" data-url="/users/profile">
                     <div class="sid-image-profile">
-                        <img src="<?= base_url('image-icons/fantasy-logo.png')?>" alt="">
+                        <img src="<?= $img_user.'?'.time() ?>" alt="">
                     </div>
                     <div class="sid-name-profile">
-                        Luiz Otávio Diniz
+                        <?= $data_user['name'] ?>
                     </div>
-                </div>
+                </a>
             </div>
             <a href="/home" class="aloc-sid-line active ajax-redirect" data-url="/home" data-sidebar-module="/home">
                 <div class="icon">
@@ -73,14 +79,16 @@
                     Anotações
                 </div>
             </a>
-            <a href="/users" class="aloc-sid-line ajax-redirect" data-url="/users" data-sidebar-module="/users">
-                <div class="icon">
-                    <i class="fa-regular fa-user"></i>
-                </div>
-                <div class="name">
-                    Usuários
-                </div>
-            </a>
+            <?php if(permissoes_helper('acessar_usuarios')): ?>
+                <a href="/users" class="aloc-sid-line ajax-redirect" data-url="/users" data-sidebar-module="/users">
+                    <div class="icon">
+                        <i class="fa-regular fa-user"></i>
+                    </div>
+                    <div class="name">
+                        Usuários
+                    </div>
+                </a>
+            <?php endif; ?>
         </div>
     </div>
 </aside>

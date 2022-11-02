@@ -110,7 +110,7 @@
     
 </body>
 
-<script src="<?= base_url("sweet-alert2/dist/sweetalert2.all.js") ?>"></script>
+<script src="<?= base_url("plugins/sweet-alert2/dist/sweetalert2.all.js") ?>"></script>
 <script src="<?= base_url("jquery/dist/jquery.min.js") ?>"></script>
 <script src="<?= base_url("assets/js/login/login.js") ?>"></script>
 </html>
