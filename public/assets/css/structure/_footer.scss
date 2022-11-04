@@ -5,6 +5,11 @@
     padding: 16px 16px 16px 64px;
     border-top: 1px solid rgba(var(--primary-color-rgb), 0.1);
     border-bottom: 1px solid rgba(var(--primary-color-rgb), 0.1);
-    @include flex-display(row, flex-start, center, 0px);
     transition: background-color 0.1s ease-in-out;
+    @include flex-display(row, flex-start, center, 0px);
+
+    @include responsive(mobile) {
+        padding: 8px 8px 8px 8px;
+        font-size: 12px;
+    }
 }

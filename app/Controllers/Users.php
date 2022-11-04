@@ -259,6 +259,10 @@ class Users extends BaseController {
         $this->user_model->update_user($data);
     }
 
+    public function change_own_password(){
+        echo View('user/profile/change_password');
+    }
+
     public function update_own_password () {
         $data = $this->request->getVar();
         $data['id_user'] = session()->get()['active_user']['id_user'];
@@ -280,6 +284,8 @@ class Users extends BaseController {
             'message' => 'Senha atualizada com sucesso',
         ]);
     }
+
+    
 }
 
 ?>

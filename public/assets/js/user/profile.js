@@ -26,7 +26,7 @@ $('#img-profile').on('change', function (e) {
     reader.onload = e => {
         ajaxModal({
             url: '/users/ajust_user_image',
-            id_modal: 'modal-ajust-image',
+            id_modal: 'modal-profile',
             title: 'Ajustar Imagem',
             id_footer: 'footer-ajust-image',
             size: 'small'
@@ -75,7 +75,7 @@ $('#profile-content').on('click', '.btn-complete-edit', function (e) {
                 $('.close-modal').click();
                 $('#img-profile').val('');
                 $('.sid-image-profile img').attr('src', `${res.src_img}?${generateString()}}`);
-                $('.image-perofile').attr('src', `${res.src_img}?${generateString()}}`);
+                $('.image-profile').attr('src', `${res.src_img}?${generateString()}}`);
                 
                 Swal.fire({
                     toast: true,

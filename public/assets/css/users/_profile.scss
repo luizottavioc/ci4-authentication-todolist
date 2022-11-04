@@ -1,3 +1,108 @@
+.aloc-profile-page {
+    padding: 16px;
+    width: 100%;
+    @include flex-display(column, flex-start, center, 16px);
+
+    .container-image {
+        width: 100%;
+        @include flex-center(column, 8px);
+
+        .aloc-image {
+            position: relative;
+            padding: 8px;
+            width: 100%;
+            @include flex-center(column, 0px);
+
+            .image-profile {
+                width: 300px;
+                aspect-ratio: 1/1;
+                border-radius: 50%;
+                border: 3px solid var(--primary-color);
+                background-color: var(--base-color);
+                box-shadow: 0px 2px 8px rgba(var(--shadow-color-rgb), 0.2);
+            }
+
+            .btn-change-img {
+                position: absolute;
+                top: 50%;
+                right: 50%;
+                transform: translate(calc(50% + 105px), calc(-50% + 105px));
+                width: 40px;
+                aspect-ratio: 1/1;
+                border-radius: 50%;
+                color: var(--text-color-inverse);
+                background-color: var(--primary-color);
+                box-shadow: 0px 2px 8px rgba(var(--shadow-color-rgb), 0.3);
+                transition: background-color 0.3s ease-in-out;
+                cursor: pointer;
+                @include flex-center(row, 0px);
+
+                &:hover {
+                    background-color: var(--primary-color-contrast);
+                }
+            }
+        }
+
+        .user-login {
+            width: 100%;
+            color: var(--primary-color);
+            @include text-config(24px, bold, $style: italic, $align: center);
+        }
+    }
+
+    .container-user-data {
+        padding: 0px 64px;
+        width: 100%;
+        @include grid-display(repeat(4, 1fr), unset, 8px);
+
+        .aloc-btn-password {
+            grid-column: 3/4;
+            @include flex-display(column, flex-end, flex-end, 0px);
+        }
+        
+        .submit-data {
+            width: 100%;
+            grid-column: 4/5;
+        }
+
+        @include responsive(tablet) {
+            @include grid-display(repeat(2, 1fr), unset, 8px);
+            
+            .aloc-btn-password {
+                grid-column: span 1;
+            }
+        
+            .submit-data {
+                grid-column: span 1;
+            }
+        }
+
+        @include responsive(mobile) {
+            padding: 0px 16px;
+            @include grid-display(1fr, unset, 8px);
+            
+            .aloc-btn-password {
+                grid-column: span 1;
+            }
+        
+            .submit-data {
+                grid-column: span 1;
+            }
+        }
+    }
+}
+
+.card-change-own-password {
+    padding: 32px;
+    background-color: var(--base-color);
+    border-radius: 8px;
+    border: 2px solid rgba(var(--primary-color-rgb), 0.3);
+    box-shadow: 0px 2px 8px rgba(var(--shadow-color-rgb), 0.1);
+    @include flex-display(column, flex-start, center, 16px);
+}
+
+//ajust image
+
 .footer-ajust-image {
     position: relative;
     @include flex-center(row, 0px);
