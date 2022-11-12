@@ -13,7 +13,7 @@
         <div class="card-content-page">
             <div class="aloc-top-buttons">
                 <?php if(permissoes_helper('create_usuario')): ?>
-                    <button class="btn-default td-modal" data-modal-url="/users/create" data-modal-id="modal-user" data-modal-title="Criar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">Criar usuário</button>
+                    <button class="btn-default td-modal" data-modal-url="/users/create" data-modal-id="modal-user" data-modal-title="Criar Usuário" data-modal-footer="footer-data-user" data-modal-size="medium">Criar usuário</button>
                 <?php endif; ?>
             </div>
             <table class="default-table">
@@ -42,12 +42,12 @@
                             <td class="td-action">
                                 <?php if(empty($user['deleted_at'])): ?>
                                     <?php if(permissoes_helper('acessar_usuarios')): ?>
-                                        <button class="btn-action td-modal" data-modal-url="/users/view/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Visualizar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">
+                                        <button class="btn-action td-modal" data-modal-url="/users/view/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Visualizar Usuário" data-modal-footer="footer-data-user" data-modal-size="medium">
                                             <i class="fa-regular fa-eye"></i>
                                         </button>
                                     <?php endif; ?>
                                     <?php if(permissoes_helper('edit_usuario')): ?>
-                                        <button class="btn-action td-modal" data-modal-url="/users/edit/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Editar Usuário" data-modal-footer="footer-data-user" data-modal-size="small">
+                                        <button class="btn-action td-modal" data-modal-url="/users/edit/<?=$user['id_user']?>" data-modal-id="modal-user" data-modal-title="Editar Usuário" data-modal-footer="footer-data-user" data-modal-size="medium">
                                             <i class="fa-regular fa-pen-to-square"></i>
                                         </button>
                                     <?php endif; ?>

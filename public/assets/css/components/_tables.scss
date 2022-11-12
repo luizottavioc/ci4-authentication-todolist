@@ -10,7 +10,7 @@
         background-color: var(--primary-color);
 
         tr th {
-            padding: 8px;
+            padding: 12px 8px;
             color: var(--text-color-inverse);
             @include text-config(18px, bold);
 

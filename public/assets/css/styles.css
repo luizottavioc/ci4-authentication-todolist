@@ -951,7 +951,7 @@
   background-color: var(--primary-color);
 }
 .default-table thead tr th {
-  padding: 8px;
+  padding: 12px 8px;
   color: var(--text-color-inverse);
   font-size: 18px;
   font-weight: bold;
@@ -1161,6 +1161,10 @@
   border-bottom: 2px solid rgba(var(--primary-color-rgb), 0.7);
   overflow: hidden;
   transition: border 0.3s, background-color ease-out 0.3s;
+  font-size: 16px;
+  font-weight: unset;
+  font-style: normal;
+  text-align: left;
 }
 .aloc-input .input:focus {
   background-color: rgba(var(--primary-color-rgb), 0.05);
@@ -1206,6 +1210,7 @@
 }
 .aloc-input .select {
   padding: 4px 24px 4px 16px;
+  min-height: 30px;
   width: 100%;
   background-color: transparent;
   color: var(--text-color);
@@ -1218,6 +1223,10 @@
   overflow: hidden;
   cursor: pointer;
   transition: border 0.3s, background-color ease-out 0.3s;
+  font-size: 16px;
+  font-weight: unset;
+  font-style: normal;
+  text-align: left;
 }
 .aloc-input .select:focus {
   background-color: rgba(var(--primary-color-rgb), 0.05);
@@ -1310,7 +1319,7 @@
 }
 .aloc-input .arrow-down {
   position: absolute;
-  top: 50%;
+  top: 15px;
   right: 8px;
   transform: translate(0, -50%);
   font-size: 11px;
@@ -1383,6 +1392,11 @@
   z-index: 1;
   transition: transform ease-in-out 0.3s;
 }
+.submit-form.no-width {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
 .submit-form:hover .text-btn {
   color: var(--text-color-inverse);
 }
@@ -1448,8 +1462,8 @@
 }
 
 html {
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .wrapper {
@@ -1465,7 +1479,7 @@ html {
   width: calc(100% - 48px);
   margin-top: 56px;
   margin-left: 48px;
-  height: calc(100vh - 64px - 56px);
+  height: calc(100vh - 56px);
 }
 @media screen and (min-width: 280px) and (max-width: 767px) {
   .main-container {
@@ -1889,6 +1903,141 @@ html {
     padding: 8px 8px 8px 8px;
     font-size: 12px;
   }
+}
+
+.aloc-user-structure {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 16px;
+}
+.aloc-user-structure .aloc-all-user-data {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 0.35fr 0.65fr;
+  grid-template-rows: unset;
+  gap: 0px;
+}
+.aloc-user-structure .aloc-all-user-data .aloc-user-image {
+  padding: 8px 16px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0px;
+}
+.aloc-user-structure .aloc-all-user-data .aloc-user-image img {
+  width: 80%;
+  border-radius: 50%;
+}
+.aloc-user-structure .aloc-all-user-data .aloc-user-data {
+  padding: 8px 16px;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: unset;
+  gap: 8px;
+}
+.aloc-user-structure .aloc-all-user-data .aloc-user-data .name,
+.aloc-user-structure .aloc-all-user-data .aloc-user-data .lastname,
+.aloc-user-structure .aloc-all-user-data .aloc-user-data .password-first,
+.aloc-user-structure .aloc-all-user-data .aloc-user-data .password-second {
+  grid-column: span 3;
+}
+.aloc-user-structure .aloc-all-user-data .aloc-user-data .nivel,
+.aloc-user-structure .aloc-all-user-data .aloc-user-data .login,
+.aloc-user-structure .aloc-all-user-data .aloc-user-data .email {
+  grid-column: span 2;
+}
+.aloc-user-structure .aloc-all-user-data .aloc-user-data.edit .name,
+.aloc-user-structure .aloc-all-user-data .aloc-user-data.edit .lastname {
+  grid-column: span 6;
+}
+.aloc-user-structure .aloc-all-user-data .aloc-user-permiss {
+  grid-column: span 2;
+  padding: 32px 40px;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: unset;
+  gap: 16px;
+}
+.aloc-user-structure .aloc-all-user-data .aloc-user-permiss .column-toggle-user {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+.aloc-user-structure .aloc-all-user-data .aloc-user-permiss .column-toggle-user .name-permiss {
+  width: 100%;
+  color: var(--primary-color);
+  font-size: 14px;
+  font-weight: 500;
+  font-style: italic;
+  text-align: center;
+}
+.aloc-user-structure .aloc-all-user-data .user-change-password {
+  grid-column: span 2;
+  padding: 32px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 0px;
+}
+.aloc-user-structure .aloc-all-user-data .user-change-password .title-acc-change-pass {
+  padding: 16px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: italic;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 16px;
+}
+.aloc-user-structure .aloc-all-user-data .user-change-password .content-acc-change-pass {
+  padding: 16px;
+  width: 100%;
+  border-radius: 8px;
+  background: rgba(var(--primary-color-rgb), 0.1);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: unset;
+  gap: 8px;
+}
+.aloc-user-structure .aloc-all-user-data .user-change-password .content-acc-change-pass .aloc-btn-submit-pass {
+  padding: 8px;
+  grid-column: span 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0px;
 }
 
 .aloc-profile-page {

@@ -1,45 +1,102 @@
-// .card-user {
-//     margin: auto;
-//     position: relative;
-//     width: 400px;
-//     border-radius: 8px;
-//     overflow: hidden;
-//     box-shadow: 0px 0px 8px rgba(var(--shadow-color-rgb), 0.2);
-//     @include flex-display(column, flex-start, center, 0px, $wrap: wrap);
+.aloc-user-structure {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    @include flex-display(column, flex-start, center, 16px);
 
-//     @include responsive (tablet) {
-//         width: 350px;
-//     }
+    .aloc-all-user-data {
+        width: 100%;
+        @include grid-display(0.35fr 0.65fr, unset, 0px);
 
-//     @include responsive (mobile) {
-//         width: 300px;
-//     }
+        .aloc-user-image {
+            padding: 8px 16px;
+            height: 100%;
+            width: 100%;
+            @include flex-center(column, 0px);
 
-//     .header {
-//         height: 56px;
-//         width: 100%;
-//         background-color: var(--primary-color);
-//         color: var(--text-color-inverse);
-//         @include text-config(18px, bold, $style: italic);
-//         @include flex-center(row, 0px);
-//     }
+            img {
+                width: 80%;
+                border-radius: 50%;
+            }
+        }
 
-//     .content {
-//         padding: 8px 24px 32px;
-//         width: 100%;
+        .aloc-user-data {
+            padding: 8px 16px;
+            height: 100%;
+            width: 100%;
+            @include grid-display(repeat(6, 1fr), unset, 8px);
 
-//         .grid-user {
-//             @include grid-display(1fr, 1fr, 16px);
-    
-//             // .pass {
-//             //     padding: 16px 0px 0px;
-//             // }
+            .name,
+            .lastname,
+            .password-first,
+            .password-second  {
+                grid-column: span 3;
+            }
 
-//             .submit {
-//                 margin: 32px 0px 32px;
-//                 @include flex-center(row, 0px);
-//             }
-//         }
-//     }
-// }
+            .nivel,
+            .login, 
+            .email {
+                grid-column: span 2;
+            }
 
+            &.edit {
+                .name,
+                .lastname {
+                    grid-column: span 6;
+                }
+            }
+        }
+
+        .aloc-user-permiss {
+            grid-column: span 2;
+            padding: 32px 40px;
+            height: 100%;
+            width: 100%;
+            @include grid-display(repeat(4, 1fr), unset, 16px);
+
+            .column-toggle-user {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                padding: 8px;
+                @include flex-display(column, flex-start, center, 8px);
+
+                .name-permiss {
+                    width: 100%;
+                    color: var(--primary-color);
+                    @include text-config(14px, 500, $align: center, $style: italic);
+                }
+            }
+        }
+
+        .user-change-password {
+            grid-column: span 2;
+            padding: 32px;
+            height: 100%;
+            width: 100%;
+            @include flex-display(column, flex-start, center, 0px);
+
+            .title-acc-change-pass {
+                padding: 16px;
+                width: 100%;
+                cursor: pointer;
+                @include text-config(16px, 500, $align: center, $style: italic);
+                @include flex-display(row, flex-start, center, 16px);
+            }
+
+            .content-acc-change-pass {
+                padding: 16px;
+                width: 100%;
+                border-radius: 8px;
+                background: rgba(var(--primary-color-rgb), 0.1);
+                @include grid-display(repeat(2, 1fr), unset, 8px);
+
+                .aloc-btn-submit-pass {
+                    padding: 8px;
+                    grid-column: span 2;
+                    @include flex-center(row, 0px); 
+                }
+            }
+        }
+    }
+}

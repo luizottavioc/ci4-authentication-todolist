@@ -6,8 +6,8 @@
 }
 
 html {
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .wrapper {
@@ -24,7 +24,7 @@ html {
     width: calc(100% - 48px);
     margin-top: 56px;
     margin-left: 48px;
-    height: calc(100vh - 64px - 56px);
+    height: calc(100vh - 56px);
 
     @include responsive(mobile) {
         width: 100%;

@@ -221,7 +221,7 @@ class Users extends BaseController {
             echo View('structure/header');
         }
 
-        $data['title'] = 'Perfil';
+        $data['titulo'] = 'Perfil';
         $data['user'] = $this->user_model->get_by_id(session()->get()['active_user']['id_user']);
 
         echo View('user/profile/index', $data);

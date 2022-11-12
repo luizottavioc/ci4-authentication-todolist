@@ -14,6 +14,7 @@
         overflow: hidden;
         transition: border .3s,
                     background-color ease-out .3s;
+        @include text-config(16px, unset);
 
         &:focus {
             background-color: rgba(var(--primary-color-rgb), 0.05);
@@ -41,6 +42,7 @@
 
     .select {
         padding: 4px 24px 4px 16px;
+        min-height: 30px;
         width: 100%;
         background-color: transparent;
         color: var(--text-color);
@@ -52,6 +54,7 @@
         cursor: pointer;
         transition: border .3s,
             background-color ease-out .3s;
+        @include text-config(16px, unset);
 
         &:focus {
             background-color: rgba(var(--primary-color-rgb), 0.05);
@@ -151,7 +154,7 @@
 
     .arrow-down {
         position: absolute;
-        top: 50%;
+        top: 15px;
         right: 8px;
         transform: translate(0, -50%);
         font-size: 11px;
@@ -218,6 +221,10 @@
         pointer-events: none;
         z-index: 1;
         transition: transform ease-in-out .3s;
+    }
+
+    &.no-width {
+        width: fit-content;
     }
 
     &:hover {
