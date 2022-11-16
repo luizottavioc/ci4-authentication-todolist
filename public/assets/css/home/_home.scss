@@ -1,16 +1,7 @@
 .grid-home-cards {
     padding: 32px;
     width: 100%;
-    @include grid-display(repeat(5, 1fr), 1fr, 16px);
-
-    @include responsive(tablet){
-        @include grid-display(repeat(3, 1fr), 1fr, 8px);
-    }
-
-    @include responsive(mobile){
-        padding: 16px;
-        @include grid-display(repeat(1, 1fr), 1fr, 32px);
-    }
+    @include grid-display(1fr, 1fr, 32px);
 }
 
 .aloc-home-card {

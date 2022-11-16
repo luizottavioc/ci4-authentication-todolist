@@ -33,7 +33,7 @@
                     Home
                 </div>
             </a>
-            <div id="title-acc-afazeres" class="aloc-sid-line acc-title" data-id-content="content-acc-afazeres" data-sidebar-module="/afazeres">
+            <!-- <div id="title-acc-afazeres" class="aloc-sid-line acc-title" data-id-content="content-acc-afazeres" data-sidebar-module="/afazeres">
                 <div class="icon">
                     <i class="fa-regular fa-rectangle-list"></i>
                 </div>
@@ -70,7 +70,15 @@
                         Pendentes
                     </div>
                 </div>
-            </div>
+            </div> -->
+            <a href="/afazeres" class="aloc-sid-line" data-sidebar-module="/afazeres">
+                <div class="icon">
+                   <i class="fa-regular fa-rectangle-list"></i>
+                </div>
+                <div class="name">
+                    Afazeres
+                </div>
+            </a>
             <a href="/anotacoes" class="aloc-sid-line" data-sidebar-module="/anotacoes">
                 <div class="icon">
                    <i class="fa-solid fa-pen-fancy"></i>

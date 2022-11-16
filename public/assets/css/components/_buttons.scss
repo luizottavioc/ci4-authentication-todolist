@@ -56,6 +56,16 @@
         aspect-ratio: 5/1;
         animation: moveBackground 10s ease-in-out infinite alternate;
     }
+
+    @include responsive(mobile) {
+        aspect-ratio: 7/1;
+        animation   : moveBackground 10s ease-in-out infinite alternate;
+
+        &:hover {
+            aspect-ratio: 8/1;
+            animation: moveBackground 10s ease-in-out infinite alternate;
+        }
+    }
 }
 
 .btn-action {
