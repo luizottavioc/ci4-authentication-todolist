@@ -1,0 +1,72 @@
+.grid-afazeres {
+    position: relative;
+    width: 100%;
+    @include grid-display(1fr, 40px, 8px);
+
+    .aloc-folders {
+        height: 100%;
+        width: 100%;
+        @include flex-display(row, flex-start, center, 8px);
+
+        .afz-folder {
+            position: relative;
+            padding: 8px;
+            border-radius: 4px;
+            background-color: rgba(var(--primary-color-rgb), 0.5);
+            color: var(--text-color-inverse);
+            box-shadow: 0px 2px 6px rgba(var(--shadow-color-rgb), 0.2);
+            transition: background-color 0.2s ease-in-out;
+            cursor: pointer;
+            @include text-config(16px, bold, $style: italic);
+            @include flex-center(row, 0px);
+
+            &.default {
+                font-style: normal;
+            }
+
+            &:hover {
+                background-color: rgba(var(--primary-color-rgb), 0.7);
+            }
+
+            &.active {
+                background-color: rgba(var(--primary-color-rgb), 1);
+            }
+        }
+    } 
+
+    .aloc-afazeres {
+        padding: 16px 16px 32px;
+        min-height: 60vh;
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid rgba(var(--primary-color-rgb), 0.1);
+        overflow: hidden;
+        @include flex-display(column, flex-start, center, 8px);
+
+        .line-afazer {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0px 8px 16px rgba(var(--shadow-color-rgb), 0.08);
+            background-color: var(--card-color);
+            @include grid-display(48px 1fr, 1fr, 0px);
+
+            .aloc-check-afz {
+                padding: 16px 8px;
+                width: 100%;
+                @include flex-center(column, 0px);
+
+                input[type="checkbox"] {
+                    accent-color: var(--primary-color);
+                }
+            }
+
+            .aloc-text-afz {
+                padding: 16px 8px;
+                width: 100%;
+                @include text-config(16px, bold, $style: italic);
+                @include flex-display(row, flex-start, center, 0px);
+            }
+        }
+    }
+
+}
