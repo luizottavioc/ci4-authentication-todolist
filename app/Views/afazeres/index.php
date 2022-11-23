@@ -1,4 +1,4 @@
-<div id="user-content" class="content-wrapper">
+<div id="" class="content-wrapper">
     <div class="aloc-header-page">
         <div class="aloc-title">
             <?= $titulo?>
@@ -10,9 +10,6 @@
         </div>
     </div>
     <div class="aloc-content-page">
-        <!-- <div class="card-content-page">
-            Afazeres
-        </div> -->
         <div class="grid-afazeres">
             <div class="aloc-folders">
                 <span class="afz-folder default active">

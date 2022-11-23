@@ -1,7 +1,7 @@
 .grid-afazeres {
     position: relative;
     width: 100%;
-    @include grid-display(1fr, 40px, 8px);
+    @include grid-display(1fr, 40px 1fr, 8px);
 
     .aloc-folders {
         height: 100%;

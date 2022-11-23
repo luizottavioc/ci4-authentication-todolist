@@ -1,0 +1,84 @@
+.grid-anotacoes {
+    position: relative;
+    width: 100%;
+    @include grid-display(1fr, 56px 1fr, 8px);
+
+    .aloc-btn-add-cards {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        @include flex-center(row, 0px);
+    }
+
+    .aloc-cards {
+        position: relative;
+        padding: 8px;
+        height: 100%;
+        width: 100%;
+        min-height: 70vh;
+        max-height: 75vh;
+        border-radius: 8px;
+        border: 1px solid rgba(var(--primary-color-rgb), 0.1);
+        overflow-y: auto;
+        @include flex-display(row, flex-start, flex-start, 16px);
+
+        .card {
+            position: relative;
+            padding: 0px 8px;
+            height: 100%;
+            min-width: 300px;
+            max-width: 450px;
+            border-radius: 8px;
+            background-color: rgba(var(--primary-color-rgb), 0.3);
+            box-shadow: 0px 2px 8px rgba(var(--shadow-color-rgb), 0.1);
+            @include grid-display(1fr, 48px 1fr 48px, 0px);
+
+            .title-card {
+                padding: 8px 0px;
+                height: 100%;
+                width: 100%;
+                color: var(--text-color);
+                @include text-config(21px, bold, $style: italic, $align: center);
+            }
+
+            .aloc-lines-cards {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                overflow-y: auto;
+                @include flex-display(column, flex-start, flex-start, 8px);
+                
+                .line-card {
+                    padding: 12px 16px;
+                    border-radius: 8px;
+                    background: var(--card-color);
+                    color: var(--text-color);
+                    transition: background-color 0.3s ease-in-out;
+                    cursor: pointer;
+                    
+                    p {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 3;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        pointer-events: none;
+                        cursor: pointer;
+                    }
+    
+                    &:hover {
+                        background-color: rgba(var(--card-color-rgb), 0.8);
+                    }
+                }
+            }
+
+            .add-line-card {
+                padding: 8px;
+                height: 100%;
+                width: 100%;
+                @include flex-display(row, flex-start, center, 0px);
+            }
+        }
+
+
+    }
+}

@@ -99,3 +99,48 @@
         }
     }
 }
+
+.btn-circle {
+    height: 32px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: var(--text-color-inverse);
+    text-decoration: none;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px rgba(var(--shadow-color-rgb), 0.15);
+    transition: background-color .3s ease-out, 
+                box-shadow .3s ease-out,
+                transform .3s ease-out;
+    cursor: pointer;
+    @include flex-center(row, 0px);
+    @include text-config(14px, bold);
+
+    i {
+        transition: transform .3s ease-out;
+    }
+
+    &:hover {
+        background: var(--primary-color-contrast);
+        box-shadow: 0px 4px 8px rgba(var(--shadow-color-rgb), 0.25);
+        transform: translateY(-1px);
+
+        i {
+            transform: translateY(-1px);
+        }
+    }
+
+    &:active {
+        transform: translateY(0px);
+    }
+
+    &.large {
+        height: 48px;
+        @include text-config(16px, bold);
+    }	
+
+    &.small {
+        height: 24px;
+        @include text-config(12px, bold);
+    }
+}

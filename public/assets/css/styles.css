@@ -49,7 +49,7 @@
   --base-color-inverse: rgb(236, 233, 242);
   --base-color-inverse-rgb: 236, 233, 242;
   --card-color: rgb(49 49 49);
-  --card-color-rgb: 49 49 49;
+  --card-color-rgb: 49, 49, 49;
   --text-color: rgb(221, 221, 231);
   --text-color-rgb: 221, 221, 231;
   --text-color-inverse: rgb(10, 10, 11);
@@ -1048,6 +1048,84 @@
 .btn-action:hover i {
   -webkit-transform: translateY(-1px);
           transform: translateY(-1px);
+}
+
+.btn-circle {
+  height: 32px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: var(--text-color-inverse);
+  text-decoration: none;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 2px 4px rgba(var(--shadow-color-rgb), 0.15);
+          box-shadow: 0px 2px 4px rgba(var(--shadow-color-rgb), 0.15);
+  -webkit-transition: background-color .3s ease-out,  -webkit-box-shadow .3s ease-out, -webkit-transform .3s ease-out;
+  transition: background-color .3s ease-out,  -webkit-box-shadow .3s ease-out, -webkit-transform .3s ease-out;
+  transition: background-color .3s ease-out,  box-shadow .3s ease-out, transform .3s ease-out;
+  transition: background-color .3s ease-out,  box-shadow .3s ease-out, transform .3s ease-out,  -webkit-box-shadow .3s ease-out, -webkit-transform .3s ease-out;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0px;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  text-align: left;
+}
+
+.btn-circle i {
+  -webkit-transition: -webkit-transform .3s ease-out;
+  transition: -webkit-transform .3s ease-out;
+  transition: transform .3s ease-out;
+  transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+}
+
+.btn-circle:hover {
+  background: var(--primary-color-contrast);
+  -webkit-box-shadow: 0px 4px 8px rgba(var(--shadow-color-rgb), 0.25);
+          box-shadow: 0px 4px 8px rgba(var(--shadow-color-rgb), 0.25);
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+}
+
+.btn-circle:hover i {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
+}
+
+.btn-circle:active {
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+}
+
+.btn-circle.large {
+  height: 48px;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  text-align: left;
+}
+
+.btn-circle.small {
+  height: 24px;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  text-align: left;
 }
 
 .toggle-input {
@@ -3237,8 +3315,8 @@ html {
   display: grid;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  -ms-grid-rows: 40px;
-      grid-template-rows: 40px;
+  -ms-grid-rows: 40px 1fr;
+      grid-template-rows: 40px 1fr;
   gap: 8px;
 }
 
@@ -3380,6 +3458,166 @@ html {
   font-weight: bold;
   font-style: italic;
   text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0px;
+}
+
+.grid-anotacoes {
+  position: relative;
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 56px 1fr;
+      grid-template-rows: 56px 1fr;
+  gap: 8px;
+}
+
+.grid-anotacoes .aloc-btn-add-cards {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0px;
+}
+
+.grid-anotacoes .aloc-cards {
+  position: relative;
+  padding: 8px;
+  height: 100%;
+  width: 100%;
+  min-height: 70vh;
+  max-height: 75vh;
+  border-radius: 8px;
+  border: 1px solid rgba(var(--primary-color-rgb), 0.1);
+  overflow-y: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 16px;
+}
+
+.grid-anotacoes .aloc-cards .card {
+  position: relative;
+  padding: 0px 8px;
+  height: 100%;
+  min-width: 300px;
+  max-width: 450px;
+  border-radius: 8px;
+  background-color: rgba(var(--primary-color-rgb), 0.3);
+  -webkit-box-shadow: 0px 2px 8px rgba(var(--shadow-color-rgb), 0.1);
+          box-shadow: 0px 2px 8px rgba(var(--shadow-color-rgb), 0.1);
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: 48px 1fr 48px;
+      grid-template-rows: 48px 1fr 48px;
+  gap: 0px;
+}
+
+.grid-anotacoes .aloc-cards .card .title-card {
+  padding: 8px 0px;
+  height: 100%;
+  width: 100%;
+  color: var(--text-color);
+  font-size: 21px;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+}
+
+.grid-anotacoes .aloc-cards .card .aloc-lines-cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 8px;
+}
+
+.grid-anotacoes .aloc-cards .card .aloc-lines-cards .line-card {
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: var(--card-color);
+  color: var(--text-color);
+  -webkit-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.grid-anotacoes .aloc-cards .card .aloc-lines-cards .line-card p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.grid-anotacoes .aloc-cards .card .aloc-lines-cards .line-card:hover {
+  background-color: rgba(var(--card-color-rgb), 0.8);
+}
+
+.grid-anotacoes .aloc-cards .card .add-line-card {
+  padding: 8px;
+  height: 100%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
