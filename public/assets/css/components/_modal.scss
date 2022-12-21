@@ -59,9 +59,17 @@
 }
 
 .content-modal {
+    position: relative;
     height: 50vh;
     overflow-y: auto;
     @include flex-center(row, 0px);
+
+    .default-modal-content {
+        height: 100%;
+        width: 100%;
+        padding: 8px 16px;
+        @include flex-display(column, flex-start, center, 0px);
+    }
 }
 
 .footer-modal {

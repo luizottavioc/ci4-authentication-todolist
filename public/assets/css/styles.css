@@ -1529,6 +1529,7 @@
 }
 
 .content-modal {
+  position: relative;
   height: 50vh;
   overflow-y: auto;
   display: -webkit-box;
@@ -1544,6 +1545,28 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0px;
+}
+
+.content-modal .default-modal-content {
+  height: 100%;
+  width: 100%;
+  padding: 8px 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   gap: 0px;
@@ -1639,6 +1662,9 @@
 
 .aloc-input {
   position: relative;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   width: 100%;
   margin-top: 24px;
 }
@@ -1652,6 +1678,7 @@
   border: none;
   border-bottom: 2px solid rgba(var(--primary-color-rgb), 0.7);
   overflow: hidden;
+  resize: vertical;
   -webkit-transition: border .3s, background-color ease-out .3s;
   transition: border .3s, background-color ease-out .3s;
   font-size: 16px;
@@ -1735,6 +1762,15 @@
 
 .aloc-input .select option:checked {
   color: var(--primary-color);
+}
+
+.aloc-input .color-picker {
+  padding: 0px 8px;
+  height: 40px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid rgba(var(--primary-color-rgb), 0.7);
+  cursor: pointer;
 }
 
 .aloc-input .input.valid,
@@ -3321,8 +3357,9 @@ html {
 }
 
 .grid-afazeres .aloc-folders {
+  position: relative;
   height: 100%;
-  width: 100%;
+  width: calc(100% - 32px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3339,6 +3376,49 @@ html {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   gap: 8px;
+}
+
+.grid-afazeres .aloc-folders .afz-new-afz {
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  -webkit-transform: translate(100%, -50%);
+          transform: translate(100%, -50%);
+  height: 32px;
+  aspect-ratio: 1/1;
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--primary-color);
+  -webkit-box-shadow: 0px 2px 6px rgba(var(--shadow-color-rgb), 0.2);
+          box-shadow: 0px 2px 6px rgba(var(--shadow-color-rgb), 0.2);
+  -webkit-transition: background-color 0.2s ease-in-out,  color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out,  color 0.2s ease-in-out;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: italic;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0px;
+}
+
+.grid-afazeres .aloc-folders .afz-new-afz:hover {
+  background-color: var(--primary-color);
+  color: var(--text-color-inverse);
 }
 
 .grid-afazeres .aloc-folders .afz-folder {
@@ -3474,6 +3554,35 @@ html {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   gap: 0px;
+}
+
+.aloc-data-new-afz,
+.aloc-data-new-afz-folder {
+  padding: 8px 16px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 16px;
+}
+
+@media screen and (min-width: 280px) and (max-width: 767px) {
+  .aloc-data-new-afz,
+  .aloc-data-new-afz-folder {
+    padding: 8px;
+  }
 }
 
 .grid-anotacoes {

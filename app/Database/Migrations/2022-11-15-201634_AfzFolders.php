@@ -27,6 +27,5 @@ class AfzFolders extends Migration
     public function down()
     {
         $this->forge->dropTable('afz_folders');
-
     }
 }

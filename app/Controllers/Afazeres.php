@@ -38,6 +38,14 @@ class Afazeres extends BaseController {
             $this->not_permisson();
         }
     }
+
+    public function new_afazer() {
+        echo View('afazeres/new_afazer');
+    }
+
+    public function new_folder() {
+        echo View('afazeres/new_folder');
+    }
 }
 
 ?>
