@@ -12,12 +12,14 @@ class AfazeresFoldersModel extends Model
         'fk_user',
         'name_folder',
         'background_folder',
+        'text_color_folder'
     ];
     protected $select_columns = [
         'id_folder',
         'fk_user',
         'name_folder',
         'background_folder',
+        'text_color_folder',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -34,10 +36,25 @@ class AfazeresFoldersModel extends Model
         return $query;
     }
 
+    public function get_all_by_id_user($id_user) {
+        $this->select($this->select_columns);
+        $query = $this->where('fk_user', $id_user)->findAll();
+        return $query;
+    }
+
     public function get_by_id($id) {
         $this->select($this->select_columns);
         $query = $this->where($this->primaryKey, $id)->first();
         return $query;
+    }
+
+    public function insert_folder($dados) {
+        try {
+            $this->insert($dados);
+        }catch (\Exception $e) {
+            toast_response('error', 'Erro!', 'Erro ao criar pasta de afazeres!');
+            exit;
+        }
     }
 }
 

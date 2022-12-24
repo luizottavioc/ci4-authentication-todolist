@@ -1,17 +1,18 @@
 <div class="default-modal-content">
-    <form action="" method="post" class="aloc-data-new-afz td-default-form">
+    <form action="/afazeres/insert_afazer" method="post" class="aloc-data-new-afz td-toast-form" data-confirm-title="Criar afazer" data-confirm-text="Deseja realmente criar um novo afazer?">
         <div class="aloc-input">
-            <select class="select" name="">
+            <select class="select" name="fk_folder">
                 <option value="" hidden readonly selected>Selecione a Pasta</option>
-                <option value="">Não atribuir a nenhuma pasta</option>
-                <option value="">Pasta 2</option>
-                <option value="">Pasta 3</option>
+                <option value="" selected>Não atribuir a nenhuma pasta</option>
+                <?php foreach ($folders as $folder): ?>
+                    <option value="<?= $folder['id_folder'] ?>"><?= $folder['name_folder'] ?></option>
+                <?php endforeach; ?>
             </select>
             <i class="arrow-down fa-solid fa-angles-down"></i>
             <label class="plch">Pasta de referência:</label>
         </div>
         <div class="aloc-input">
-            <textarea name="" id="" class="input" placeholder=" " required></textarea>
+            <textarea name="afazer" class="input" placeholder=" " required></textarea>
             <label class="plch">Afazer</label>
         </div>
         <button id="sbm-new-afz" type="submit" class="d-none"></button>

@@ -1,12 +1,16 @@
 <div class="default-modal-content">
-    <form action="" method="post" class="aloc-data-new-afz-folder td-default-form">
+    <form action="/afazeres/insert_folder" method="post" class="aloc-data-new-afz-folder td-toast-form" data-confirm-title="Criar pasta de afazeres" data-confirm-text="Deseja realmente criar uma nova pasta de afazeres?">
         <div class="aloc-input">
-            <input type="text" name="" class="input" placeholder=" " required>
+            <input type="text" name="name_folder" class="input" placeholder=" " required>
             <label class="plch">Nome da pasta</label>
         </div>
         <div class="aloc-input">
-            <input type="color" name="" class="color-picker" value="#0000ff" required>
+            <input type="color" name="background_folder" class="color-picker" value="#9868e9" required>
             <label class="plch has-open">Cor de referência</label>
+        </div>
+        <div class="aloc-input">
+            <input type="color" name="text_color_folder" class="color-picker" value="#ffffff" required>
+            <label class="plch has-open">Cor do texto</label>
         </div>
         <button id="sbm-new-afz" type="submit" class="d-none"></button>
     </form>

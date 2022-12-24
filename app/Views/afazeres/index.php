@@ -18,24 +18,12 @@
                 <span class="afz-folder default active td-modal" data-modal-url="/afazeres/new_folder" data-modal-id="modal-afazeres" data-modal-title="Nova pasta de afazeres" data-modal-footer="footer-new-afz-folder" data-modal-size="small">
                     <i class="fa-solid fa-folder-open"></i>
                 </span>
-                <span class="afz-folder">
-                    Trabalho
-                </span>
-                <span class="afz-folder">
-                    Faculdade
-                </span>
+                <?php foreach ($folders as $folder): ?>
+                    <span class="afz-folder" data-id-folder="<?=$folder['id_folder']?>" style="background-color: <?=$folder['background_folder']?>; color: <?=$folder['text_color_folder']?>"><?=$folder['name_folder']?></span>
+                <?php endforeach; ?>
             </div>
             <div class="aloc-afazeres">
-                <?php for ($i=0; $i < 10; $i++): ?>
-                    <div class="line-afazer">
-                        <label for="test<?=$i?>" class="aloc-check-afz">
-                            <input id="test<?=$i?>" type="checkbox" name="" id="">
-                        </label>
-                        <div class="aloc-text-afz">
-                            <label>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae.</label>
-                        </div>
-                    </div>
-                <?php endfor; ?>
+                <?= $afazeres ?>
             </div>
         </div>
     </div>

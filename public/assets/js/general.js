@@ -51,7 +51,7 @@ const ajaxRedirect = (urlPath, callback = undefined) => {
     }
 }
 
-const resultRedirects = async (response, targetUrl) => {
+const resultRedirects = async (response, targetUrl, page = undefined) => {
     $('.aloc-sid-line').removeClass('active');
 
     if (targetUrl == '/users/profile') {
@@ -61,7 +61,7 @@ const resultRedirects = async (response, targetUrl) => {
         $(`[data-sidebar-module="/${targetUrl.split('/')[1]}"]`).addClass('active');
     }
 
-    await $('#main-container').hide().html(response).fadeIn('fast');
+    await $(page ?? '#main-container').hide().html(response).fadeIn('fast');
 
     insertEspecifJs(response);
 
@@ -127,6 +127,8 @@ async function ajaxModal(opt, callback = undefined) {
     let size = opt.size;
     let typeAjax = opt.typeAjax ?? 'post';
 
+    if ($('html').prop('scrollHeight') > $('html').prop('clientHeight')) $('html').css('overflow-y', 'hidden').css('padding-right', '10px');
+
     if (modal.length > 0 && (typeof url !== 'undefined' && url != '')) {
         let contentModal = modal.children('.aloc-content-modal');
         typeof size !== 'undefined' ? modal.addClass(size) : false;
@@ -173,6 +175,8 @@ async function ajaxModal(opt, callback = undefined) {
 }
 
 function closeModal(elModal) {
+    if ($('html').css('padding-right') != '0px') $('html').css('overflow-y', 'auto').css('padding-right', '0px');
+
     let modal = $(elModal);
     let title = modal.find('.just-title');
     let content = modal.find('.content-modal');
@@ -208,8 +212,9 @@ $(document).on('submit', '.td-default-form', function (e) {
     e.preventDefault();
     e.stopPropagation();
 
-    let urlRefresh = $(this).data('url-refresh');
-    let closeModal = $(this).data('close-modal');
+    let element = $(this);
+    let urlRefresh = element.data('url-refresh');
+    let closeModal = element.data('close-modal');
 
     confirmAjax(this, () => {
         if(typeof closeModal !== 'undefined' && closeModal){
@@ -220,18 +225,29 @@ $(document).on('submit', '.td-default-form', function (e) {
             ajaxRedirect(urlRefresh);
         }
     });
+
+    element = null;
+});
+
+$(document).on('submit', '.td-toast-form', function (e) {
+    e.preventDefault();
+    e.stopPropagation(); 
+
+    toastAjax($(this));
 });
 
 function confirmAjax(thisEl, callback = undefined) {
-    let title = $(thisEl).data('confirm-title');
-    let text = $(thisEl).data('confirm-text');
-    let successText = $(thisEl).data('confirm-success-text');
-    let url = $(thisEl).data('confirm-url');
+    thisEl = $(thisEl);
+
+    let title = thisEl.data('confirm-title');
+    let text = thisEl.data('confirm-text');
+    let successText = thisEl.data('confirm-success-text');
+    let url = thisEl.data('confirm-url');
     let data  = [];
 
     if(typeof url === 'undefined') {
-        url = $(thisEl).attr('action');
-        data = $(thisEl).serialize();
+        url = thisEl.attr('action');
+        data = thisEl.serialize();
     }
 
     Swal.fire({
@@ -301,6 +317,98 @@ function confirmAjax(thisEl, callback = undefined) {
             });
         }
     })
+}
+
+function toastAjax(form, callback = undefined) {
+    form = $(form);
+
+    let title = form.data('confirm-title') ?? 'Enviar formulário';
+    let text = form.data('confirm-text') ?? 'Deseja realmente enviar o formulário?';
+    let url = form.attr('action');
+    let type = form.attr('method');
+    let closeModal = form.data('close-modal');
+    let data = form.serialize();
+
+    Swal.fire({
+        icon: 'question',
+        title: title,
+        html: text,
+        showCloseButton: true,
+        showCancelButton: true,
+        focusConfirm: true,
+        background: getSystemBackground(),
+        color: getSystemColor(),
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: type,
+                url: url,
+                data: data,
+                dataType: 'json',
+                success: function (response) {
+                    if(response.icon == 'success') {
+                        response.redirect ? responseRedirect(response.redirect) : false;
+                        closeModal ? $(`.close-modal`).click() : false;
+                    }
+
+                    response.icon && (response.title || response.text) ? Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: response.icon,
+                        title: response.title,
+                        html: response.text,
+                        color: getSystemColor(),
+                        background: getSystemBackground(),
+                        color: getSystemColor(),
+                        showConfirmButton: false,
+                        timer: 3500
+                    }) : false;
+
+                    typeof callback === 'function' ? callback() : false;
+
+                    return true;
+
+                }, error: function (error) {
+                    Swal.fire({
+                        toast: true,
+                        icon: 'error',
+                        position: 'top-end',
+                        title: 'Erro no servidor!',
+                        background: getSystemBackground(),
+                        color: getSystemColor(),
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                    return false;
+                }
+            });
+        }
+    })
+}
+
+function responseRedirect (redirect) {
+    if (redirect.page && redirect.url) {
+        $.ajax({
+            type: "post",
+            url: redirect.url,
+            data: { only_content: true },
+            success: (res) => resultRedirects(res, redirect.url, redirect.page),
+            error: (error) => console.log(error)
+        });
+    }
+
+    if (redirect.id_element_modal && redirect.url_modal) {
+        ajaxModal({
+            url: redirect.url_modal,
+            id_modal: redirect.id_modal,
+            title: redirect.title,
+            id_footer: redirect.id_modal_footer,
+            size: redirect.size,
+        });
+    }
+
+    return true;
 }
 
 // Accordion
