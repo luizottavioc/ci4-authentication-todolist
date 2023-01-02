@@ -157,6 +157,10 @@
     @include text-config(14px, bold, $style: italic);
 }
 
+.td-fade-in-down {
+    animation: fade-in-down 0.3s ease-out;
+}
+
 // croppie
 
 .croppie-container-td {

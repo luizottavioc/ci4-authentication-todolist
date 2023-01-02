@@ -32,13 +32,14 @@
             }
         }
 
+        .afz-new-folder,
         .afz-folder {
             position: relative;
             padding: 8px;
             border-radius: 4px;
             background-color: var(--primary-color);
             color: var(--text-color-inverse);
-            opacity: 0.5;
+            opacity: 0.3;
             box-shadow: 0px 2px 6px rgba(var(--shadow-color-rgb), 0.2);
             transition: opacity 0.2s ease-in-out;
             cursor: pointer;
@@ -52,9 +53,39 @@
             &:hover {
                 opacity: 0.7;
             }
-
+            
             &.active {
                 opacity: 1;
+
+                .delete-folder {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+            }
+
+            .delete-folder {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                transform: translate(25%, -50%);
+                height: 20px;
+                aspect-ratio: 1/1;
+                border-radius: 50%;
+                background-color: var(--error-color);
+                color: var(--text-color-inverse);
+                box-shadow: 0px 2px 6px rgba(var(--shadow-color-rgb), 0.2);
+                transition: opacity 0.3s ease-in-out;
+                cursor: pointer;
+                z-index: 1;
+                @include text-config(9px, unset);
+                @include flex-center(row, 0px);
+
+                opacity: 0;
+                pointer-events: none;
+
+                i {
+                    pointer-events: none;
+                }
             }
         }
     } 

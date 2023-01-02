@@ -514,6 +514,11 @@
   text-align: left;
 }
 
+.td-fade-in-down {
+  -webkit-animation: fade-in-down 0.3s ease-out;
+          animation: fade-in-down 0.3s ease-out;
+}
+
 .croppie-container-td {
   height: unset;
   width: 100%;

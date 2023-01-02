@@ -514,6 +514,11 @@
   text-align: left;
 }
 
+.td-fade-in-down {
+  -webkit-animation: fade-in-down 0.3s ease-out;
+          animation: fade-in-down 0.3s ease-out;
+}
+
 .croppie-container-td {
   height: unset;
   width: 100%;
@@ -819,6 +824,32 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+}
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
   }
 }
 
@@ -3450,13 +3481,14 @@ html {
   color: var(--text-color-inverse);
 }
 
+.grid-afazeres .aloc-folders .afz-new-folder,
 .grid-afazeres .aloc-folders .afz-folder {
   position: relative;
   padding: 8px;
   border-radius: 4px;
   background-color: var(--primary-color);
   color: var(--text-color-inverse);
-  opacity: 0.5;
+  opacity: 0.3;
   -webkit-box-shadow: 0px 2px 6px rgba(var(--shadow-color-rgb), 0.2);
           box-shadow: 0px 2px 6px rgba(var(--shadow-color-rgb), 0.2);
   -webkit-transition: opacity 0.2s ease-in-out;
@@ -3484,16 +3516,72 @@ html {
   gap: 0px;
 }
 
+.grid-afazeres .aloc-folders .afz-new-folder.default,
 .grid-afazeres .aloc-folders .afz-folder.default {
   font-style: normal;
 }
 
+.grid-afazeres .aloc-folders .afz-new-folder:hover,
 .grid-afazeres .aloc-folders .afz-folder:hover {
   opacity: 0.7;
 }
 
+.grid-afazeres .aloc-folders .afz-new-folder.active,
 .grid-afazeres .aloc-folders .afz-folder.active {
   opacity: 1;
+}
+
+.grid-afazeres .aloc-folders .afz-new-folder.active .delete-folder,
+.grid-afazeres .aloc-folders .afz-folder.active .delete-folder {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.grid-afazeres .aloc-folders .afz-new-folder .delete-folder,
+.grid-afazeres .aloc-folders .afz-folder .delete-folder {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  -webkit-transform: translate(25%, -50%);
+          transform: translate(25%, -50%);
+  height: 20px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: var(--error-color);
+  color: var(--text-color-inverse);
+  -webkit-box-shadow: 0px 2px 6px rgba(var(--shadow-color-rgb), 0.2);
+          box-shadow: 0px 2px 6px rgba(var(--shadow-color-rgb), 0.2);
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 9px;
+  font-weight: unset;
+  font-style: normal;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.grid-afazeres .aloc-folders .afz-new-folder .delete-folder i,
+.grid-afazeres .aloc-folders .afz-folder .delete-folder i {
+  pointer-events: none;
 }
 
 .grid-afazeres .aloc-afazeres {

@@ -43,6 +43,7 @@ class AfazeresFoldersModel extends Model
     }
 
     public function get_by_id($id) {
+        if(empty($id)) return [];
         $this->select($this->select_columns);
         $query = $this->where($this->primaryKey, $id)->first();
         return $query;
@@ -53,6 +54,15 @@ class AfazeresFoldersModel extends Model
             $this->insert($dados);
         }catch (\Exception $e) {
             toast_response('error', 'Erro!', 'Erro ao criar pasta de afazeres!');
+            exit;
+        }
+    }
+
+    public function delete_folder($id_folder) {
+        try {
+            $this->delete($id_folder);
+        }catch (\Exception $e) {
+            toast_response('error', 'Erro!', 'Erro ao deletar pasta de afazeres!');
             exit;
         }
     }

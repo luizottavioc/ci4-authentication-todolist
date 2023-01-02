@@ -236,6 +236,13 @@ $(document).on('submit', '.td-toast-form', function (e) {
     toastAjax($(this));
 });
 
+$(document).on('click', '.td-toast-ajax', function (e) {
+    e.preventDefault();
+    e.stopPropagation(); 
+
+    toastAjax($(this));
+});
+
 function confirmAjax(thisEl, callback = undefined) {
     thisEl = $(thisEl);
 
@@ -266,7 +273,7 @@ function confirmAjax(thisEl, callback = undefined) {
                 data: data,
                 url: url,
                 success: function (response) {
-                    typeof response === 'string' && response != '' ? response = JSON.parse(response) : false;
+                    if(typeof response === 'string' && response != '') response = JSON.parse(response);
 
                     if(typeof response === 'string' || response.status == true){
                         if (typeof successText !== 'undefined' && successText != '') {
@@ -319,15 +326,15 @@ function confirmAjax(thisEl, callback = undefined) {
     })
 }
 
-function toastAjax(form, callback = undefined) {
-    form = $(form);
+function toastAjax(element, callback = undefined) {
+    element = $(element);
 
-    let title = form.data('confirm-title') ?? 'Enviar formulário';
-    let text = form.data('confirm-text') ?? 'Deseja realmente enviar o formulário?';
-    let url = form.attr('action');
-    let type = form.attr('method');
-    let closeModal = form.data('close-modal');
-    let data = form.serialize();
+    let title = element.data('confirm-title') ?? 'Enviar formulário';
+    let text = element.data('confirm-text') ?? 'Deseja realmente enviar o formulário?';
+    let url = element.attr('action') ?? element.data('confirm-url');
+    let type = element.attr('method') ?? 'POST';
+    let closeModal = element.data('close-modal');
+    let data = element.serialize() ?? [];
 
     Swal.fire({
         icon: 'question',

@@ -12,17 +12,22 @@
     <div class="aloc-content-page">
         <div class="grid-afazeres">
             <div class="aloc-folders">
-                <span class="afz-new-afz td-modal" data-modal-url="/afazeres/new_afazer" data-modal-id="modal-afazeres" data-modal-title="Novo Afazer" data-modal-footer="footer-new-afz" data-modal-size="small">
-                    <i class="fa-solid fa-plus"></i>
-                </span>
-                <span class="afz-folder default active td-modal" data-modal-url="/afazeres/new_folder" data-modal-id="modal-afazeres" data-modal-title="Nova pasta de afazeres" data-modal-footer="footer-new-afz-folder" data-modal-size="small">
-                    <i class="fa-solid fa-folder-open"></i>
-                </span>
+                <label class="afz-new-folder default active td-modal" data-modal-url="/afazeres/new_folder" data-modal-id="modal-afazeres" data-modal-title="Nova pasta de afazeres" data-modal-footer="footer-new-afz-folder" data-modal-size="small">
+                    <i class="fa-solid fa-folder-plus"></i>
+                </label>
                 <?php foreach ($folders as $folder): ?>
-                    <span class="afz-folder" data-id-folder="<?=$folder['id_folder']?>" style="background-color: <?=$folder['background_folder']?>; color: <?=$folder['text_color_folder']?>"><?=$folder['name_folder']?></span>
+                    <label class="afz-folder <?= $folder_selected && $folder_selected['id_folder'] == $folder['id_folder'] ? 'active' : '' ?>" data-id-folder="<?=$folder['id_folder']?>" data-background="<?=$folder['background_folder']?>" style="background-color: <?=$folder['background_folder']?>; color: <?=$folder['text_color_folder']?>">
+                        <?=$folder['name_folder']?>
+                        <span class="delete-folder td-toast-ajax" data-confirm-title="Excluir pasta" data-confirm-text='Deseja realmente excluir a pasta "<?=$folder['name_folder']?>"?' data-confirm-success-text="Pasta excluída com sucesso!" data-confirm-url="/afazeres/delete_folder/<?=$folder['id_folder']?>">
+                            <i class="fa-solid fa-xmark"></i>
+                        </span>
+                    </label>
                 <?php endforeach; ?>
+                <label class="afz-new-afz td-modal" data-modal-url="/afazeres/new_afazer" data-modal-id="modal-afazeres" data-modal-title="Novo Afazer" data-modal-footer="footer-new-afz" data-modal-size="small">
+                    <i class="fa-solid fa-plus"></i>
+                </label>
             </div>
-            <div class="aloc-afazeres">
+            <div class="aloc-afazeres" style="border-color: <?= $folder_selected ? $folder_selected['background_folder'].'30' : '' ?>">
                 <?= $afazeres ?>
             </div>
         </div>
@@ -39,5 +44,5 @@
         </div>
     </div>
 
-    <input type="hidden" class="src-script" value="/assets/js/afazeres/afazeres.js">
+    <input type="hidden" class="src-script" value="<?= base_url('assets/js/afazeres/afazeres.js'.version_js()) ?>">
 </div>

@@ -19,7 +19,7 @@ class Afazeres extends BaseController {
         exit();
     }
 
-    public function index(){
+    public function index($id_folder = null){
         if(permissoes_helper('acessar_usuarios')){
             $dados = $this->request->getVar();
 
@@ -30,7 +30,8 @@ class Afazeres extends BaseController {
             $id_user = session()->get()['active_user']['id_user'];
             $data['titulo'] = 'Afazeres';
             $data['folders'] = $this->afazeres_folders_model->get_all_by_id_user($id_user);
-            $data['afazeres'] = $this->line_afazeres();
+            $data['afazeres'] = $this->line_afazeres($id_folder);
+            $data['folder_selected'] = $this->afazeres_folders_model->get_by_id($id_folder);
 
             echo View('afazeres/index', $data);
             
@@ -43,7 +44,9 @@ class Afazeres extends BaseController {
     }
 
     public function line_afazeres($id_folder = null) {
+        empty($id_folder) ? $id_folder = null : $id_folder = $id_folder;
         $id_user = session()->get()['active_user']['id_user'];
+        $data['folder'] = $this->afazeres_folders_model->get_by_id($id_folder);
         $data['afazeres'] = $this->afazeres_model->get_all_by_id_user($id_user, $id_folder);
 
         return View('afazeres/lines_afazeres', $data);
@@ -73,6 +76,16 @@ class Afazeres extends BaseController {
         exit;
     }
 
+    public function delete_folder($id_folder) {
+        $this->afazeres_folders_model->delete_folder($id_folder);
+
+        toast_response('success', 'Sucesso!', 'Pasta de afazeres excluída com sucesso!',[
+            'url' => '/afazeres',
+            'page' => '#main-container',
+        ]);
+        exit;
+    }
+
     public function insert_afazer() {
         $dados = $this->request->getVar();
 
@@ -84,7 +97,7 @@ class Afazeres extends BaseController {
         $this->afazeres_model->insert_afazer($dados);
 
         toast_response('success', 'Sucesso!', 'Afazer criado com sucesso!',[
-            'url' => '/afazeres',
+            'url' => '/afazeres/index/'.$dados['fk_folder'],
             'page' => '#main-container',
         ]);
         exit;
