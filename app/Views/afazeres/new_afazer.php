@@ -5,7 +5,7 @@
                 <option value="" hidden readonly selected>Selecione a Pasta</option>
                 <option value="" selected>Não atribuir a nenhuma pasta</option>
                 <?php foreach ($folders as $folder): ?>
-                    <option value="<?= $folder['id_folder'] ?>"><?= $folder['name_folder'] ?></option>
+                    <option value="<?= $folder['id_folder'] ?>" <?= isset($id_folder) && $id_folder == $folder['id_folder'] ? 'selected' : '' ?>><?= $folder['name_folder'] ?></option>
                 <?php endforeach; ?>
             </select>
             <i class="arrow-down fa-solid fa-angles-down"></i>

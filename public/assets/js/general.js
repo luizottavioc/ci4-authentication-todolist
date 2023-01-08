@@ -506,6 +506,22 @@ $('#switch-theme').on('change', function () {
     });
 });
 
+// Optional inputs
+
+$(document).on("change", ".check-optional-input", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    let cbxEl = $(this);
+    let container = cbxEl.closest('.aloc-input');
+    let iptIndex = parseInt(cbxEl.index()) + 1;
+    let ipt = $(container.children()[iptIndex]);
+
+    ipt.toggleClass('dsb').attr('disabled', (_, attr) => !attr);
+
+    return true;
+});
+
 // Common functions
 
 function openPageLoad() {
@@ -543,4 +559,22 @@ function changeTitlePage(urlTitle) {
 function generateString() {
     result = Math.random().toString(36).substring(2, 7);
     return result;
+}
+
+function copyStructure(jq, idsToRemove = []) {
+    let newId = generateString();
+    let element = $(jq);
+
+    if (!element.length) return '';
+
+    let elCopied = $(jq).prop('outerHTML').replace(/#####/g, newId);
+    if (idsToRemove.length) {
+        for (id of idsToRemove) {
+            elCopied = elCopied.replace(id, '');
+        }
+
+        return elCopied;
+    }
+
+    return elCopied;
 }

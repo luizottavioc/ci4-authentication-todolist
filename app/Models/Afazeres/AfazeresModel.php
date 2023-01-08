@@ -42,6 +42,26 @@ class AfazeresModel extends Model
         return $query;
     }
 
+    public function get_all_by_id($id) {
+        $this->select([
+            'afz_afazeres.id_afazer',
+            'afz_afazeres.fk_user',
+            'afz_afazeres.afazer',
+            'afz_afazeres.fk_folder',
+            'afz_afazeres.is_complete',
+            'afz_afazeres.created_at',
+            'afz_afazeres.updated_at',
+            'afz_afazeres.deleted_at',
+            'afz_folders.name_folder',
+            'afz_folders.background_folder',
+            'afz_folders.text_color_folder',
+        ]);
+        $this->join('afz_folders', 'afz_afazeres.fk_folder = afz_folders.id_folder', 'left');
+        $query = $this->where($this->primaryKey, $id)->first();
+
+        return $query;
+    }
+
     public function insert_afazer($dados) {
         try {
             $this->insert($dados);
@@ -62,6 +82,24 @@ class AfazeresModel extends Model
 
         $query = $this->findAll();
         return $query;
+    }
+
+    public function update_afazer($id, $dados) {
+        try {
+            $this->update($id, $dados);
+        }catch (\Exception $e) {
+            toast_response('error', 'Erro!', 'Erro ao atualizar afazer!');
+            exit;
+        }
+    }
+
+    public function delete_afazer($id) {
+        try {
+            $this->delete($id);
+        }catch (\Exception $e) {
+            toast_response('error', 'Erro!', 'Erro ao deletar afazer!');
+            exit;
+        }
     }
 }
 

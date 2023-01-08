@@ -5,11 +5,13 @@
             <label class="plch">Nome da pasta</label>
         </div>
         <div class="aloc-input">
-            <input type="color" name="background_folder" class="color-picker" value="#9868e9" required>
+            <input type="checkbox" name="want_bg" class="check-optional-input">
+            <input type="color" name="background_folder" class="color-picker dsb" value="#9868e9" disabled required>
             <label class="plch has-open">Cor de referência</label>
         </div>
         <div class="aloc-input">
-            <input type="color" name="text_color_folder" class="color-picker" value="#ffffff" required>
+            <input type="checkbox" name="want_color" class="check-optional-input">
+            <input type="color" name="text_color_folder" class="color-picker dsb" value="#ffffff" disabled required>
             <label class="plch has-open">Cor do texto</label>
         </div>
         <button id="sbm-new-afz" type="submit" class="d-none"></button>

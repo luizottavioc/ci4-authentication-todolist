@@ -514,6 +514,10 @@
   text-align: left;
 }
 
+.has-no-results p {
+  margin: 0;
+}
+
 .td-fade-in-down {
   -webkit-animation: fade-in-down 0.3s ease-out;
           animation: fade-in-down 0.3s ease-out;

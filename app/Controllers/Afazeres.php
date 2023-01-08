@@ -52,9 +52,10 @@ class Afazeres extends BaseController {
         return View('afazeres/lines_afazeres', $data);
     }
 
-    public function new_afazer() {
+    public function new_afazer($id_folder = null) {
         $id_user = session()->get()['active_user']['id_user'];
         $data['folders'] = $this->afazeres_folders_model->get_all_by_id_user($id_user);
+        $data['id_folder'] = $id_folder;        
 
         echo View('afazeres/new_afazer', $data);
     }
@@ -67,11 +68,14 @@ class Afazeres extends BaseController {
         $dados = $this->request->getVar();
 
         $dados['fk_user'] = session()->get()['active_user']['id_user'];
+        $dados['background_folder'] = !empty($dados['want_bg']) ? $dados['background_folder'] : null;
+        $dados['text_color_folder'] = !empty($dados['want_color']) ? $dados['text_color_folder'] : null;
+        
         $this->afazeres_folders_model->insert_folder($dados);
 
         toast_response('success', 'Sucesso!', 'Pasta de afazeres criada com sucesso!',[
-            'url' => '/afazeres',
             'page' => '#main-container',
+            'url' => '/afazeres',
         ]);
         exit;
     }
@@ -80,8 +84,8 @@ class Afazeres extends BaseController {
         $this->afazeres_folders_model->delete_folder($id_folder);
 
         toast_response('success', 'Sucesso!', 'Pasta de afazeres excluída com sucesso!',[
-            'url' => '/afazeres',
             'page' => '#main-container',
+            'url' => '/afazeres',
         ]);
         exit;
     }
@@ -97,10 +101,82 @@ class Afazeres extends BaseController {
         $this->afazeres_model->insert_afazer($dados);
 
         toast_response('success', 'Sucesso!', 'Afazer criado com sucesso!',[
-            'url' => '/afazeres/index/'.$dados['fk_folder'],
             'page' => '#main-container',
+            'url' => '/afazeres/index/'.$dados['fk_folder'],
         ]);
         exit;
+    }
+
+    public function change_afz_folder($id_afz) {
+        $afazer = $this->afazeres_model->get_all_by_id($id_afz);
+        $id_user = session()->get()['active_user']['id_user'];
+
+        if($afazer['fk_user'] != $id_user){
+            toast_response('error', 'Erro!', 'Você não pode alterar o afazer de um outro usuário');
+            exit;
+        }
+        
+        $data['afazer'] = $afazer;
+        $data['folders'] = $this->afazeres_folders_model->get_all_by_id_user($id_user);
+        echo View('afazeres/change_afz_folder', $data);
+    }
+
+    public function get_folder_data($id_folder) {
+        $folder = $this->afazeres_folders_model->get_by_id($id_folder);
+        $id_user = session()->get()['active_user']['id_user'];
+
+        if($folder['fk_user'] != $id_user){
+            echo '';
+            exit;
+        }
+
+        $folder['lines_afazeres'] = $this->afazeres_model->get_all_by_id_user($id_user, $id_folder);
+
+        echo json_encode($folder);
+        exit;
+    }
+
+    public function update_afz_folder() {
+        $dados = $this->request->getVar();
+
+        $id_user = session()->get()['active_user']['id_user'];
+        $afazer = $this->afazeres_model->get_by_id($dados['id_afazer']);
+
+        if($afazer['fk_user'] != $id_user){
+            toast_response('error', 'Erro!', 'Você não pode alterar o afazer de um outro usuário');
+            exit;
+        }
+
+        if($dados['actual_folder'] == $dados['fk_folder']) {
+            toast_response('info', 'Ops...', 'O afazer já está na pasta selecionada!');
+            exit;
+        }
+
+        $dados['fk_folder'] = empty($dados['fk_folder']) ? null : $dados['fk_folder'];
+        $this->afazeres_model->update_afazer($dados['id_afazer'], $dados);    
+
+        toast_response('success', 'Sucesso!', 'Afazer alterado com sucesso!',[
+            'page' => '#main-container',
+            'url' => '/afazeres',
+        ]);
+        exit;
+    }
+
+    public function delete_afz($id_afz) {
+        $id_user = session()->get()['active_user']['id_user'];
+        $afazer = $this->afazeres_model->get_by_id($id_afz);
+
+        if($afazer['fk_user'] != $id_user){
+            toast_response('error', 'Erro!', 'Você não pode apagar o afazer de um outro usuário');
+            exit;
+        }
+
+        $this->afazeres_model->delete_afazer($id_afz);
+
+        toast_response('success', 'Sucesso!', 'Afazer excluído com sucesso!',[
+            'page' => '#main-container',
+            'url' => '/afazeres/index/'.$afazer['fk_folder'],
+        ]);
     }
 }
 

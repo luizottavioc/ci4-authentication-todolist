@@ -117,10 +117,36 @@
             }
 
             .aloc-text-afz {
-                padding: 16px 8px;
+                position: relative;
+                padding: 16px 96px 16px 8px;
                 width: 100%;
                 @include text-config(16px, bold, $style: italic);
                 @include flex-display(row, flex-start, center, 0px);
+
+                .aloc-btns-act-afz {
+                    position: absolute;
+                    top: 50%;
+                    right: 0px;
+                    transform: translate(0, -50%);
+                    height: 100%;
+                    width: 96px;
+                    @include flex-center(row, 4px);
+
+                    .btn-act-afz {
+                        padding: 8px;
+                        color: var(--primary-color);
+                        opacity: 0.5;
+                        transition: opacity 0.3s ease-in-out;
+                        filter: drop-shadow(0px 2px 6px rgba(var(--shadow-color-rgb), 0.2));
+                        cursor: pointer;
+                        @include text-config(16px, unset);
+                        @include flex-center(row, 0px);
+
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
+                }
             }
         }
     }
@@ -136,5 +162,41 @@
 
     @include responsive(mobile) {
         padding: 8px;
+    }
+}
+
+// Página de troca de pasta de referência para afazer
+
+.aloc-all-change-folder {
+    width: 100%;
+    @include flex-display(column, flex-start, center, 16px);
+
+    .container-view-folder {
+        padding: 8px;
+        min-height: 160px;
+        max-height: 240px;
+        width: 100%;
+        border-radius: 8px;
+        border: 2px solid rgba(var(--primary-color-rgb), 1);
+        overflow: auto;
+        transition: border-color 0.3s ease-in-out;
+        @include flex-display(column, flex-start, center, 0px);
+
+        .line-view-afz {
+            padding: 8px 16px;
+            width: 100%;
+            background: transparent;
+            color: var(--text-color);
+            @include text-config(16px, 400, $style: italic);
+            @include flex-display(row, flex-start, center, 8px);
+
+            &:nth-child(odd) {
+                background-color: rgba(var(--primary-color-rgb), 0.1);
+            }
+
+            p {
+                margin: 0px;
+            }
+        }
     }
 }
