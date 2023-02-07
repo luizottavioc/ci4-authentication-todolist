@@ -58,6 +58,15 @@ class AfazeresFoldersModel extends Model
         }
     }
 
+    public function update_folder($id_folder, $dados) {
+        try {
+            $this->update($id_folder, $dados);
+        }catch (\Exception $e) {
+            toast_response('error', 'Erro!', 'Erro ao atualizar pasta de afazeres!');
+            exit;
+        }
+    }
+
     public function delete_folder($id_folder) {
         try {
             $this->delete($id_folder);

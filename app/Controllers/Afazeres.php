@@ -80,6 +80,33 @@ class Afazeres extends BaseController {
         exit;
     }
 
+    public function update_name_folder() {
+        $dados = $this->request->getVar();
+
+        $id_user = session()->get()['active_user']['id_user'];
+        $folder = $this->afazeres_folders_model->get_by_id($dados['id_folder']);
+
+        if($folder['fk_user'] != $id_user){
+            toast_response('error', 'Erro!', 'Você não pode alterar a pasta de afazeres de um outro usuário');
+            exit;
+        }
+
+        if(empty($dados['id_folder'])){
+            toast_response('error', 'Ops...', 'Algo deu errado, tente novamente mais tarde!');
+            exit;
+        }
+
+        if(empty($dados['name_folder'])){
+            toast_response('error', 'Erro!', 'O nome da pasta não pode ser vazio!');
+            exit;
+        }
+
+        $this->afazeres_folders_model->update_folder($dados['id_folder'], $dados);
+
+        toast_response('success', 'Sucesso!', 'Nome da pasta de afazeres alterado com sucesso!');
+        exit;
+    }
+
     public function delete_folder($id_folder) {
         $this->afazeres_folders_model->delete_folder($id_folder);
 

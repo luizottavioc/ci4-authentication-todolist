@@ -17,7 +17,8 @@
                 </label>
                 <?php foreach ($folders as $folder): ?>
                     <label class="afz-folder <?= $folder_selected && $folder_selected['id_folder'] == $folder['id_folder'] ? 'active' : '' ?>" data-id-folder="<?=$folder['id_folder']?>" data-background="<?=$folder['background_folder']?>" style="background-color: <?= $folder['background_folder'] ?? 'transparent' ?>; color: <?= $folder['text_color_folder'] ?? 'var(--text-color)' ?>">
-                        <?=$folder['name_folder']?>
+                        <label class="cover-folder"></label>
+                        <input type="text" value="<?= $folder['name_folder'] ?>" class="ipt-name-folder" data-db-name="<?= $folder['name_folder'] ?>">
                         <span class="delete-folder td-toast-ajax" data-confirm-title="Excluir pasta" data-confirm-text='Deseja realmente excluir a pasta "<?=$folder['name_folder']?>"?' data-confirm-success-text="Pasta excluída com sucesso!" data-confirm-url="/afazeres/delete_folder/<?=$folder['id_folder']?>">
                             <i class="fa-solid fa-xmark"></i>
                         </span>

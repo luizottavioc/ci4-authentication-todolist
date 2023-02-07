@@ -1,29 +1,15 @@
 var $afzPage = $('#afazeres-page');
-// var $afzModal = $('#modal-afazeres .aloc-content-modal .content-modal');
+var targetClickFolder = undefined;
+var executeFolder = undefined;
 
-$afzPage.on('click', '.afz-folder', function(e) {
-    e.preventDefault();
-    // e.stopPropagation();
-
-    let element = $(this);
-    let click = $(e.target);
-
-    if(click.hasClass('delete-folder')) return;
-
-    let idFolder = element.data('id-folder');
-    let background = element.data('background');
+function toggleAfzFolder(folderEl, type) {
+    let idFolder = type == 'open' ? folderEl.data('id-folder') : 0;
+    let background = type == 'open' ? folderEl.data('background') : null;
     let container = $('.aloc-afazeres');
     let btnFolders = $('.afz-folder');
-    let opened = element.hasClass('active');
-
-    btnFolders.removeClass('active');
     
-    if(opened) {
-        idFolder = 0;
-        background = null;
-    }else{
-        element.addClass('active');
-    }
+    btnFolders.removeClass('active');
+    type == 'open' ? folderEl.addClass('active') : folderEl.removeClass('active');
 
     $.ajax({
         type: "get",
@@ -32,12 +18,113 @@ $afzPage.on('click', '.afz-folder', function(e) {
             background ? container.css('border-color', background + '30') : container.removeAttr('style');
             container.html(response);
 
-            element, container, btnFolders = null;
+            folderEl, container, btnFolders = null;
         },
         error: function (error) {
             console.log(error);
-            element, container, btnFolders = null;
+            folderEl, container, btnFolders = null;
         },
+    });
+}
+
+$afzPage.on('click', '.cover-folder', function(e) {
+    e.preventDefault();
+
+    let element = $(this);
+    let folderEl = element.closest('.afz-folder')
+    let opened = folderEl.hasClass('active');
+    
+    if ($(e.target).hasClass('delete-folder')) return false;
+
+    if(!(targetClickFolder && targetClickFolder[0] === folderEl[0])) {
+        toggleAfzFolder(folderEl, 'open');
+        
+        targetClickFolder = folderEl;
+        return true;
+    }
+
+    clearTimeout(executeFolder);
+    executeFolder = setTimeout(() => toggleAfzFolder(folderEl, opened ? 'close' : 'open'), 300);
+    return true;
+});
+
+$afzPage.on('dblclick', '.cover-folder', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    clearTimeout(executeFolder);
+    
+    let element = $(this);
+    let folderEl = element.closest('.afz-folder');
+    let opened = folderEl.hasClass('active');
+    let inputName = element.siblings('.ipt-name-folder');
+
+    if(!opened) toggleAfzFolder(folderEl, 'open');
+
+    inputName.focus();
+    inputName.select();
+    return false;
+});
+
+$afzPage.on('focusin', '.ipt-name-folder', function (e) {
+    let element = $(this);
+    let coverEl = element.siblings('.cover-folder');
+
+    coverEl.addClass('d-none');
+});
+
+$afzPage.on('focusout', '.ipt-name-folder', function (e) {
+    let element = $(this);
+    let coverEl = element.siblings('.cover-folder');
+
+    coverEl.removeClass('d-none');  
+});
+
+$afzPage.on('change', '.ipt-name-folder', function(e) {
+    e.stopPropagation();
+
+    let element = $(this);
+    let folderEl = element.closest('.afz-folder');
+    let idFolder = folderEl.data('id-folder');
+    let newName = element.val();
+
+    $.ajax({
+        type: "post",
+        url: "/afazeres/update_name_folder",
+        data: {
+            id_folder: idFolder,
+            name_folder: newName
+        },
+        dataType: "json",
+        success: function (response) {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: response.icon,
+                title: response.title,
+                html: response.text,
+                color: getSystemColor(),
+                background: getSystemBackground(),
+                color: getSystemColor(),
+                showConfirmButton: false,
+                timer: 3500
+            });
+        },
+        error: function (error) {
+            console.log(error);
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: 'error',
+                title: 'Erro ao atualizar nome da pasta.',
+                html: 'Ocorreu algum erro com o servidor, tente novamente mais tarde!',
+                color: getSystemColor(),
+                background: getSystemBackground(),
+                color: getSystemColor(),
+                showConfirmButton: false,
+                timer: 3500
+            });
+        }
     });
 });
 
