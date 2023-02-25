@@ -129,9 +129,39 @@ class Afazeres extends BaseController {
 
         toast_response('success', 'Sucesso!', 'Afazer criado com sucesso!',[
             'page' => '#main-container',
-            'url' => '/afazeres/index/'.$dados['fk_folder'],
+            'url' => $dados['fk_folder'] ? '/afazeres/index/'.$dados['fk_folder'] : '/afazeres',
         ]);
         exit;
+    }
+
+    public function toggle_is_complete_afz($id_afz, $is_complete = 0) {
+        $afazer = $this->afazeres_model->get_by_id($id_afz);
+        $id_user = session()->get()['active_user']['id_user'];
+
+        if(empty($afazer)) {
+            return $this->showError(500, 'Afazer não encontrado');
+            exit;
+        }
+
+        if($afazer['fk_user'] != $id_user){
+            return $this->showError(500, 'Você não pode alterar o afazer de um outro usuário');
+            exit;
+        }
+
+        $this->afazeres_model->update_afazer($id_afz, ['is_complete' => $is_complete]);
+    }
+
+    public function update_hierarchy_afz() {
+        $dados = $this->request->getVar();
+
+        if(empty($dados['data'])) exit;
+
+        $id_user = session()->get()['active_user']['id_user'];
+        $id_lines = array_column($dados['data'], 'id_afazer');
+        $lines = $this->afazeres_model->get_by_ids($id_lines);
+
+        foreach($lines as $line) if($line['fk_user'] != $id_user) exit;
+        $this->afazeres_model->update_hierarchy_user($dados['data']);
     }
 
     public function change_afz_folder($id_afz) {
@@ -202,7 +232,7 @@ class Afazeres extends BaseController {
 
         toast_response('success', 'Sucesso!', 'Afazer excluído com sucesso!',[
             'page' => '#main-container',
-            'url' => '/afazeres/index/'.$afazer['fk_folder'],
+            'url' => $afazer['fk_folder'] ? '/afazeres/index/'.$afazer['fk_folder'] : '/afazeres',
         ]);
     }
 }

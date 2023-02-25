@@ -1,11 +1,73 @@
 var $afzPage = $('#afazeres-page');
+var $gridContainer = $('.grid-muuri-afz');
+
+var muuriAfz = undefined;
 var targetClickFolder = undefined;
 var executeFolder = undefined;
+
+initMuuri();
+
+function initMuuri() {
+    if (muuriAfz) {
+        muuriAfz.destroy();
+        muuriAfz = undefined;
+    }
+
+    muuriAfz = new Muuri($gridContainer[0], {
+        items: '*',
+        dragEnabled: true,
+        dragAxis: 'y',
+        dragHandle: '.btn-act-afz.muuri',
+        dragStartPredicate: function (item, event) {
+            let elementItem = $(item.getElement());
+            let line = elementItem.find('.line-afazer');
+
+            return line.hasClass('checked') ? false : Muuri.ItemDrag.defaultStartPredicate(item, event);
+        },
+    });
+
+    muuriAfz.on('dragEnd', function (item, event) {
+        muuriAfz.synchronize();
+        refreshAfzHierarchy();
+    });
+}
+
+function refreshAfzHierarchy() {
+    if(!muuriAfz) return false;
+
+    let dbData = [];
+    let itemsAfz = muuriAfz.getItems();
+
+    itemsAfz.forEach((item, index) => {
+        let elementItem = $(item.getElement());
+        let line = elementItem.find('.line-afazer');
+        let idAfz = line.data('id-afz');
+
+        dbData.push({
+            id_afazer: idAfz,
+            hierarchy_position: index
+        });
+    });
+
+    $.ajax({ type: "post", url: "/afazeres/update_hierarchy_afz", data: { data: dbData } });
+    return true;
+}
+
+function itemToGridEnd(item) {
+    if (!muuriAfz) return false;
+
+    let lengthItems = muuriAfz.getItems().length;
+    let newIndex = lengthItems - 1;
+
+    muuriAfz.move(item, newIndex);
+    muuriAfz.synchronize();
+    refreshAfzHierarchy();
+}
 
 function toggleAfzFolder(folderEl, type) {
     let idFolder = type == 'open' ? folderEl.data('id-folder') : 0;
     let background = type == 'open' ? folderEl.data('background') : null;
-    let container = $('.aloc-afazeres');
+    let container = $gridContainer;
     let btnFolders = $('.afz-folder');
     
     btnFolders.removeClass('active');
@@ -17,6 +79,7 @@ function toggleAfzFolder(folderEl, type) {
         success: function (response) {
             background ? container.css('border-color', background + '30') : container.removeAttr('style');
             container.html(response);
+            initMuuri();
 
             folderEl, container, btnFolders = null;
         },
@@ -127,6 +190,39 @@ $afzPage.on('change', '.ipt-name-folder', function(e) {
         }
     });
 });
+
+$afzPage.on('change', '.check-afz', function(e) {
+    e.stopPropagation();
+    e.preventDefault();
+
+    let element = $(this);
+    let line = element.closest('.line-afazer');
+    let idAfz = element.val();
+    let checked = element.is(':checked');
+
+    if(checked) {
+        line.addClass('checked');
+        itemToGridEnd(line.closest('.item-afz')[0]);
+    }else{
+        line.removeClass('checked');
+    }
+
+    $.ajax({ type: 'get', url: `/afazeres/toggle_is_complete_afz/${idAfz}/${checked ? 1 : 0}`, error: function(error) { 
+        console.log(error);
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'error',
+            title: 'Ops..',
+            html: 'Ocorreu algum erro com o servidor, tente novamente mais tarde!',
+            color: getSystemColor(),
+            background: getSystemBackground(),
+            color: getSystemColor(),
+            showConfirmButton: false,
+            timer: 3500
+        });
+    }});
+})
 
 $afzPage.on('click', '.afz-new-afz', function(e) {
     e.preventDefault();

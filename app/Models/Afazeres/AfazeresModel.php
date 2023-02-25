@@ -12,6 +12,7 @@ class AfazeresModel extends Model
         'fk_user',
         'afazer',
         'fk_folder',
+        'hierarchy_position',
         'is_complete',
     ];
     protected $select_columns = [
@@ -19,6 +20,7 @@ class AfazeresModel extends Model
         'fk_user',
         'afazer',
         'fk_folder',
+        'hierarchy_position',
         'is_complete',
         'created_at',
         'updated_at',
@@ -39,6 +41,12 @@ class AfazeresModel extends Model
     public function get_by_id($id) {
         $this->select($this->select_columns);
         $query = $this->where($this->primaryKey, $id)->first();
+        return $query;
+    }
+
+    public function get_by_ids($ids) {
+        $this->select($this->select_columns);
+        $query = $this->whereIn($this->primaryKey, $ids)->findAll();
         return $query;
     }
 
@@ -79,9 +87,19 @@ class AfazeresModel extends Model
         }else{
             $this->where('fk_folder', null);
         }
+        $this->orderBy('hierarchy_position ASC, created_at');
 
         $query = $this->findAll();
         return $query;
+    }
+
+    public function update_hierarchy_user($array_update) {
+        try {
+            $this->updateBatch($array_update, 'id_afazer');
+        }catch (\Exception $e) {
+            toast_response('error', 'Erro!', 'Erro ao atualizar hierarquia!');
+            exit;
+        }
     }
 
     public function update_afazer($id, $dados) {

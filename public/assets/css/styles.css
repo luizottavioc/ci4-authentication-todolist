@@ -3638,7 +3638,8 @@ html {
 }
 
 .grid-afazeres .aloc-afazeres {
-  padding: 16px 16px 32px;
+  position: relative;
+  padding: 4px 0px;
   min-height: 60vh;
   width: 100%;
   border-radius: 8px;
@@ -3662,12 +3663,27 @@ html {
   gap: 8px;
 }
 
-.grid-afazeres .aloc-afazeres .line-afazer {
+.grid-afazeres .aloc-afazeres .grid-muuri-afz {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-afazeres .aloc-afazeres .grid-muuri-afz .item-afz {
+  position: absolute;
+  margin: 4px 0px;
+  padding: 0px 8px;
+  width: 100%;
+}
+
+.grid-afazeres .line-afazer {
   width: 100%;
   border-radius: 8px;
   -webkit-box-shadow: 0px 8px 16px rgba(var(--shadow-color-rgb), 0.08);
           box-shadow: 0px 8px 16px rgba(var(--shadow-color-rgb), 0.08);
   background-color: var(--card-color);
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 48px 1fr;
@@ -3677,9 +3693,10 @@ html {
   gap: 0px;
 }
 
-.grid-afazeres .aloc-afazeres .line-afazer .aloc-check-afz {
+.grid-afazeres .line-afazer .aloc-check-afz {
   padding: 16px 8px;
   width: 100%;
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3698,11 +3715,12 @@ html {
   gap: 0px;
 }
 
-.grid-afazeres .aloc-afazeres .line-afazer .aloc-check-afz input[type="checkbox"] {
+.grid-afazeres .line-afazer .aloc-check-afz input[type="checkbox"] {
+  cursor: pointer;
   accent-color: var(--primary-color);
 }
 
-.grid-afazeres .aloc-afazeres .line-afazer .aloc-text-afz {
+.grid-afazeres .line-afazer .aloc-text-afz {
   position: relative;
   padding: 16px 96px 16px 8px;
   width: 100%;
@@ -3728,14 +3746,14 @@ html {
   gap: 0px;
 }
 
-.grid-afazeres .aloc-afazeres .line-afazer .aloc-text-afz .aloc-btns-act-afz {
+.grid-afazeres .line-afazer .aloc-text-afz .aloc-btns-act-afz {
   position: absolute;
   top: 50%;
   right: 0px;
   -webkit-transform: translate(0, -50%);
           transform: translate(0, -50%);
   height: 100%;
-  width: 96px;
+  width: 128px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3754,7 +3772,7 @@ html {
   gap: 4px;
 }
 
-.grid-afazeres .aloc-afazeres .line-afazer .aloc-text-afz .aloc-btns-act-afz .btn-act-afz {
+.grid-afazeres .line-afazer .aloc-text-afz .aloc-btns-act-afz .btn-act-afz {
   padding: 8px;
   color: var(--primary-color);
   opacity: 0.5;
@@ -3785,8 +3803,24 @@ html {
   gap: 0px;
 }
 
-.grid-afazeres .aloc-afazeres .line-afazer .aloc-text-afz .aloc-btns-act-afz .btn-act-afz:hover {
+.grid-afazeres .line-afazer .aloc-text-afz .aloc-btns-act-afz .btn-act-afz.muuri {
+  cursor: move;
+}
+
+.grid-afazeres .line-afazer .aloc-text-afz .aloc-btns-act-afz .btn-act-afz:hover {
   opacity: 1;
+}
+
+.grid-afazeres .line-afazer.checked {
+  opacity: 0.6 !important;
+}
+
+.grid-afazeres .line-afazer.checked .aloc-text-afz {
+  text-decoration: line-through;
+}
+
+.grid-afazeres .line-afazer.checked .aloc-text-afz .aloc-btns-act-afz .btn-act-afz.muuri {
+  visibility: hidden;
 }
 
 .aloc-data-new-afz,

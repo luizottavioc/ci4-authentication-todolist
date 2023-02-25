@@ -29,7 +29,7 @@
                 </label>
             </div>
             <div class="aloc-afazeres" style="border-color: <?= $folder_selected ? $folder_selected['background_folder'].'30' : '' ?>">
-                <?= $afazeres ?>
+                <div class="grid-muuri-afz"><?= $afazeres ?></div>
             </div>
         </div>
     </div>
