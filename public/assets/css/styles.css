@@ -2557,8 +2557,10 @@ html {
 .aloc-sid-subline .just-sid-subline {
   height: 44px;
   width: 100%;
+  color: var(--primary-color);
   background-color: var(--base-color);
   border-radius: 0px;
+  text-decoration: unset;
   -webkit-transition: background-color .3s ease-out, border-left .3s ease-out;
   transition: background-color .3s ease-out, border-left .3s ease-out;
   cursor: pointer;
@@ -2616,6 +2618,10 @@ html {
 
 .aloc-sid-subline .just-sid-subline:hover {
   background-color: rgba(var(--primary-color-rgb), 0.2);
+}
+
+.aloc-sid-subline .just-sid-subline:visited {
+  color: var(--primary-color);
 }
 
 .default-navbar {
@@ -3820,7 +3826,7 @@ html {
 }
 
 .grid-afazeres .line-afazer.checked .aloc-text-afz .aloc-btns-act-afz .btn-act-afz.muuri {
-  visibility: hidden;
+  display: none;
 }
 
 .aloc-data-new-afz,

@@ -4,42 +4,43 @@ namespace App\Controllers;
 
 use App\Models\Afazeres\AfazeresModel;
 use App\Models\Afazeres\AfazeresFoldersModel;
+use App\Libraries\AuthVerify;
 
 class Afazeres extends BaseController {
+    protected $auth_verify;
     private $afazeres_model;
     private $afazeres_folders_model;
 
     function __construct(){
+        $this->auth_verify = new AuthVerify();
+        if(!$this->auth_verify->permissoes('afazeres')) exit('Ops.. Seu usuário não possui permissão para acessar este módulo!');
+
         $this->afazeres_model = new AfazeresModel();
         $this->afazeres_folders_model = new AfazeresFoldersModel();
     }
 
-    function not_permisson() {
-        echo view('errors/not_permisson');
-        exit();
-    }
+    // function not_permisson() {
+    //     echo view('errors/not_permisson');
+    //     exit();
+    // }
 
     public function index($id_folder = null){
-        if(permissoes_helper('acessar_usuarios')){
-            $dados = $this->request->getVar();
+        $dados = $this->request->getVar();
 
-            if (!isset($dados['only_content'])) {
-                echo View('structure/header');
-            }
+        if (!isset($dados['only_content'])) {
+            echo View('structure/header');
+        }
 
-            $id_user = session()->get()['active_user']['id_user'];
-            $data['titulo'] = 'Afazeres';
-            $data['folders'] = $this->afazeres_folders_model->get_all_by_id_user($id_user);
-            $data['afazeres'] = $this->line_afazeres($id_folder);
-            $data['folder_selected'] = $this->afazeres_folders_model->get_by_id($id_folder);
+        $id_user = session()->get()['active_user']['id_user'];
+        $data['titulo'] = 'Afazeres';
+        $data['folders'] = $this->afazeres_folders_model->get_all_by_id_user($id_user);
+        $data['afazeres'] = $this->line_afazeres($id_folder);
+        $data['folder_selected'] = $this->afazeres_folders_model->get_by_id($id_folder);
 
-            echo View('afazeres/index', $data);
-            
-            if (!isset($dados['only_content'])) {
-                echo View('structure/footer');
-            }
-        }else{
-            $this->not_permisson();
+        echo View('afazeres/index', $data);
+        
+        if (!isset($dados['only_content'])) {
+            echo View('structure/footer');
         }
     }
 
@@ -115,6 +116,13 @@ class Afazeres extends BaseController {
             'url' => '/afazeres',
         ]);
         exit;
+    }
+
+    public function get_user_folders() {
+        $id_user = session()->get()['active_user']['id_user'];
+        $folders = $this->afazeres_folders_model->get_all_by_id_user($id_user);
+
+        return json_encode($folders);
     }
 
     public function insert_afazer() {

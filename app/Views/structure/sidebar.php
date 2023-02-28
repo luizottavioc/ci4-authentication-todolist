@@ -33,52 +33,66 @@
                     Home
                 </div>
             </a>
-            <!-- <div id="title-acc-afazeres" class="aloc-sid-line acc-title" data-id-content="content-acc-afazeres" data-sidebar-module="/afazeres">
-                <div class="icon">
-                    <i class="fa-regular fa-rectangle-list"></i>
-                </div>
-                <div class="name">
-                    Afazeres
-                </div>
-                <div class="acc-arrow">
-                    <i class="fa-solid fa-chevron-down first"></i>
-                    <i class="fa-solid fa-chevron-down second"></i>
-                </div>
-            </div>
-            <div class="aloc-sid-subline acc-content d-none" id="content-acc-afazeres">
-                <div class="just-sid-subline">
+            <?php $afz_folders = get_user_afz_folders_helper(); ?>
+            <?php if(empty($afz_folders) || count($afz_folders) == 0): ?>
+                <a href="/afazeres" class="aloc-sid-line ajax-redirect" data-sidebar-module="/afazeres">
                     <div class="icon">
-                        <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-square-check"></i>
                     </div>
                     <div class="name">
-                        Completos
+                        Afazeres
                     </div>
-                </div>
-                <div class="just-sid-subline">
+                </a>
+            <?php else: ?>
+                <div id="title-acc-afazeres" class="aloc-sid-line acc-title" data-id-content="content-acc-afazeres" data-sidebar-module="/afazeres">
                     <div class="icon">
-                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-circle-check"></i>
                     </div>
                     <div class="name">
-                        Inacabados
+                        Afazeres
+                    </div>
+                    <div class="acc-arrow">
+                        <i class="fa-solid fa-chevron-down first"></i>
+                        <i class="fa-solid fa-chevron-down second"></i>
                     </div>
                 </div>
-                <div class="just-sid-subline">
-                    <div class="icon">
-                        <i class="fa-regular fa-star"></i>
+                <div class="aloc-sid-subline acc-content d-none" id="content-acc-afazeres">
+                    <a class="just-sid-subline ajax-redirect" href="/afazeres">
+                        <div class="icon">
+                            <i class="fa-solid fa-list-ul"></i>
+                        </div>
+                        <div class="name">
+                            Não atribuídos
+                        </div>
+                    </a>
+                    <?php foreach($afz_folders as $folder): ?>
+                        <a class="just-sid-subline ajax-redirect" href="/afazeres/index/<?= $folder['id_folder']?>">
+                            <div class="icon">
+                                <i class="fa-solid fa-folder-open"></i>
+                            </div>
+                            <div class="name">
+                                <?= $folder['name_folder']?>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+                    <!-- <div class="just-sid-subline">
+                        <div class="icon">
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <div class="name">
+                            Inacabados
+                        </div>
                     </div>
-                    <div class="name">
-                        Pendentes
-                    </div>
+                    <div class="just-sid-subline">
+                        <div class="icon">
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                        <div class="name">
+                            Pendentes
+                        </div>
+                    </div> -->
                 </div>
-            </div> -->
-            <a href="/afazeres" class="aloc-sid-line" data-sidebar-module="/afazeres">
-                <div class="icon">
-                   <i class="fa-regular fa-square-check"></i>
-                </div>
-                <div class="name">
-                    Afazeres
-                </div>
-            </a>
+            <?php endif; ?>
             <a href="/anotacoes" class="aloc-sid-line" data-sidebar-module="/anotacoes">
                 <div class="icon">
                    <i class="fa-solid fa-feather"></i>

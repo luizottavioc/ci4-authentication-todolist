@@ -243,8 +243,10 @@
     .just-sid-subline {
         height: 44px;
         width: 100%;
+        color: var(--primary-color);
         background-color: var(--base-color);
         border-radius: 0px;
+        text-decoration: unset;
         transition: background-color .3s ease-out,
                     border-left .3s ease-out;
         cursor: pointer;
@@ -266,6 +268,10 @@
 
         &:hover {
             background-color: rgba(var(--primary-color-rgb), 0.2);
+        }
+
+        &:visited {
+            color: var(--primary-color);
         }
     }
 }

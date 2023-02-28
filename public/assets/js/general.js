@@ -16,7 +16,7 @@ $(window).on('popstate', function (e) {
 $(document).on("click", ".ajax-redirect", function (e) {
     e.preventDefault();
     e.stopPropagation();
-    let urlPath = $(this).data('url');
+    let urlPath = $(this).data('url') ?? $(this).attr('href');
     // verificação do caso de ser uma 'subpage' e, no caso de ser, usar como url o primeiro dado pra que o active dos campos na sidebar sejam respeitados
     try { window.google = {}; } catch (error) { console.log(error); }
     ajaxRedirect(urlPath);
@@ -58,7 +58,10 @@ const resultRedirects = async (response, targetUrl, page = undefined) => {
         $('.sid-profile-line').addClass('active');
     }else{
         $('.sid-profile-line').removeClass('active');
-        $(`[data-sidebar-module="/${targetUrl.split('/')[1]}"]`).addClass('active');
+
+        let lineSidebar = $(`[data-sidebar-module="/${targetUrl.split('/')[1]}"]`);
+        lineSidebar.addClass('active');
+        lineSidebar.hasClass('acc-title') ? $(`#${lineSidebar.data('id-content')}`).removeClass('d-none') : null;
     }
 
     await $(page ?? '#main-container').hide().html(response).fadeIn('fast');

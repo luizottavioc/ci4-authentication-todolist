@@ -21,9 +21,6 @@
 
 <body>
   <div class="wrapper">
-
-    <!-- Preloader -->
-
     <?php include_once('navbar.php') ?>
     <?php include_once('sidebar.php') ?>
     

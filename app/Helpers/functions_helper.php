@@ -66,3 +66,8 @@ function text_dif_days_helper($dateUS) {
         return $dias." dias atrás";
     }
 }
+
+function get_user_afz_folders_helper(){
+    $afazeres_controller = new App\Controllers\Afazeres();
+    return json_decode($afazeres_controller->get_user_folders(), true);
+}
