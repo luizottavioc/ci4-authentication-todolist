@@ -397,15 +397,17 @@ function toastAjax(element, callback = undefined) {
     })
 }
 
-function responseRedirect (redirect) {
+async function responseRedirect (redirect) {
     if (redirect.page && redirect.url) {
-        $.ajax({
+        await $.ajax({
             type: "post",
             url: redirect.url,
             data: { only_content: true },
             success: (res) => resultRedirects(res, redirect.url, redirect.page),
             error: (error) => console.log(error)
         });
+
+        if ($('html').css('padding-right') != '0px') $('html').css('overflow-y', 'auto').css('padding-right', '0px');
     }
 
     if (redirect.id_element_modal && redirect.url_modal) {

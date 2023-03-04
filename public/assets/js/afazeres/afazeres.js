@@ -5,9 +5,9 @@ var muuriAfz = undefined;
 var targetClickFolder = undefined;
 var executeFolder = undefined;
 
-initMuuri();
+initAfzMuuri();
 
-function initMuuri() {
+function initAfzMuuri() {
     if (muuriAfz) {
         muuriAfz.destroy();
         muuriAfz = undefined;
@@ -79,7 +79,7 @@ function toggleAfzFolder(folderEl, type) {
         success: function (response) {
             background ? container.css('border-color', background + '30') : container.removeAttr('style');
             container.html(response);
-            initMuuri();
+            initAfzMuuri();
 
             folderEl, container, btnFolders = null;
         },
