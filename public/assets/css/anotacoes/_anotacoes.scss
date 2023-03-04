@@ -47,26 +47,34 @@
                 height: 100%;
                 overflow-y: auto;
                 @include flex-display(column, flex-start, flex-start, 8px);
-                
-                .line-card {
-                    padding: 12px 16px;
-                    border-radius: 8px;
-                    background: var(--card-color);
-                    color: var(--text-color);
-                    transition: background-color 0.3s ease-in-out;
-                    cursor: pointer;
-                    
-                    p {
-                        display: -webkit-box;
-                        -webkit-line-clamp: 3;
-                        -webkit-box-orient: vertical;
-                        overflow: hidden;
-                        pointer-events: none;
+
+                .grid-muuri-line-cards {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+
+                    .line-card {
+                        margin: 4px 0px;
+                        position: absolute;
+                        padding: 12px 16px;
+                        border-radius: 8px;
+                        background: var(--card-color);
+                        color: var(--text-color);
+                        transition: background-color 0.3s ease-in-out;
                         cursor: pointer;
-                    }
-    
-                    &:hover {
-                        background-color: rgba(var(--card-color-rgb), 0.8);
+                        
+                        p {
+                            display: -webkit-box;
+                            -webkit-line-clamp: 3;
+                            -webkit-box-orient: vertical;
+                            overflow: hidden;
+                            pointer-events: none;
+                            cursor: pointer;
+                        }
+        
+                        &:hover {
+                            background-color: rgba(var(--card-color-rgb), 0.8);
+                        }
                     }
                 }
             }
