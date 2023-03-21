@@ -4083,10 +4083,6 @@ html {
   cursor: pointer;
 }
 
-.grid-anotacoes .aloc-cards .card .aloc-lines-cards .grid-muuri-line-cards .line-card:hover {
-  background-color: rgba(var(--card-color-rgb), 0.8);
-}
-
 .grid-anotacoes .aloc-cards .card .add-line-card {
   padding: 8px;
   height: 100%;

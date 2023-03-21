@@ -12,32 +12,38 @@
     <div class="aloc-content-page">
         <div class="grid-anotacoes">
             <div class="aloc-btn-add-cards">
-                <label class="btn-circle">
+                <label class="btn-circle td-modal" data-modal-url="/anotacoes/new_card" data-modal-id="modal-anotacoes" data-modal-title="Adicionar card de anotações" data-modal-footer="footer-new-card" data-modal-size="small">
                     <i class="fa-solid fa-plus"></i>
                 </label>
             </div>
             <div class="aloc-cards">
-                <?php for ($i=0; $i < 10; $i++): ?>
-                    <div class="card td-fade-in-down">
-                        <div class="title-card">
-                            Title
-                        </div>
-                        <div class="aloc-lines-cards">
-                            <div class="grid-muuri-line-cards">
-                                <?php for ($j=0; $j < 10; $j++): ?>
-                                    <div class="line-card">
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, vel natus. Tempora distinctio vero iusto odio obcaecati nihil repellendus adipisci doloremque, cupiditate veritatis. Suscipit quaerat pariatur, provident natus quidem voluptatem? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur velit tenetur laboriosam tempora soluta voluptatibus corporis. Facere consectetur voluptatum possimus, iure totam, harum reprehenderit beatae sint explicabo recusandae natus odit?</p>
-                                    </div>
-                                <?php endfor; ?>
+                <?php if(!empty($cards)): ?>
+                    <?php foreach ($cards as $card): ?>
+                        <div class="card td-fade-in-down">
+                            <div class="title-card">
+                                <?= $card['name_card'] ?>
+                            </div>
+                            <div class="aloc-lines-cards">
+                                <div class="grid-muuri-line-cards">
+                                    <?php for ($j=0; $j < 10; $j++): ?>
+                                        <div class="line-card">
+                                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, vel natus. Tempora distinctio vero iusto odio obcaecati nihil repellendus adipisci doloremque, cupiditate veritatis. Suscipit quaerat pariatur, provident natus quidem voluptatem? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur velit tenetur laboriosam tempora soluta voluptatibus corporis. Facere consectetur voluptatum possimus, iure totam, harum reprehenderit beatae sint explicabo recusandae natus odit?</p>
+                                        </div>
+                                    <?php endfor; ?>
+                                </div>
+                            </div>
+                            <div class="add-line-card">
+                                <label class="btn-circle small">
+                                    <i class="fa-solid fa-plus"></i>
+                                </label>
                             </div>
                         </div>
-                        <div class="add-line-card">
-                            <label class="btn-circle small">
-                                <i class="fa-solid fa-plus"></i>
-                            </label>
-                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="has-no-results">
+                        <p>Nenhum card de anotações foi encontrado para o seu usuário.</p>
                     </div>
-                <?php endfor; ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>

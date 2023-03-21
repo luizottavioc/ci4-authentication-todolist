@@ -1,7 +1,7 @@
 <?php 
 
 function version_js() {
-   return '?v1.11';
+   return '?v1.12';
 }
 
 function permissoes_helper($permissao_code) {

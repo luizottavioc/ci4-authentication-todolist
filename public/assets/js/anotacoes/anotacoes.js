@@ -3,6 +3,13 @@ var $cardsContainer = $('.aloc-cards .card .grid-muuri-line-cards');
 
 initAnotacoesMuuri();
 
+$antPage.on('click', '.line-card', function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    console.log('click line-card');
+});
+
 function initAnotacoesMuuri() {
     if(!$cardsContainer) return false;
 
