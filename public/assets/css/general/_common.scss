@@ -154,7 +154,7 @@
     color: var(--text-color);
     background-color: rgba(var(--primary-color-rgb), 0.1);
     @include flex-center(row, 0px);
-    @include text-config(14px, bold, $style: italic);
+    @include text-config(14px, bold, $style: italic, $align: center);
 
     p {
         margin: 0;

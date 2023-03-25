@@ -190,10 +190,7 @@ class Afazeres extends BaseController {
         $folder = $this->afazeres_folders_model->get_by_id($id_folder);
         $id_user = session()->get()['active_user']['id_user'];
 
-        if($folder['fk_user'] != $id_user){
-            echo '';
-            exit;
-        }
+        if($folder['fk_user'] != $id_user) exit;
 
         $folder['lines_afazeres'] = $this->afazeres_model->get_all_by_id_user($id_user, $id_folder);
 

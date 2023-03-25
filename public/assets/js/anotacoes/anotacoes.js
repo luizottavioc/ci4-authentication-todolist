@@ -26,6 +26,10 @@ function initAnotacoesMuuri() {
             items: '*',
             dragEnabled: true,
             dragAxis: 'y',
+            dragStartPredicate: function (item, event) {
+                let elementItem = $(item.getElement());
+                return elementItem.hasClass('has-no-results') ? false : Muuri.ItemDrag.defaultStartPredicate(item, event);
+            },
         });
 
         gridContainer.data('muuri', muuriGrid);

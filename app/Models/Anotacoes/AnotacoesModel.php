@@ -39,6 +39,31 @@ class AnotacoesModel extends Model
         $query = $this->where($this->primaryKey, $id)->first();
         return $query;
     }
+
+    public function get_all_by_id_user($id_user, $assoc = false) {
+        $this->select($this->select_columns);
+        $this->where('fk_user', $id_user);
+        $this->orderBy('id_anotacao', 'DESC');
+        $query = $this->findAll();
+
+        if(!$assoc) return $query;
+
+        $assoc = [];
+        foreach($query as $row) {
+            $assoc[$row['fk_card']][] = $row;
+        }
+
+        return $assoc;
+    }
+
+    public function insert_ant($data) {
+        try {
+            $this->insert($data);
+        } catch (\Exception $e) {
+            toast_response('error', 'Erro!', 'Erro ao criar anotação!');
+            exit;
+        }
+    }
 }
 
 

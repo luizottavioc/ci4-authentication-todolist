@@ -11,13 +11,11 @@ class AnotacoesCardsModel extends Model
     protected $allowedFields = [
         'fk_user',
         'name_card',
-        'background_card',
     ];
     protected $select_columns = [
         'id_card',
         'fk_user',
         'name_card',
-        'background_card',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -42,7 +40,9 @@ class AnotacoesCardsModel extends Model
 
     public function get_all_by_id_user($id_user) {
         $this->select($this->select_columns);
-        $query = $this->where('fk_user', $id_user)->findAll();
+        $this->where('fk_user', $id_user);
+        $this->orderBy('id_card', 'DESC');
+        $query = $this->findAll();
         return $query;
     }
 
@@ -51,6 +51,24 @@ class AnotacoesCardsModel extends Model
             $this->insert($data);
         } catch (\Exception $e) {
             toast_response('error', 'Erro!', 'Erro ao criar card de anotações!');
+            exit;
+        }
+    }
+
+    public function update_card($id, $data) {
+        try {
+            $this->set($data)->where($this->primaryKey, $id)->update();
+        } catch (\Exception $e) {
+            toast_response('error', 'Erro!', 'Erro ao atualizar card de anotações!');
+            exit;
+        }
+    }
+
+    public function delete_card($id_card) {
+        try {
+            $this->delete($id_card);
+        } catch (\Exception $e) {
+            toast_response('error', 'Erro!', 'Erro ao deletar card de anotações!');
             exit;
         }
     }

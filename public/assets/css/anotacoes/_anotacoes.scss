@@ -24,7 +24,7 @@
 
         .card {
             position: relative;
-            padding: 0px 8px;
+            padding: 0px 16px;
             height: 100%;
             min-width: 300px;
             max-width: 450px;
@@ -34,11 +34,23 @@
             @include grid-display(1fr, 48px 1fr 48px, 0px);
 
             .title-card {
-                padding: 8px 0px;
+                position: relative;
+                padding: 8px 16px;
                 height: 100%;
                 width: 100%;
-                color: var(--text-color);
-                @include text-config(21px, bold, $style: italic, $align: center);
+                @include flex-center(row, 0px);
+
+                p {
+                    color: var(--text-color);
+                    @include text-config(20px, bold, $style: italic, $align: center);
+                }
+
+                .btn-edit-card {
+                    position: absolute;
+                    top: 50%;
+                    left: -8px;
+                    transform: translateY(-50%);
+                }
             }
 
             .aloc-lines-cards {
@@ -57,6 +69,7 @@
                         margin: 4px 0px;
                         position: absolute;
                         padding: 12px 16px;
+                        width: 100%;
                         border-radius: 8px;
                         // background: rgba(var(--card-color-rgb), 0.8);
                         background: var(--card-color);
@@ -86,7 +99,7 @@
                 padding: 8px;
                 height: 100%;
                 width: 100%;
-                @include flex-display(row, flex-start, center, 0px);
+                @include flex-display(row, space-between, center, 0px);
             }
         }
 

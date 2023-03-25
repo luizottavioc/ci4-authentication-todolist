@@ -21,20 +21,32 @@
                     <?php foreach ($cards as $card): ?>
                         <div class="card td-fade-in-down">
                             <div class="title-card">
-                                <?= $card['name_card'] ?>
+                                <label class="btn-just-icon btn-edit-card td-modal" data-modal-url="/anotacoes/edit_card/<?= $card['id_card'] ?>" data-modal-id="modal-anotacoes" data-modal-title='Editar anotação - "<?= $card['name_card'] ?>"' data-modal-footer="footer-edit-card" data-modal-size="small">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </label>
+                                <p><?= $card['name_card'] ?></p>
                             </div>
                             <div class="aloc-lines-cards">
                                 <div class="grid-muuri-line-cards">
-                                    <?php for ($j=0; $j < 10; $j++): ?>
-                                        <div class="line-card">
-                                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore, vel natus. Tempora distinctio vero iusto odio obcaecati nihil repellendus adipisci doloremque, cupiditate veritatis. Suscipit quaerat pariatur, provident natus quidem voluptatem? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequuntur velit tenetur laboriosam tempora soluta voluptatibus corporis. Facere consectetur voluptatum possimus, iure totam, harum reprehenderit beatae sint explicabo recusandae natus odit?</p>
+                                    <?php if(!empty($card['anotacoes'])): ?>
+                                        <?php foreach ($card['anotacoes'] as $anotacao): ?>
+                                            <div class="line-card">
+                                                <p><?= $anotacao['anotacao'] ?></p>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <div class="has-no-results">
+                                            <p>Nenhuma anotação inserida</p>
                                         </div>
-                                    <?php endfor; ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="add-line-card">
-                                <label class="btn-circle small">
+                                <label class="btn-circle small td-modal" data-modal-url="/anotacoes/new_ant/<?= $card['id_card'] ?>" data-modal-id="modal-anotacoes" data-modal-title='Adicionar anotação - "<?= $card['name_card'] ?>"' data-modal-footer="footer-new-ant" data-modal-size="small">
                                     <i class="fa-solid fa-plus"></i>
+                                </label>
+                                <label class="btn-circle small td-toast-ajax" data-confirm-title="Excluir card" data-confirm-text='Deseja realmente excluir o card "<?= $card['name_card'] ?>" de anotações?' data-confirm-success-text="Card excluído com sucesso!" data-confirm-url="/anotacoes/delete_card/<?= $card['id_card'] ?>">
+                                    <i class="fa-regular fa-trash-can"></i>
                                 </label>
                             </div>
                         </div>

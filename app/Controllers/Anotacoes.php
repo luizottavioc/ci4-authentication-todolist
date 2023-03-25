@@ -21,7 +21,7 @@ class Anotacoes extends BaseController {
 
     public function not_permisson() {
         echo view('errors/not_permisson');
-        exit();
+        exit;
     }
 
     public function index(){
@@ -33,7 +33,14 @@ class Anotacoes extends BaseController {
 
         $id_user = session()->get()['active_user']['id_user'];
 
-        $data['cards'] = $this->anotacoes_cards_model->get_all_by_id_user($id_user);
+        $cards = $this->anotacoes_cards_model->get_all_by_id_user($id_user);
+        $anotacoes = $this->anotacoes_model->get_all_by_id_user($id_user, true);
+
+        if(!empty($cards)) foreach($cards as $key => $card) {
+            $cards[$key]['anotacoes'] = $anotacoes[$card['id_card']] ?? [];
+        }
+
+        $data['cards'] = $cards;
         $data['titulo'] = 'Anotações';
 
         echo View('anotacoes/index', $data);
@@ -62,6 +69,80 @@ class Anotacoes extends BaseController {
             'url' => '/anotacoes',
         ]);
         exit;
+    }
+
+    public function new_ant($id_card) {
+        if(empty($id_card)) $this->not_permisson();
+
+        $card = $this->anotacoes_cards_model->get_by_id($id_card);
+        $data['card'] = $card;
+        echo View('anotacoes/new_anotacao', $data);
+    }
+
+    public function insert_ant($id_card) {
+        if(empty($id_card)) $this->not_permisson();
+
+        $id_user = session()->get()['active_user']['id_user'];
+        $card = $this->anotacoes_cards_model->get_by_id($id_card);
+
+        if($card['fk_user'] != $id_user) $this->not_permisson();
+
+        $dados = $this->request->getVar();
+        $dados['fk_card'] = $id_card;
+        $dados['fk_user'] = $id_user;
+
+        $this->anotacoes_model->insert_ant($dados);
+
+        toast_response('success', 'Sucesso!', 'Anotação criada com sucesso!', [
+            'page' => '#main-container',
+            'url' => '/anotacoes',
+        ]);
+    }
+
+    public function delete_card($id_card) {
+        if(empty($id_card)) $this->not_permisson();
+
+        $id_user = session()->get()['active_user']['id_user'];
+        $card = $this->anotacoes_cards_model->get_by_id($id_card);
+
+        if($card['fk_user'] != $id_user) $this->not_permisson();
+
+        $this->anotacoes_cards_model->delete_card($id_card);
+
+        toast_response('success', 'Sucesso!', 'Card excluído com sucesso!', [
+            'page' => '#main-container',
+            'url' => '/anotacoes',
+        ]);
+    }
+
+    public function edit_card($id_card) {
+        if(empty($id_card)) $this->not_permisson();
+
+        $id_user = session()->get()['active_user']['id_user'];
+        $card = $this->anotacoes_cards_model->get_by_id($id_card);
+
+        if($card['fk_user'] != $id_user) $this->not_permisson();
+
+        $data['card'] = $card;
+        echo View('anotacoes/edit_card', $data);
+    }
+
+    public function update_card($id_card) {
+        if(empty($id_card)) $this->not_permisson();
+
+        $id_user = session()->get()['active_user']['id_user'];
+        $card = $this->anotacoes_cards_model->get_by_id($id_card);
+
+        if($card['fk_user'] != $id_user) $this->not_permisson();
+
+        $dados = $this->request->getVar();
+        $data = [ 'name_card' => $dados['name_card'] ];
+        $this->anotacoes_cards_model->update_card($id_card, $data);
+
+        toast_response('success', 'Sucesso!', 'Card atualizado com sucesso!', [
+            'page' => '#main-container',
+            'url' => '/anotacoes',
+        ]);
     }
 }
 

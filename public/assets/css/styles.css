@@ -511,7 +511,7 @@
   font-size: 14px;
   font-weight: bold;
   font-style: italic;
-  text-align: left;
+  text-align: center;
 }
 
 .has-no-results p {
@@ -1189,6 +1189,50 @@
   font-weight: bold;
   font-style: normal;
   text-align: left;
+}
+
+.btn-just-icon {
+  margin: 0px;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: rgba(var(--primary-color-rgb), 0.7);
+  -webkit-transition: color .3s ease-out;
+  transition: color .3s ease-out;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0px;
+}
+
+.btn-just-icon i {
+  -webkit-transition: -webkit-transform .3s ease-out;
+  transition: -webkit-transform .3s ease-out;
+  transition: transform .3s ease-out;
+  transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+}
+
+.btn-just-icon:hover {
+  color: rgba(var(--primary-color-rgb), 1);
+}
+
+.btn-just-icon:hover i {
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
 }
 
 .toggle-input {
@@ -4005,7 +4049,7 @@ html {
 
 .grid-anotacoes .aloc-cards .card {
   position: relative;
-  padding: 0px 8px;
+  padding: 0px 16px;
   height: 100%;
   min-width: 300px;
   max-width: 450px;
@@ -4023,14 +4067,42 @@ html {
 }
 
 .grid-anotacoes .aloc-cards .card .title-card {
-  padding: 8px 0px;
+  position: relative;
+  padding: 8px 16px;
   height: 100%;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0px;
+}
+
+.grid-anotacoes .aloc-cards .card .title-card p {
   color: var(--text-color);
-  font-size: 21px;
+  font-size: 20px;
   font-weight: bold;
   font-style: italic;
   text-align: center;
+}
+
+.grid-anotacoes .aloc-cards .card .title-card .btn-edit-card {
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .grid-anotacoes .aloc-cards .card .aloc-lines-cards {
@@ -4066,6 +4138,7 @@ html {
   margin: 4px 0px;
   position: absolute;
   padding: 12px 16px;
+  width: 100%;
   border-radius: 8px;
   background: var(--card-color);
   color: var(--text-color);
@@ -4097,9 +4170,9 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   gap: 0px;

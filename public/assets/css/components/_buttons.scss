@@ -144,3 +144,27 @@
         @include text-config(12px, bold);
     }
 }
+
+.btn-just-icon {
+    margin: 0px;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgba(var(--primary-color-rgb), 0.7);
+    transition: color .3s ease-out;
+    cursor: pointer;
+    @include flex-center(row, 0px);
+
+    i {
+        transition: transform .3s ease-out;
+    }
+
+    &:hover {
+        color: rgba(var(--primary-color-rgb), 1);
+
+        i {
+            transform: translateY(-1px);
+        }
+    }
+}

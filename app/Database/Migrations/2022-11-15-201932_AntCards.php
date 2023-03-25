@@ -11,7 +11,7 @@ class AntCards extends Migration
         $this->forge->addField([
             'id_card'         => ['type' => 'INT', 'constraint' => 11, 'usigned' => true, 'auto_increment' => true],
             'fk_user'         => ['type' => 'INT', 'constraint' => 11, 'null' => false],
-            'name_card'       => ['type' => 'VARCHAR', 'constraint' => 64, 'null' => false],
+            'name_card'       => ['type' => 'VARCHAR', 'constraint' => 32, 'null' => false],
             'created_at'      => ['type' => 'DATETIME','null' => true,],
             'updated_at'      => ['type' => 'DATETIME','null' => true,],
             'deleted_at'      => ['type' => 'DATETIME','null' => true,],
