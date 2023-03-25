@@ -1,5 +1,5 @@
  
-# Guia de Configuração do Projeto:
+# Guia de Configuração do Projeto
 ## Servidor
  - Abra o arquivo _C:\xampp\apache\conf\extra\httpd-vhosts.conf.bak_ em um editor ou bloco de notas e adicione o seguinte código no final do arquivo:
  ```
