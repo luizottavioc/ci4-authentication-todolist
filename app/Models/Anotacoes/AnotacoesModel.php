@@ -64,6 +64,24 @@ class AnotacoesModel extends Model
             exit;
         }
     }
+
+    public function update_anotacao($id, $data) {
+        try {
+            $this->update($id, $data);
+        } catch (\Exception $e) {
+            toast_response('error', 'Erro!', 'Erro ao atualizar anotação!');
+            exit;
+        }
+    }
+
+    public function delete_anotacao($id) {
+        try {
+            $this->delete($id);
+        } catch (\Exception $e) {
+            toast_response('error', 'Erro!', 'Erro ao deletar anotação!');
+            exit;
+        }
+    }
 }
 
 

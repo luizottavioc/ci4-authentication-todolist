@@ -1,37 +1,46 @@
 var $antPage = $('#anotacoes-page');
 var $cardsContainer = $('.aloc-cards .card .grid-muuri-line-cards');
 
-initAnotacoesMuuri();
+// initAnotacoesMuuri();
 
 $antPage.on('click', '.line-card', function (e) {
     e.preventDefault();
     e.stopPropagation();
 
-    console.log('click line-card');
+    let element = $(this);
+    let idAnt = element.data('id-ant');
+
+    ajaxModal({
+        url: `/anotacoes/open_anotacao/${idAnt}`,
+        id_modal: 'modal-anotacoes',
+        title: 'Anotação',
+        id_footer: 'footer-ant',
+        size: 'small'
+    });
 });
 
-function initAnotacoesMuuri() {
-    if(!$cardsContainer) return false;
+// function initAnotacoesMuuri() {
+//     if(!$cardsContainer) return false;
 
-    $cardsContainer.each(function (index, element) {
-        let gridContainer = $(element);
-        let muuriGrid = gridContainer.data('muuri');
+//     $cardsContainer.each(function (index, element) {
+//         let gridContainer = $(element);
+//         let muuriGrid = gridContainer.data('muuri');
 
-        if(muuriGrid) {
-            muuriGrid.destroy();
-            muuriGrid = undefined;
-        }
+//         if(muuriGrid) {
+//             muuriGrid.destroy();
+//             muuriGrid = undefined;
+//         }
 
-        muuriGrid = new Muuri(gridContainer[0], {
-            items: '*',
-            dragEnabled: true,
-            dragAxis: 'y',
-            dragStartPredicate: function (item, event) {
-                let elementItem = $(item.getElement());
-                return elementItem.hasClass('has-no-results') ? false : Muuri.ItemDrag.defaultStartPredicate(item, event);
-            },
-        });
+//         muuriGrid = new Muuri(gridContainer[0], {
+//             items: '*',
+//             dragEnabled: true,
+//             dragAxis: 'y',
+//             dragStartPredicate: function (item, event) {
+//                 let elementItem = $(item.getElement());
+//                 return elementItem.hasClass('has-no-results') ? false : Muuri.ItemDrag.defaultStartPredicate(item, event);
+//             },
+//         });
 
-        gridContainer.data('muuri', muuriGrid);
-    });
-}
+//         gridContainer.data('muuri', muuriGrid);
+//     });
+// }

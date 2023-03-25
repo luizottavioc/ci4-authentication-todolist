@@ -144,6 +144,61 @@ class Anotacoes extends BaseController {
             'url' => '/anotacoes',
         ]);
     }
+
+    public function open_anotacao($id_ant) {
+        if(empty($id_ant)) $this->not_permisson();
+
+        $id_user = session()->get()['active_user']['id_user'];
+        $anotacao = $this->anotacoes_model->get_by_id($id_ant);
+
+        if($anotacao['fk_user'] != $id_user) $this->not_permisson();
+
+        $cards = $this->anotacoes_cards_model->get_all_by_id_user($id_user);
+        $current_card = $this->anotacoes_cards_model->get_by_id($anotacao['fk_card'], true);
+
+        $data['anotacao'] = $anotacao;
+        $data['cards'] = $cards;
+        $data['current_card'] = $current_card;
+
+        echo View('anotacoes/anotacao', $data);
+    }
+
+    public function update_anotacao($id_ant) {
+        if(empty($id_ant)) $this->not_permisson();
+
+        $id_user = session()->get()['active_user']['id_user'];
+        $anotacao = $this->anotacoes_model->get_by_id($id_ant);
+
+        if($anotacao['fk_user'] != $id_user) $this->not_permisson();
+
+        $dados = $this->request->getVar();
+        $data = [ 
+            'fk_card' => $dados['fk_card'],
+            'anotacao' => $dados['anotacao'],
+        ];
+        $this->anotacoes_model->update_anotacao($id_ant, $data);
+
+        toast_response('success', 'Sucesso!', 'Anotação atualizada com sucesso!', [
+            'page' => '#main-container',
+            'url' => '/anotacoes',
+        ]);
+    }
+
+    public function delete_anotacao($id_ant) {
+        if(empty($id_ant)) $this->not_permisson();
+
+        $id_user = session()->get()['active_user']['id_user'];
+        $anotacao = $this->anotacoes_model->get_by_id($id_ant);
+
+        if($anotacao['fk_user'] != $id_user) $this->not_permisson();
+
+        $this->anotacoes_model->delete_anotacao($id_ant);
+
+        toast_response('success', 'Sucesso!', 'Anotação excluída com sucesso!', [
+            'page' => '#main-container',
+            'url' => '/anotacoes',
+        ]);
+    }
 }
 
 ?>

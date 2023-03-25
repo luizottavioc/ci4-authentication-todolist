@@ -27,6 +27,5 @@ class AntAnotacoes extends Migration
     public function down()
     {
         $this->forge->dropTable('ant_anotacoes');
-
     }
 }

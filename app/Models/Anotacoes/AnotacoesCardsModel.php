@@ -32,16 +32,18 @@ class AnotacoesCardsModel extends Model
         return $query;
     }
 
-    public function get_by_id($id) {
+    public function get_by_id($id, $with_deleted = false) {
         $this->select($this->select_columns);
+        if($with_deleted) $this->withDeleted();
         $query = $this->where($this->primaryKey, $id)->first();
         return $query;
     }
 
-    public function get_all_by_id_user($id_user) {
+    public function get_all_by_id_user($id_user, $with_deleted = false) {
         $this->select($this->select_columns);
         $this->where('fk_user', $id_user);
         $this->orderBy('id_card', 'DESC');
+        if($with_deleted) $this->withDeleted();
         $query = $this->findAll();
         return $query;
     }

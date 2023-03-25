@@ -42,6 +42,10 @@
         }
     }
 
+    textarea.input {
+        overflow: auto;
+    }
+
     .select {
         padding: 4px 24px 4px 16px;
         min-height: 30px;
@@ -237,6 +241,18 @@
     &.no-width {
         width: fit-content;
     }
+
+    &.error {
+        border-color: var(--error-color);
+
+        .text-btn {
+            color: var(--error-color);
+        }
+
+        .bg-btn {
+            background: var(--error-color);
+        }
+    }	
 
     &:hover {
         .text-btn {

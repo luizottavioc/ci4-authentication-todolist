@@ -147,6 +147,10 @@
     }
 }
 
+.flex-center {
+    @include flex-center(row, 0px);
+}
+
 .has-no-results {
     padding: 8px 16px;
     width: 100%;
@@ -159,7 +163,7 @@
     p {
         margin: 0;
     }
-}
+}   
 
 .td-fade-in-down {
     animation: fade-in-down 0.3s ease-out;

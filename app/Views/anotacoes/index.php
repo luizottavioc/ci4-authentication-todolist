@@ -30,7 +30,7 @@
                                 <div class="grid-muuri-line-cards">
                                     <?php if(!empty($card['anotacoes'])): ?>
                                         <?php foreach ($card['anotacoes'] as $anotacao): ?>
-                                            <div class="line-card">
+                                            <div class="line-card" data-id-ant="<?= $anotacao['id_anotacao'] ?>">
                                                 <p><?= $anotacao['anotacao'] ?></p>
                                             </div>
                                         <?php endforeach; ?>

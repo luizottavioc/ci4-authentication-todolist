@@ -486,6 +486,25 @@
   padding: 80px;
 }
 
+.flex-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0px;
+}
+
 .has-no-results {
   padding: 8px 16px;
   width: 100%;
@@ -1817,6 +1836,10 @@
   -webkit-box-shadow: 0 0 0 30px var(--contrast-base-color) inset;
 }
 
+.aloc-input textarea.input {
+  overflow: auto;
+}
+
 .aloc-input .select {
   padding: 4px 24px 4px 16px;
   min-height: 30px;
@@ -2037,6 +2060,18 @@
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+}
+
+.submit-form.error {
+  border-color: var(--error-color);
+}
+
+.submit-form.error .text-btn {
+  color: var(--error-color);
+}
+
+.submit-form.error .bg-btn {
+  background: var(--error-color);
 }
 
 .submit-form:hover .text-btn {
