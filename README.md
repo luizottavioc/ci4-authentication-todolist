@@ -49,5 +49,5 @@ Sistema web de afazeres completo utilizando MVC com CodeIgniter 4.
 
 ## Considerações
 - Todo esse sistema foi criado apenas para fins de aprendizado, fixação e exposição de conhecimento.
-- Com a exceção dos plugins utilizados para melhorar a experiência do usuário, todo o front-end do TodoList foi criado totalmente do zero, sem uso de bootstrap, templates ou qualquer coisa nesse sentido. Completamente original, desde as variáveis às mixins do Sass.
+- Com exceção dos plugins utilizados para melhorar a experiência do usuário, todo o front-end do TodoList foi criado totalmente do zero, sem uso de bootstrap, templates ou qualquer coisa nesse sentido. Completamente original, desde as variáveis às mixins do Sass.
 - O código escrito, apesar de apresentar uma amostra de conhecimento, não necessáriamente contém a melhor versão possível ou com a melhor performance para seu fim, uma vez que tudo é apenas conteúdo de aprendizado e a intenção era a de não burocratizar o workflow.
