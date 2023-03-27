@@ -16,7 +16,7 @@ Sistema web de afazeres completo utilizando MVC com CodeIgniter 4.
 - <a href="https://fontawesome.com/">Font Awesome</a>
 - <a href="https://sweetalert2.github.io/">Sweet Alert 2</a>
 - <a href="https://muuri.dev/">Muuri</a>
-- <a href="https://foliotek.github.io/Croppie/">Cropie</a>
+- <a href="https://foliotek.github.io/Croppie/">Croppie</a>
 
 ## Breve descrição de funcionalidades:
 1. Funcionalidades Gerais
